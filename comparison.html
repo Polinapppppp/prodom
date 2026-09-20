@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodom</title>
+    <script src="./assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner ">
+                <div class="header__top">
+                    <a class="logo" href="index.html">
+                        ProDom
+                    </a>
+
+                    <nav aria-label="Основная навигация" class="desktop-nav">
+                        <ul class="nav__list">
+                            <li class="nav__item"><a class="nav__link" href="index.html">Главная</a></li>
+                            <li class="nav__item"><a class="nav__link" href="cases.html">Портфолио</a></li>
+                            <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
+                            <li class="nav__item"><a class="nav__link" href="company.html">Компания</a></li>
+                            <li class="nav__item"><a class="nav__link" href="blog.html">Блог</a></li>
+                            <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header__right">
+
+                        <a href="" class="header__right_btn light--btn js-open-modal">Оставить заявку</a>
+
+                        <button class="burger-btn" id="burgerBtn" type="button">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu__top flex_row card__v2">
+                <p class="mobile-menu__logo">ProDom</p>
+                <button type="button" class="mobile-menu__close" data-mobile-menu-close aria-label="Закрыть">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#141416" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="mobile-menu__icons flex_row">
+                <a href="profile.html" class="mobile-menu__icon-item flex_column">
+                    <div class="mobile-menu__icon-circle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5Z"
+                                stroke="#141416" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                    </div>
+                    <p class="micro_medium">Профиль</p>
+                </a>
+                <a href="favorites.html" class="mobile-menu__icon-item flex_column">
+                    <div class="mobile-menu__icon-circle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.89982 14.6651 9.84977 19.1041 11.4721 20.5408C11.6536 20.7016 11.7444 20.7819 11.8502 20.8135C11.9426 20.8411 12.0437 20.8411 12.1361 20.8135C12.2419 20.7819 12.3327 20.7016 12.5142 20.5408C14.1365 19.1041 19.0865 14.6651 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z"
+                                stroke="#141416" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                        <span class="mobile-menu__icon-badge" data-favorites-count hidden>0</span>
+                    </div>
+                    <p class="micro_medium">Избранное</p>
+                </a>
+                <a href="comparison.html" class="mobile-menu__icon-item flex_column">
+                    <div class="mobile-menu__icon-circle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 5L20 5M4 17H8M4 11L14 11M14 17H17M17 17H20M17 17V20M17 17V14" stroke="#141416"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span class="mobile-menu__icon-badge" data-compare-count hidden>0</span>
+                    </div>
+                    <p class="micro_medium">Сравнение</p>
+                </a>
+                <button type="button" class="mobile-menu__icon-item flex_column" data-mobile-menu-search>
+                    <div class="mobile-menu__icon-circle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21 21L15.0001 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                                stroke="#141416" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                    </div>
+                    <p class="micro_medium">Поиск</p>
+                </button>
+            </div>
+
+            <div class="mobile-menu__divider"></div>
+
+            <div class="mobile-menu__group flex_column">
+                <p class="caption mobile-menu__group-title">Каталог</p>
+                <div class="mobile-menu__list flex_column">
+                    <div class="header_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <p class="body_medium">Проекты</p>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="projects.html" class="body">Все проекты домов</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="header_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <p class="body_medium">Услуги</p> <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="services.html" class="body">Все услуги</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="header_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <p class="body_medium">Товары</p>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="products.html" class="body">Все товары</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="header_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <p class="body_medium">Компании</p>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="companies.html" class="body">Все компании</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-menu__divider"></div>
+
+            <div class="mobile-menu__group flex_column">
+                <p class="caption mobile-menu__group-title">Для компаний</p>
+                <div class="mobile-menu__list flex_column">
+                    <div class="header_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <p class="body_medium">Стать партнером</p>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="projects.html" class="body">Все проекты домов</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="header_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <p class="body_medium">Войти как партнер</p> <svg width="14" height="8" viewBox="0 0 14 8"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="services.html" class="body">Все услуги</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-menu__divider"></div>
+
+            <div class="mobile-menu__group flex_column">
+                <p class="caption mobile-menu__group-title">Связаться с нами</p>
+                <div class="mobile-menu__contacts flex_column">
+                    <a href="tel:+7 (000) 000-00-00" class="body_medium">+7 (000) 000-00-00</a>
+                    <a href="mailto:support@prodom.ru" class="body_medium">support@prodom.ru</a>
+                    <a href="" target="_blank" class="body_medium">Telegram</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="section container compare_page top_124__pad btm_pad">
+
+        <div class="compare_sticky_bar" id="compareStickyBar">
+            <div class="compare_sticky_bar__scroll" id="compareStickyBarScroll"></div>
+        </div>
+        <h2 class="title">Сравнение</h2>
+
+        <div class="compare__top flex_column">
+            <div class="compare_toolbar flex_row">
+                <div class="chip_inactive__v2 compare_toolbar__active active caption_medium flex_row">
+                    Проекты домов <span class="filter_bage">3</span>
+                </div>
+                <button type="button" class="chip_inactive__v2 caption_medium"
+                    data-action="compare-clear">Очистить</button>
+            </div>
+
+            <label class="compare_toggle flex_row">
+                <input type="checkbox" class="compare_toggle__input" id="compareDiffToggle">
+                <span class="compare_toggle__ui"></span>
+                <span class="caption">Только различия</span>
+            </label>
+        </div>
+
+        <div class="compare_scroll" id="compareScroll">
+
+            <div class="compare_cards">
+                <div class="compare_card flex_column" data-compare-id="1">
+                    <div class="compare_card__media">
+                        <img src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png"
+                            alt="BFL Резиденция 102">
+                        <button type="button" class="compare_card__remove" aria-label="Удалить из сравнения"
+                            data-action="compare-remove">
+                            <svg width="16" height="16" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 4.5H15M7.5 8V12.5M10.5 8V12.5M4 4.5L4.75 14.25C4.79 14.83 5.28 15.25 5.86 15.25H12.14C12.72 15.25 13.21 14.83 13.25 14.25L14 4.5M6.5 4.5V2.75C6.5 2.34 6.84 2 7.25 2H10.75C11.16 2 11.5 2.34 11.5 2.75V4.5"
+                                    stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="popular_card__bottom_left compare_card_content">
+                        <div class="company_name flex_row">
+                            <h3 class="micro_medium">BFL Резиденция 102</h3>
+                        </div>
+
+                        <div class="popular_card__top_left micro_medium">
+                            <p class="micro_medium">Idea House</p>
+                            <span class="divider">|</span>
+                            <div class="popular_card_rating flex_row gap_4">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.62374 2.09997C6.74452 1.84322 6.80497 1.71485 6.88695 1.67383C6.9583 1.63814 7.04123 1.63814 7.11258 1.67383C7.19462 1.71485 7.25501 1.84322 7.37584 2.09997L8.52215 4.53578C8.5578 4.61158 8.57562 4.64948 8.60167 4.67891C8.62479 4.70496 8.65247 4.72607 8.68319 4.74107C8.71795 4.758 8.75779 4.76411 8.83752 4.77634L11.4016 5.16945C11.6717 5.21084 11.8066 5.23154 11.8691 5.30071C11.9235 5.36089 11.949 5.4436 11.9387 5.52578C11.9268 5.62025 11.8291 5.72012 11.6336 5.91982L9.77886 7.81461C9.72109 7.87366 9.69215 7.90324 9.67349 7.93838C9.65698 7.96945 9.64639 8.00365 9.6423 8.039C9.63769 8.07892 9.6445 8.12066 9.65813 8.20407L10.0958 10.8804C10.1419 11.1627 10.165 11.3038 10.1216 11.3876C10.0839 11.4604 10.0169 11.5116 9.93911 11.5267C9.84973 11.5441 9.7289 11.4774 9.48724 11.3441L7.19498 10.0797C7.12353 10.0403 7.08783 10.0206 7.0502 10.0129C7.01691 10.006 6.98262 10.006 6.94934 10.0129C6.9117 10.0206 6.876 10.0403 6.8046 10.0797L4.5123 11.3441C4.27064 11.4774 4.1498 11.5441 4.06045 11.5267C3.98272 11.5116 3.91564 11.4604 3.87791 11.3876C3.83453 11.3038 3.85761 11.1627 3.90376 10.8804L4.34139 8.20407C4.35503 8.12066 4.36186 8.07892 4.35724 8.039C4.35315 8.00365 4.34256 7.96945 4.32604 7.93838C4.30739 7.90324 4.27848 7.87366 4.22067 7.81461L2.36596 5.91982C2.17048 5.72012 2.07274 5.62025 2.06085 5.52578C2.0505 5.4436 2.07606 5.36089 2.13043 5.30071C2.19291 5.23154 2.32791 5.21084 2.59792 5.16945L5.16202 4.77634C5.24176 4.76411 5.28163 4.758 5.31635 4.74107C5.34709 4.72607 5.37477 4.70496 5.39785 4.67891C5.42392 4.64948 5.44175 4.61158 5.47742 4.53578L6.62374 2.09997Z"
+                                        fill="#6A6C77" stroke="#6A6C77" stroke-width="1.3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <p class="micro_medium">5,0</p>
+                                <a href="#" class="popular_card_rating__source">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_1314_9147)">
+                                            <path
+                                                d="M0 7C0 3.1339 3.1332 0 7 0C10.8654 0 14 3.1339 14 7C14 10.8661 10.8654 14 7 14C3.1332 14 0 10.8661 0 7Z"
+                                                fill="#FC3F1D" />
+                                            <path
+                                                d="M7.896 3.9662H7.2492C6.0634 3.9662 5.4397 4.5668 5.4397 5.4523C5.4397 6.4533 5.8709 6.9223 6.7564 7.5236L7.4879 8.0164L5.3858 11.1573H3.815L5.7015 8.3475C4.6165 7.5698 4.0075 6.8145 4.0075 5.537C4.0075 3.9354 5.124 2.842 7.2415 2.842H9.3436V11.1496H7.896V3.9662Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_1314_9147">
+                                                <rect width="14" height="14" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="compare_card__block flex_column">
+                        <p class="micro">Стоимость</p>
+                        <p class="caption_medium">от 10 486 332 ₽</p>
+                    </div>
+                    <div class="compare_card__block_floor flex_column floor_card">
+                        <p class="micro">Планировки</p>
+                        <div class="card__v2 flex_column">
+                            <div class="floor_card__images">
+                                <img src="./assets/images/project/Image-10.png" alt="Планировка"
+                                    class="floor_card__img compare_card__plan active" data-floor="1">
+                                <img src="./assets/images/project/Image-10.png" alt="Планировка"
+                                    class="floor_card__img compare_card__plan" data-floor="2">
+                            </div>
+                            <div class="chip_group compare_floor_tabs flex_row">
+                                <button type="button" class="floor_card_tab chip_active active micro_medium"
+                                    data-tab="1">1 этаж</button>
+                                <button type="button" class="floor_card_tab chip_inactive micro_medium" data-tab="2">2
+                                    этаж</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="compare_card flex_column" data-compare-id="2">
+                    <div class="compare_card__media">
+                        <img src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png"
+                            alt="Fachwerk 168">
+                        <button type="button" class="compare_card__remove" aria-label="Удалить из сравнения"
+                            data-action="compare-remove">
+                            <svg width="16" height="16" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 4.5H15M7.5 8V12.5M10.5 8V12.5M4 4.5L4.75 14.25C4.79 14.83 5.28 15.25 5.86 15.25H12.14C12.72 15.25 13.21 14.83 13.25 14.25L14 4.5M6.5 4.5V2.75C6.5 2.34 6.84 2 7.25 2H10.75C11.16 2 11.5 2.34 11.5 2.75V4.5"
+                                    stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="popular_card__bottom_left compare_card_content">
+                        <div class="company_name flex_row">
+                            <h3 class="micro_medium">Fachwerk 168</h3>
+                        </div>
+
+                        <div class="popular_card__top_left micro_medium">
+                            <p class="micro_medium">Idea House</p>
+                            <span class="divider">|</span>
+                            <div class="popular_card_rating flex_row gap_4">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.62374 2.09997C6.74452 1.84322 6.80497 1.71485 6.88695 1.67383C6.9583 1.63814 7.04123 1.63814 7.11258 1.67383C7.19462 1.71485 7.25501 1.84322 7.37584 2.09997L8.52215 4.53578C8.5578 4.61158 8.57562 4.64948 8.60167 4.67891C8.62479 4.70496 8.65247 4.72607 8.68319 4.74107C8.71795 4.758 8.75779 4.76411 8.83752 4.77634L11.4016 5.16945C11.6717 5.21084 11.8066 5.23154 11.8691 5.30071C11.9235 5.36089 11.949 5.4436 11.9387 5.52578C11.9268 5.62025 11.8291 5.72012 11.6336 5.91982L9.77886 7.81461C9.72109 7.87366 9.69215 7.90324 9.67349 7.93838C9.65698 7.96945 9.64639 8.00365 9.6423 8.039C9.63769 8.07892 9.6445 8.12066 9.65813 8.20407L10.0958 10.8804C10.1419 11.1627 10.165 11.3038 10.1216 11.3876C10.0839 11.4604 10.0169 11.5116 9.93911 11.5267C9.84973 11.5441 9.7289 11.4774 9.48724 11.3441L7.19498 10.0797C7.12353 10.0403 7.08783 10.0206 7.0502 10.0129C7.01691 10.006 6.98262 10.006 6.94934 10.0129C6.9117 10.0206 6.876 10.0403 6.8046 10.0797L4.5123 11.3441C4.27064 11.4774 4.1498 11.5441 4.06045 11.5267C3.98272 11.5116 3.91564 11.4604 3.87791 11.3876C3.83453 11.3038 3.85761 11.1627 3.90376 10.8804L4.34139 8.20407C4.35503 8.12066 4.36186 8.07892 4.35724 8.039C4.35315 8.00365 4.34256 7.96945 4.32604 7.93838C4.30739 7.90324 4.27848 7.87366 4.22067 7.81461L2.36596 5.91982C2.17048 5.72012 2.07274 5.62025 2.06085 5.52578C2.0505 5.4436 2.07606 5.36089 2.13043 5.30071C2.19291 5.23154 2.32791 5.21084 2.59792 5.16945L5.16202 4.77634C5.24176 4.76411 5.28163 4.758 5.31635 4.74107C5.34709 4.72607 5.37477 4.70496 5.39785 4.67891C5.42392 4.64948 5.44175 4.61158 5.47742 4.53578L6.62374 2.09997Z"
+                                        fill="#6A6C77" stroke="#6A6C77" stroke-width="1.3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <p class="micro_medium">5,0</p>
+                                <a href="#" class="popular_card_rating__source">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_1314_9147)">
+                                            <path
+                                                d="M0 7C0 3.1339 3.1332 0 7 0C10.8654 0 14 3.1339 14 7C14 10.8661 10.8654 14 7 14C3.1332 14 0 10.8661 0 7Z"
+                                                fill="#FC3F1D" />
+                                            <path
+                                                d="M7.896 3.9662H7.2492C6.0634 3.9662 5.4397 4.5668 5.4397 5.4523C5.4397 6.4533 5.8709 6.9223 6.7564 7.5236L7.4879 8.0164L5.3858 11.1573H3.815L5.7015 8.3475C4.6165 7.5698 4.0075 6.8145 4.0075 5.537C4.0075 3.9354 5.124 2.842 7.2415 2.842H9.3436V11.1496H7.896V3.9662Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_1314_9147">
+                                                <rect width="14" height="14" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="compare_card__block flex_column">
+                        <p class="micro">Стоимость</p>
+                        <p class="caption_medium">от 15 434 948 ₽</p>
+                    </div>
+                    <div class="compare_card__block_floor flex_column floor_card">
+                        <p class="micro">Планировки</p>
+                        <div class="card__v2 flex_column">
+                            <div class="floor_card__images">
+                                <img src="./assets/images/project/Image-9.png" alt="Планировка"
+                                    class="floor_card__img compare_card__plan active" data-floor="1">
+                                <img src="./assets/images/project/Image-10.png" alt="Планировка"
+                                    class="floor_card__img compare_card__plan" data-floor="2">
+                            </div>
+                            <div class="chip_group compare_floor_tabs flex_row">
+                                <button type="button" class="floor_card_tab chip_active active micro_medium"
+                                    data-tab="1">1 этаж</button>
+                                <button type="button" class="floor_card_tab chip_inactive micro_medium" data-tab="2">2
+                                    этаж</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="compare_card flex_column" data-compare-id="3">
+                    <div class="compare_card__media">
+                        <img src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png"
+                            alt="Fachwerk 160 Axel">
+                        <button type="button" class="compare_card__remove" aria-label="Удалить из сравнения"
+                            data-action="compare-remove">
+                            <svg width="16" height="16" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 4.5H15M7.5 8V12.5M10.5 8V12.5M4 4.5L4.75 14.25C4.79 14.83 5.28 15.25 5.86 15.25H12.14C12.72 15.25 13.21 14.83 13.25 14.25L14 4.5M6.5 4.5V2.75C6.5 2.34 6.84 2 7.25 2H10.75C11.16 2 11.5 2.34 11.5 2.75V4.5"
+                                    stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="popular_card__bottom_left compare_card_content">
+                        <div class="company_name flex_row">
+                            <h3 class="micro_medium">Fachwerk 160 Axel</h3>
+                        </div>
+
+                        <div class="popular_card__top_left micro_medium">
+                            <p class="micro_medium">Idea House</p>
+                            <span class="divider">|</span>
+                            <div class="popular_card_rating flex_row gap_4">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.62374 2.09997C6.74452 1.84322 6.80497 1.71485 6.88695 1.67383C6.9583 1.63814 7.04123 1.63814 7.11258 1.67383C7.19462 1.71485 7.25501 1.84322 7.37584 2.09997L8.52215 4.53578C8.5578 4.61158 8.57562 4.64948 8.60167 4.67891C8.62479 4.70496 8.65247 4.72607 8.68319 4.74107C8.71795 4.758 8.75779 4.76411 8.83752 4.77634L11.4016 5.16945C11.6717 5.21084 11.8066 5.23154 11.8691 5.30071C11.9235 5.36089 11.949 5.4436 11.9387 5.52578C11.9268 5.62025 11.8291 5.72012 11.6336 5.91982L9.77886 7.81461C9.72109 7.87366 9.69215 7.90324 9.67349 7.93838C9.65698 7.96945 9.64639 8.00365 9.6423 8.039C9.63769 8.07892 9.6445 8.12066 9.65813 8.20407L10.0958 10.8804C10.1419 11.1627 10.165 11.3038 10.1216 11.3876C10.0839 11.4604 10.0169 11.5116 9.93911 11.5267C9.84973 11.5441 9.7289 11.4774 9.48724 11.3441L7.19498 10.0797C7.12353 10.0403 7.08783 10.0206 7.0502 10.0129C7.01691 10.006 6.98262 10.006 6.94934 10.0129C6.9117 10.0206 6.876 10.0403 6.8046 10.0797L4.5123 11.3441C4.27064 11.4774 4.1498 11.5441 4.06045 11.5267C3.98272 11.5116 3.91564 11.4604 3.87791 11.3876C3.83453 11.3038 3.85761 11.1627 3.90376 10.8804L4.34139 8.20407C4.35503 8.12066 4.36186 8.07892 4.35724 8.039C4.35315 8.00365 4.34256 7.96945 4.32604 7.93838C4.30739 7.90324 4.27848 7.87366 4.22067 7.81461L2.36596 5.91982C2.17048 5.72012 2.07274 5.62025 2.06085 5.52578C2.0505 5.4436 2.07606 5.36089 2.13043 5.30071C2.19291 5.23154 2.32791 5.21084 2.59792 5.16945L5.16202 4.77634C5.24176 4.76411 5.28163 4.758 5.31635 4.74107C5.34709 4.72607 5.37477 4.70496 5.39785 4.67891C5.42392 4.64948 5.44175 4.61158 5.47742 4.53578L6.62374 2.09997Z"
+                                        fill="#6A6C77" stroke="#6A6C77" stroke-width="1.3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <p class="micro_medium">5,0</p>
+                                <a href="#" class="popular_card_rating__source">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_1314_9147)">
+                                            <path
+                                                d="M0 7C0 3.1339 3.1332 0 7 0C10.8654 0 14 3.1339 14 7C14 10.8661 10.8654 14 7 14C3.1332 14 0 10.8661 0 7Z"
+                                                fill="#FC3F1D" />
+                                            <path
+                                                d="M7.896 3.9662H7.2492C6.0634 3.9662 5.4397 4.5668 5.4397 5.4523C5.4397 6.4533 5.8709 6.9223 6.7564 7.5236L7.4879 8.0164L5.3858 11.1573H3.815L5.7015 8.3475C4.6165 7.5698 4.0075 6.8145 4.0075 5.537C4.0075 3.9354 5.124 2.842 7.2415 2.842H9.3436V11.1496H7.896V3.9662Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_1314_9147">
+                                                <rect width="14" height="14" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="compare_card__block flex_column">
+                        <p class="micro">Стоимость</p>
+                        <p class="caption_medium">от 12 900 000 ₽</p>
+                    </div>
+                    <div class="compare_card__block_floor flex_column floor_card">
+                        <p class="micro">Планировки</p>
+                        <div class="card__v2 flex_column">
+                            <div class="floor_card__images">
+                                <img src="./assets/images/project/Image-10.png" alt="Планировка"
+                                    class="floor_card__img compare_card__plan active" data-floor="1">
+                                <img src="./assets/images/project/Image-9.png" alt="Планировка"
+                                    class="floor_card__img compare_card__plan" data-floor="2">
+                            </div>
+                            <div class="chip_group compare_floor_tabs flex_row">
+                                <button type="button" class="floor_card_tab chip_active active micro_medium"
+                                    data-tab="1">1 этаж</button>
+                                <button type="button" class="floor_card_tab chip_inactive micro_medium" data-tab="2">2
+                                    этаж</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="compare_basic_specs">
+                <div class="compare_spec_row" data-spec="area">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Площадь</p>
+                        <p class="caption_medium">101,6 м²</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Площадь</p>
+                        <p class="caption_medium">168 м²</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Площадь</p>
+                        <p class="caption_medium">168 м²</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="dimensions">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Габариты</p>
+                        <p class="caption_medium">10 × 11,7 м</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Габариты</p>
+                        <p class="caption_medium">9 × 8,5 м</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Габариты</p>
+                        <p class="caption_medium">9 × 8,5 м</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="floors">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Этажность</p>
+                        <p class="caption_medium">1 этаж</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Этажность</p>
+                        <p class="caption_medium">2 этажа</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Этажность</p>
+                        <p class="caption_medium">2 этажа</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="bedrooms">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Спальни</p>
+                        <p class="caption_medium">3 спальни</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Спальни</p>
+                        <p class="caption_medium">3 спальни</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Спальни</p>
+                        <p class="caption_medium">3 спальни</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="bathrooms">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Санузлы</p>
+                        <p class="caption_medium">2 санузла</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Санузлы</p>
+                        <p class="caption_medium">2 санузла</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Санузлы</p>
+                        <p class="caption_medium">2 санузла</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="ceiling">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Высота потолков</p>
+                        <p class="caption_medium">4,1 м</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Высота потолков</p>
+                        <p class="caption_medium">4,1 м</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Высота потолков</p>
+                        <p class="caption_medium">4,1 м</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="build_time">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Срок строительства</p>
+                        <p class="caption_medium">от 5 месяцев</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Срок строительства</p>
+                        <p class="caption_medium">от 7 месяцев</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Срок строительства</p>
+                        <p class="caption_medium">от 7 месяцев</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="warranty">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Гарантия</p>
+                        <p class="caption_medium">10 лет</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Гарантия</p>
+                        <p class="caption_medium">10 лет</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Гарантия</p>
+                        <p class="caption_medium">10 лет</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="packages">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Доступные комплектации</p>
+                        <p class="caption_medium">Теплый контур · White Box · Под ключ</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Доступные комплектации</p>
+                        <p class="caption_medium">Теплый контур · Под ключ</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Доступные комплектации</p>
+                        <p class="caption_medium">Теплый контур · White Box · Под ключ</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- "Конструктив" — ВНУТРИ compareScroll, заголовок закреплён через sticky -->
+            <div class="compare_specs_wrap">
+                <div class="flex_row compare_specs__toggle" data-action="compare-specs-toggle">
+                    <p class="buttons_medium">Конструктив</p>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 8L10 13L15 8" stroke="#141416" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+
+                </div>
+                <div class="compare_spec_row" data-spec="technology">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Технология</p>
+                        <p class="caption_medium">Фахверк 2.0</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Технология</p>
+                        <p class="caption_medium">Фахверк</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Технология</p>
+                        <p class="caption_medium">Фахверк</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="foundation">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Фундамент</p>
+                        <p class="caption_medium">Монолитный</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Фундамент</p>
+                        <p class="caption_medium">Ж/б сваи</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Фундамент</p>
+                        <p class="caption_medium">Ленточный</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="facade">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Фасад</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Фасад</p>
+                        <p class="caption_medium">Фиброцементные панели</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Фасад</p>
+                        <p class="caption_medium">Деревянная вагонка</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="roof">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Кровля</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Кровля</p>
+                        <p class="caption_medium">Металлочерепица</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Кровля</p>
+                        <p class="caption_medium">Металлочерепица</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="glazing">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Остекление</p>
+                        <p class="caption_medium">Панорамное остекление</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Остекление</p>
+                        <p class="caption_medium">Ударопрочные энергоэффективные стеклопакеты</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Остекление</p>
+                        <p class="caption_medium">Панорамное остекление</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="insulation">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Утепление</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Утепление</p>
+                        <p class="caption_medium">PIR-панели</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Утепление</p>
+                        <p class="caption_medium">PIR-панели</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="soundproofing">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Звукоизоляция</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Звукоизоляция</p>
+                        <p class="caption_medium">Волокнистая звукоизоляция</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Звукоизоляция</p>
+                        <p class="caption_medium">Волокнистая звукоизоляция</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="compare_specs_wrap">
+                <div class="flex_row compare_specs__toggle" data-action="compare-specs-toggle">
+                    <p class="buttons_medium">Помещения</p>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 8L10 13L15 8" stroke="#141416" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+
+                </div>
+                <div class="compare_spec_row" data-spec="kitchen">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Кухня-гостиная</p>
+                        <p class="caption_medium">32,8 м²</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Кухня-гостиная</p>
+                        <p class="caption_medium">44,85 м²</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Кухня-гостиная</p>
+                        <p class="caption_medium">44,85 м²</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="closet">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Гардеробная</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Гардеробная</p>
+                        <p class="caption_medium">Есть</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Гардеробная</p>
+                        <p class="caption_medium">Есть</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="office">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Кабинет</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Кабинет</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Кабинет</p>
+                        <p class="caption_medium">Есть</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="storage">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Кладовая</p>
+                        <p class="caption_medium">Есть</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Кладовая</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Кладовая</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="boiler">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Котельная</p>
+                        <p class="caption_medium">Есть, постирочная-котельная</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Котельная</p>
+                        <p class="caption_medium">Есть</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Котельная</p>
+                        <p class="caption_medium">Есть, постирочная-котельная</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="terrace">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Терраса</p>
+                        <p class="caption_medium">Доступна, 44 м²</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Терраса</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Терраса</p>
+                        <p class="caption_medium">Доступна, 44 м²</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="veranda">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Веранда</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Веранда</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Веранда</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="balcony">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Балкон</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Балкон</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Балкон</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="double_height">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Второй свет</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Второй свет</p>
+                        <p class="caption_medium">Есть</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Второй свет</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="fireplace">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Камин</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Камин</p>
+                        <p class="caption_medium">Есть</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Камин</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="garage">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Гараж</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Гараж</p>
+                        <p class="caption_medium">Есть</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Гараж</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="basement">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Подвал</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Подвал</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Подвал</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="spa">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">SPA / сауна</p>
+                        <p class="caption_medium">Есть</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">SPA / сауна</p>
+                        <p class="caption_medium">Есть</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">SPA / сауна</p>
+                        <p class="caption_medium">Есть</p>
+                    </div>
+                </div>
+                <div class="compare_spec_row" data-spec="smart_home">
+                    <div class="compare_spec_cell flex_column" data-compare-id="1">
+                        <p class="micro">Умный дом</p>
+                        <p class="caption_medium">Доступен</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="2">
+                        <p class="micro">Умный дом</p>
+                        <p class="caption_medium">—</p>
+                    </div>
+                    <div class="compare_spec_cell flex_column" data-compare-id="3">
+                        <p class="micro">Умный дом</p>
+                        <p class="caption_medium">Доступен</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <footer class="footer container">
+            <div class="footer_wrapper card__v2 flex_column">
+                <div class="footer_logo flex_column">
+                    <h2>ProDom</h2>
+                    <p class="buttons">Проекты домов и&nbsp;компании для&nbsp;загородного строительства</p>
+                </div>
+
+                <div class="footer_block__content flex_column">
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Пользователям</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="" class="body">Проекты домов</a>
+                                <a href="" class="body">Компании и специалисты</a>
+                                <a href="" class="body">Категории услуг</a>
+                                <a href="" class="body">Избранное</a>
+                                <a href="" class="body">Войти в личный кабинет</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Для компаний</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="" class="body">Стать партнером</a>
+                                <a href="" class="body">Войти как партнер</a>
+                                <a href="" class="body">Разместить проекты и услуги</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Контакты</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="tel:+7 (000) 000-00-00" class="body">+7 (000) 000-00-00</a>
+                                <a href="mailto:support@prodom.ru" class="body">support@prodom.ru</a>
+                                <a href="" target="_blank" class="body">Telegram</a>
+                                <a href="" target="_blank" class="body">VK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer_block__v2 flex_column">
+                    <div class="footer_block__v2_top flex_column">
+                        <div class="footer_block__v1_top flex_row">
+                            <p class="caption">Юридическая информация</p>
+                        </div>
+                        <div class="footer_block__v1_content flex_column">
+                            <a href="" class="body">Политика обработки данных</a>
+                            <a href="" class="body">Пользовательское соглашение</a>
+                            <a href="" class="body">Файлы cookie</a>
+                        </div>
+                    </div>
+                    <div class="footer_block__v2_content flex_column">
+                        <h3>ООО «ПроДом»</h3>
+                        <p class="micro">ИНН 7700000000 · ОГРН 0000000000000&nbsp;124482, Москва, Зеленоград,
+                            Савёлкинский
+                            проезд, д. 4</p>
+                    </div>
+                    <p class="micro info">Информация о&nbsp;ценах, характеристиках проектов, товарах и&nbsp;услугах
+                        предоставлена партнерами ПроДома и&nbsp;носит информационный характер. Актуальную стоимость
+                        и&nbsp;условия уточняйте у&nbsp;выбранной компании.</p>
+                </div>
+            </div>
+        </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="swiper_init.js"></script>
+</body>
+
+</html>

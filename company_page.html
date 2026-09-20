@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodom</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div id="page" class="site">
+        <!-- header -->
+        <header class="header">
+            <div class="container">
+                <div class="header__inner ">
+                    <div class="header__top">
+                        <a class="logo" href="index.html">
+                            ProDom
+                        </a>
+
+                        <nav aria-label="Основная навигация" class="desktop-nav">
+                            <ul class="nav__list">
+                                <li class="nav__item"><a class="nav__link" href="index.html">Главная</a></li>
+                                <li class="nav__item"><a class="nav__link" href="cases.html">Портфолио</a></li>
+                                <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
+                                <li class="nav__item"><a class="nav__link" href="company.html">Компания</a></li>
+                                <li class="nav__item"><a class="nav__link" href="blog.html">Блог</a></li>
+                                <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+                            </ul>
+                        </nav>
+
+                        <div class="header__right">
+
+                            <a href="" class="header__right_btn light--btn js-open-modal">Оставить заявку</a>
+
+                            <button class="burger-btn" id="burgerBtn" type="button">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mobile-menu" id="mobileMenu">
+                        <ul class="nav__list">
+                            <li class="nav__item"><a class="nav__link" href="index.html">Главная</a></li>
+                            <li class="nav__item"><a class="nav__link" href="cases.html">Портфолио</a></li>
+                            <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
+                            <li class="nav__item"><a class="nav__link" href="company.html">Компания</a></li>
+                            <li class="nav__item"><a class="nav__link" href="blog.html">Блог</a></li>
+                            <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+                        </ul>
+
+                        <div class="header__right mobile-only-right"
+                            style="margin-top: 20px; display: flex; gap: 10px;">
+                            <a href="#" class="header__right_btn light--btn js-open-modal"
+                                style="width: 100%; text-align: center;">Оставить
+                                заявку</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main id="primary" class="site-main">
+
+
+            <!-- popular -->
+            <section class="text_block__v1 section container company_page btm_pad top_124__pad">
+                <div class="text_block__v1_company_info flex_column">
+                    <div class="text_block__v1_company_card flex_row">
+                        <div class="text_block__v1_company_card_wrapper flex_row">
+                            <img src="./assets/images/company/Company Logo.svg" alt="">
+                            <div class="text_block__v1_company_card_right flex_column">
+                                <h2>Idea House</h2>
+                                <p class="body">126 домов построено</p>
+                            </div>
+                        </div>
+                        <svg class="popular_card__more" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                                fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z"
+                                fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z"
+                                fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <div class="card_more__modal">
+                            <div class="card_more__modal_wrapper flex_column">
+                                <div class="more_modal__item flex_row">
+                                    <p class="caption">О проекте</p>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
+                                            stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
+                                            stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="more_modal__item flex_row">
+                                    <p class="caption">Сравнить</p>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3 3.75H15M3 12.75H6M3 8.25H10.5M10.5 12.75H12.75M12.75 12.75H15M12.75 12.75V15M12.75 12.75V10.5"
+                                            stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="more_modal__item flex_row">
+                                    <p class="caption">Поделиться</p>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M15.75 9V12.15C15.75 13.4102 15.75 14.0401 15.5048 14.5215C15.2891 14.9449 14.9449 15.2891 14.5215 15.5048C14.0401 15.75 13.4102 15.75 12.15 15.75H5.85C4.58988 15.75 3.95982 15.75 3.47852 15.5048C3.05516 15.2891 2.71095 14.9449 2.49524 14.5215C2.25 14.0401 2.25 13.4102 2.25 12.15V9M6 5.25L9 2.25L12 5.25M9 2.25V11.25"
+                                            stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="more_modal__item flex_row">
+                                    <p class="caption">Избранное</p>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M8.9949 3.85186C7.49535 2.0988 4.99481 1.62723 3.11602 3.23251C1.23723 4.83779 0.972728 7.52175 2.44815 9.4203C3.67487 10.9988 7.38733 14.3281 8.60408 15.4056C8.7402 15.5262 8.8083 15.5864 8.88765 15.6101C8.95695 15.6308 9.03277 15.6308 9.10207 15.6101C9.18142 15.5864 9.24953 15.5262 9.38565 15.4056C10.6024 14.3281 14.3149 10.9988 15.5416 9.4203C17.017 7.52175 16.7848 4.8209 14.8737 3.23251C12.9626 1.64412 10.4944 2.0988 8.9949 3.85186Z"
+                                            stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text_block__v1_company_cheaps flex_row">
+                        <div class="popular_card__top_left caption_medium cheap__v2 project_cheap">
+                            Строительная компания
+                        </div>
+                        <div class="popular_card__top_left caption_medium cheap__v2 project_cheap">
+                            <div class="popular_card_rating flex_row gap_4">
+                                <svg width="17" height="17" viewBox="0 0 14 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.62399 2.09994C6.74477 1.84319 6.80521 1.71482 6.8872 1.6738C6.95854 1.63811 7.04148 1.63811 7.11282 1.6738C7.19486 1.71482 7.25525 1.84319 7.37608 2.09994L8.52239 4.53575C8.55804 4.61155 8.57586 4.64945 8.60192 4.67888C8.62504 4.70493 8.65271 4.72604 8.68343 4.74103C8.71819 4.75797 8.75803 4.76408 8.83776 4.77631L11.4019 5.16942C11.6719 5.21081 11.8069 5.23151 11.8694 5.30068C11.9237 5.36086 11.9493 5.44357 11.9389 5.52575C11.927 5.62022 11.8293 5.72009 11.6338 5.91979L9.7791 7.81458C9.72133 7.87363 9.6924 7.90321 9.67374 7.93835C9.65722 7.96942 9.64663 8.00362 9.64254 8.03897C9.63793 8.07889 9.64475 8.12062 9.65838 8.20404L10.096 10.8804C10.1422 11.1627 10.1652 11.3038 10.1219 11.3876C10.0841 11.4604 10.0171 11.5116 9.93936 11.5267C9.84998 11.544 9.72915 11.4774 9.48748 11.3441L7.19523 10.0796C7.12378 10.0403 7.08808 10.0206 7.05044 10.0128C7.01715 10.006 6.98287 10.006 6.94958 10.0128C6.91194 10.0206 6.87624 10.0403 6.80484 10.0796L4.51255 11.3441C4.27088 11.4774 4.15005 11.544 4.0607 11.5267C3.98296 11.5116 3.91588 11.4604 3.87815 11.3876C3.83478 11.3038 3.85786 11.1627 3.90401 10.8804L4.34164 8.20404C4.35528 8.12062 4.3621 8.07889 4.35748 8.03897C4.3534 8.00362 4.3428 7.96942 4.32629 7.93835C4.30763 7.90321 4.27873 7.87363 4.22091 7.81458L2.36621 5.91979C2.17073 5.72009 2.07299 5.62022 2.0611 5.52575C2.05075 5.44357 2.07631 5.36086 2.13067 5.30068C2.19315 5.23151 2.32815 5.21081 2.59816 5.16942L5.16226 4.77631C5.242 4.76408 5.28187 4.75797 5.3166 4.74103C5.34734 4.72604 5.37501 4.70493 5.3981 4.67888C5.42416 4.64945 5.44199 4.61155 5.47766 4.53575L6.62399 2.09994Z"
+                                        fill="#141416" stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                                <p class="caption_medium">5,0</p>
+                                <a href="#" class="popular_card_rating__source"><svg width="14" height="14"
+                                        viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_879_1895)">
+                                            <path
+                                                d="M0 7C0 3.1339 3.1332 0 7 0C10.8654 0 14 3.1339 14 7C14 10.8661 10.8654 14 7 14C3.1332 14 0 10.8661 0 7Z"
+                                                fill="#FC3F1D"></path>
+                                            <path
+                                                d="M7.896 3.9662H7.2492C6.0634 3.9662 5.4397 4.5668 5.4397 5.4523C5.4397 6.4533 5.8709 6.9223 6.7564 7.5236L7.4879 8.0164L5.3858 11.1573H3.815L5.7015 8.3475C4.6165 7.5698 4.0075 6.8145 4.0075 5.537C4.0075 3.9354 5.124 2.842 7.2415 2.842H9.3436V11.1496H7.896V3.9662Z"
+                                                fill="white"></path>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_879_1895">
+                                                <rect width="14" height="14" fill="white"></rect>
+                                            </clipPath>
+                                        </defs>
+                                    </svg></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text_block__v1_content flex_column">
+
+                    <div class="text_block__v1_cards flex_column">
+                        <div class="popular_card popular_card__v3 flex_column">
+                            <div class="popular_card__media">
+                                <img src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png" alt="">
+                                <div class="popular_card__dots">
+                                    <span class="active"></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="" class="buttons_medium button_v1 company_page__btn">Получить консультацию</a>
+                </div>
+            </section>
+
+            <!-- about_project -->
+            <section class="section text_block__v5 container btm_pad">
+                <div class="text_block__v5_content flex_column">
+                    <div class="text_block__v5_card_top card__v2 flex_column">
+                        <h2>О компании</h2>
+                        <p class="body about_text">Существует мечта, объединяющая миллионы людей по&nbsp;всему миру:
+                            жить
+                            в&nbsp;собственном доме, который утопает в&nbsp;зелени, где&nbsp;за&nbsp;панорамными
+                            окнами&nbsp;— лесной пейзаж, а&nbsp;внутри царит семейный уют&nbsp;и&nbsp;спокойствие.
+
+                            С&nbsp;2007&nbsp;года наша компания помогает вам&nbsp;воплощать эту&nbsp;мечту
+                            в&nbsp;реальность, превращая процесс строительства в&nbsp;понятный, прозрачный и,
+                            что&nbsp;самое главное, приятный путь.</p>
+                        <button class="about_toggle_btn body_medium" style="display:none;">Читать полностью</button>
+                    </div>
+                    <div class="text_block__v5_grid grid-2">
+                        <div class="text_block__v5_grid_card card__v2 flex_column">
+                            <h3 class="num">12 лет</h3>
+                            <p class="body">опыта в&nbsp;строительстве</p>
+                        </div>
+                        <div class="text_block__v5_grid_card card__v2 flex_column">
+                            <h3 class="num">126</h3>
+                            <p class="body">построенных
+                                домов</p>
+                        </div>
+                        <div class="text_block__v5_grid_card card__v2 flex_column">
+                            <h3 class="num">5 мес.</h3>
+                            <p class="body">средний срок строительства</p>
+                        </div>
+                        <div class="text_block__v5_grid_card card__v2 flex_column">
+                            <h3 class="num">21+</h3>
+                            <p class="body">собственных проектов</p>
+                        </div>
+                    </div>
+                    <div class="text_block__v5_card_btm text_block__v5_spec card__v2 flex_column">
+                        <h3>Условия</h3>
+                       <div class="about_card_info flex_column">
+                            
+                            <div class="specs_wrap">
+                                <div class="specs flex_column active" data-tab-panel="basic">
+                                    <div class="specs__row flex_row">
+                                        <span class="specs__label body">Регионы работы</span>
+                                        <span class="specs__fill"></span>
+                                        <span class="specs__value body_medium">Москва + МО</span>
+                                    </div>
+                                    <div class="specs__row flex_row">
+                                        <span class="specs__label body">Среднее время ответа</span>
+                                        <span class="specs__fill"></span>
+                                        <span class="specs__value body_medium">до 1 часа</span>
+                                    </div>
+                                    <div class="specs__row flex_row">
+                                        <span class="specs__label body">Выезд специалиста</span>
+                                        <span class="specs__fill"></span>
+                                        <span class="specs__value body_medium">Бесплатно</span>
+                                    </div>
+                                    <div class="specs__row flex_row">
+                                        <span class="specs__label body">Этажность</span>
+                                        <span class="specs__fill"></span>
+                                        <span class="specs__value body_medium">2 этажа</span>
+                                    </div>
+                                    <div class="specs__row flex_row">
+                                        <span class="specs__label body">Оплата</span>
+                                        <span class="specs__fill"></span>
+                                        <span class="specs__value body_medium">4 спальни</span>
+                                    </div>
+                                    <div class="specs__row flex_row">
+                                        <span class="specs__label body">Санузлы</span>
+                                        <span class="specs__fill"></span>
+                                        <span class="specs__value body_medium">Наличные, безнал, карта</span>
+                                    </div>
+                                    <div class="specs__row flex_row">
+                                        <span class="specs__label body">Рассрочка / ипотека</span>
+                                        <span class="specs__fill"></span>
+                                        <span class="specs__value body_medium">Доступны</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section container text_block__v2 btm_pad">
+                <h2 class="title">Направления работы</h2>
+                <div class="text_block__v2_content">
+                    <div class="text_block__v2_cards" data-skeleton-block>
+                        <div class="text_block__v2_card flex_column">
+                            <img src="./assets/images/services/services1.png" alt="">
+                            <div class="cheap ad_cheap micro_medium">21 проект</div>
+                            <p class="body_medium">Строительство</p>
+                        </div>
+                        <div class="text_block__v2_card flex_column">
+                            <img src="./assets/images/services/services2.png" alt="">
+                            <div class="cheap ad_cheap micro_medium">6 проектов</div>
+                            <p class="body_medium">Архитектура</p>
+                        </div>
+                        <div class="text_block__v2_card flex_column">
+                            <img src="./assets/images/services/services5.jpg" alt="">
+                            <div class="cheap ad_cheap micro_medium">4 услуги</div>
+                            <p class="body_medium">Дизайн интерьера</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+
+            <!-- technologies -->
+            <section class="section text_block__v7 container btm_pad">
+                <h2 class="title">Применяемые технологии</h2>
+                <div class="text_block__v7_content flex_column">
+                    <div class="technology_card card flex_row">
+                        <div class="technology_card_left button_border">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6 38V18.82C6.00221 18.2953 6.21051 17.7925 6.58 17.42L14 10L22 18V38H6ZM34 10H14L22 18V38H42V18.82C41.9978 18.2953 41.7895 17.7925 41.42 17.42L34 10Z"
+                                    stroke="#141416" stroke-width="2.3" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                        </div>
+                        <div class="technology_card_right flex_column">
+                            <h3>Фахверк 2.0</h3>
+                            <p class="caption">Заводской домокомплект и&nbsp;быстрая сборка</p>
+                        </div>
+                    </div>
+                    <div class="technology_card card flex_row">
+                        <div class="technology_card_left button_border">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M38 24H10M38 42H10V8C10 7.46957 10.2107 6.96086 10.5858 6.58579C10.9609 6.21071 11.4696 6 12 6H36C36.5304 6 37.0391 6.21071 37.4142 6.58579C37.7893 6.96086 38 7.46957 38 8V42ZM6 42H42H6ZM24 6V42V6Z"
+                                    stroke="black" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="technology_card_right flex_column">
+                            <h3>Панорамные окна</h3>
+                            <p class="caption">Закаленное стекло и&nbsp;карбоновый профиль</p>
+                        </div>
+                    </div>
+                    <div class="technology_card card flex_row">
+                        <div class="technology_card_left button_border">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M42 24L24 6L6 24" stroke="black" stroke-width="2.3" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M38 20V40.6C37.9644 41.0053 37.7698 41.3801 37.4588 41.6424C37.1477 41.9047 36.7455 42.0333 36.34 42H28.6V28.2H19.4V42H11.66C11.2545 42.0333 10.8523 41.9047 10.5412 41.6424C10.2302 41.3801 10.0356 41.0053 10 40.6V20"
+                                    stroke="black" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="technology_card_right flex_column">
+                            <h3>Умный дом</h3>
+                            <p class="caption">Свет, шторы и&nbsp;микроклимат с&nbsp;автоматизацией</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="text_block__v9 section container btm_pad">
+                <h2 class="title">Документы и сертификаты</h2>
+                <div class="text_block__v9_content flex_column">
+                    <div class="swiper text_block__v9_cards">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide document_card">
+                                <div class="document_card_wrapper">
+                                    <div class="document_card_img"></div>
+                                    <div class="document_card__badge cheap ad_cheap micro">Сертификат соответствия</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide document_card">
+                                <div class="document_card_wrapper">
+                                    <div class="document_card_img"></div>
+                                    <div class="document_card__badge cheap ad_cheap micro">Сертификат соответствия</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide document_card">
+                                <div class="document_card_wrapper">
+                                    <div class="document_card_img"></div>
+                                    <div class="document_card__badge cheap ad_cheap micro">Сертификат соответствия</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- contacts -->
+            <section class="section text_block__v12 container flex_column btm_pad">
+                <div class="text_block__v12__info card__v2 grid-3">
+                    <div class="text_block__v12__info-block flex_column">
+                        <p class="text_block__v12__subtitle caption">Телефон для связи</p>
+                        <h3 class="text_block__v12__info-value"><a href="tel:+" target="_blank">+7 (000) 000‑00‑00</a>
+                        </h3>
+                    </div>
+                    <div class="text_block__v12__info-block flex_column">
+                        <p class="text_block__v12__subtitle caption">Электронная почта</p>
+                        <h3 class="text_block__v12__info-value"><a href="mailto:example@ya.ru"
+                                target="_blank">example@ya.ru</a></h3>
+                    </div>
+                    <div class="text_block__v12__info-block flex_column">
+                        <p class="text_block__v12__subtitle caption">График работы</p>
+                        <h3 class="text_block__v12__info-value">ПН-СБ 10:00 — 20:00</a></h3>
+                    </div>
+                </div>
+                <div class="contacts_card__right__top card__v2 flex_column">
+                    <div class="text_block__v12__info-block flex_column">
+                        <p class="text_block__v12__subtitle caption">Наименование организации</p>
+                        <h3 class="text_block__v12__info-value">ООО «Ай ДИ Групп»</h3>
+                    </div>
+                    <div class="contact_group__rigth_group flex_row">
+                        <div class="text_block__v12__info-block flex_column">
+                            <p class="text_block__v12__subtitle caption">ИНН</p>
+                            <h3 class="text_block__v12__info-value">7735194764</h3>
+                        </div>
+                        <div class="text_block__v12__info-block flex_column">
+                            <p class="text_block__v12__subtitle caption">КПП</p>
+                            <h3 class="text_block__v12__info-value">773501001</h3>
+                        </div>
+                    </div>
+                    <div class="text_block__v12__info-block flex_column">
+                        <p class="text_block__v12__subtitle caption">ОГРН</p>
+                        <h3 class="text_block__v12__info-value">1227700254825</h3>
+                    </div>
+                    <div class="text_block__v12__info-block flex_column">
+                        <p class="text_block__v12__subtitle caption">Адрес офиса</p>
+                        <h3 class="text_block__v12__info-value">124482, Москва, Зеленоград, Савёлкинский проезд, д. 4,
+                            помещ. 4/21</h3>
+                    </div>
+                </div>
+                <div class="text_block__v12_card card__v2">
+                    <div class="text_block__v12_card_wrapper">
+                        <iframe
+                            src="https://yandex.ru/map-widget/v1/?um=constructor%3A678c8996ad5387100aac409e50147427bedd992295ca3dac78369b29ff05f116&amp;source=constructor"
+                            width="100%" height="264" frameborder="0"></iframe>
+                    </div>
+                    <button class="button_white buttons_medium">Проложить маршрут</button>
+                </div>
+            </section>
+
+            <section class="section text_block__v8 container btm_pad">
+                <div class="text_block__v8--wrapper card">
+
+                    <h2 class="text_block__v8--title_v2">
+                        Получите консультацию компании
+                    </h2>
+
+                    <div class="text_block__v8--left flex_row">
+                        <div class="text_block__v8--title">
+                            <p class="body">Расскажите о задаче — специалист свяжется с вами и&nbsp;поможет рассчитать
+                                стоимость работ</p>
+
+                            <label class="form_checkbox">
+                                <input class="form_checkbox__input" type="checkbox" name="agreement" required>
+                                <span class="form-checkbox__text micro">Я согласен(а) на обработку <br>
+                                    <a class="" href="policy.html">персональных данных</a>
+                                </span>
+                            </label>
+                        </div>
+
+                        <form action="#" class="text_block__v8--form form_section">
+                            <div class="form_section__fields">
+                                <div class="form_group">
+                                    <label for="name" class="form_label caption_medium">Ваше имя</label>
+                                    <input type="text" class="form_input button_border buttons_medium" name="name"
+                                        placeholder="Имя Фамилия" required>
+                                </div>
+                                <div class="form_group">
+                                    <label for="tel" class="form_label caption_medium">Номер телефона</label>
+                                    <input type="tel" class="form_input button_border buttons_medium" name="tel"
+                                        placeholder="+7 (000) 000-00-00" required>
+                                </div>
+                                <div class="form_group">
+                                    <label for="email" class="form_label caption_medium">Электронная почта</label>
+                                    <input type="email" class="form_input button_border buttons_medium" name="email"
+                                        placeholder="example@yandex.ru" required>
+                                </div>
+                                <button class="form_section__btn button_v1 buttons_medium">Оставить заявку</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer container">
+            <div class="footer_wrapper card__v2 flex_column">
+                <div class="footer_logo flex_column">
+                    <h2>ProDom</h2>
+                    <p class="buttons">Проекты домов и&nbsp;компании для&nbsp;загородного строительства</p>
+                </div>
+
+                <div class="footer_block__content flex_column">
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Пользователям</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="" class="body">Проекты домов</a>
+                                <a href="" class="body">Компании и специалисты</a>
+                                <a href="" class="body">Категории услуг</a>
+                                <a href="" class="body">Избранное</a>
+                                <a href="" class="body">Войти в личный кабинет</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Для компаний</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="" class="body">Стать партнером</a>
+                                <a href="" class="body">Войти как партнер</a>
+                                <a href="" class="body">Разместить проекты и услуги</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Контакты</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="tel:+7 (000) 000-00-00" class="body">+7 (000) 000-00-00</a>
+                                <a href="mailto:support@prodom.ru" class="body">support@prodom.ru</a>
+                                <a href="" target="_blank" class="body">Telegram</a>
+                                <a href="" target="_blank" class="body">VK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer_block__v2 flex_column">
+                    <div class="footer_block__v2_top flex_column">
+                        <div class="footer_block__v1_top flex_row">
+                            <p class="caption">Юридическая информация</p>
+                        </div>
+                        <div class="footer_block__v1_content flex_column">
+                            <a href="" class="body">Политика обработки данных</a>
+                            <a href="" class="body">Пользовательское соглашение</a>
+                            <a href="" class="body">Файлы cookie</a>
+                        </div>
+                    </div>
+                    <div class="footer_block__v2_content flex_column">
+                        <h3>ООО «ПроДом»</h3>
+                        <p class="micro">ИНН 7700000000 · ОГРН 0000000000000&nbsp;124482, Москва, Зеленоград,
+                            Савёлкинский
+                            проезд, д. 4</p>
+                    </div>
+                    <p class="micro info">Информация о&nbsp;ценах, характеристиках проектов, товарах и&nbsp;услугах
+                        предоставлена партнерами ПроДома и&nbsp;носит информационный характер. Актуальную стоимость
+                        и&nbsp;условия уточняйте у&nbsp;выбранной компании.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+   <div class="banner_mobile_nav container">
+        <div class="banner_mobile_nav_wrapper flex_row">
+            <div class="banner_nav__item flex_column">
+                <img src="./assets/images/icon/search.svg" alt="">
+                <p class="micro_medium">Поиск</p>
+            </div>
+            <a href="comparison.html">
+                <div class="banner_nav__item flex_column">
+                    <img src="./assets/images/icon/compare.svg" alt="">
+                    <p class="micro_medium">Сравнение</p>
+                </div>
+            </a>
+            <a href="favorites.html">
+                <div class="banner_nav__item flex_column">
+                    <img src="./assets/images/icon/like.svg" alt="">
+                    <p class="micro_medium">Избранное</p>
+                </div>
+            </a>
+            <div class="banner_nav__item flex_column">
+                <img src="./assets/images/icon/user.svg" alt="">
+                <p class="micro_medium">Профиль</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>

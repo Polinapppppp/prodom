@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodom</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="./assets/js/script.js" defer></script>
+</head>
+
+<body>
+    <div id="page" class="site">
+        <!-- header -->
+        <header class="header">
+            <div class="container">
+                <div class="header__inner ">
+                    <div class="header__top">
+                        <a class="logo" href="index.html">
+                            ProDom
+                        </a>
+
+                        <nav aria-label="Основная навигация" class="desktop-nav">
+                            <ul class="nav__list">
+                                <li class="nav__item"><a class="nav__link" href="index.html">Главная</a></li>
+                                <li class="nav__item"><a class="nav__link" href="cases.html">Портфолио</a></li>
+                                <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
+                                <li class="nav__item"><a class="nav__link" href="company.html">Компания</a></li>
+                                <li class="nav__item"><a class="nav__link" href="blog.html">Блог</a></li>
+                                <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+                            </ul>
+                        </nav>
+
+                        <div class="header__right">
+
+                            <a href="" class="header__right_btn light--btn js-open-modal">Оставить заявку</a>
+
+                            <button class="burger-btn" id="burgerBtn" type="button">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mobile-menu" id="mobileMenu">
+                        <ul class="nav__list">
+                            <li class="nav__item"><a class="nav__link" href="index.html">Главная</a></li>
+                            <li class="nav__item"><a class="nav__link" href="cases.html">Портфолио</a></li>
+                            <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
+                            <li class="nav__item"><a class="nav__link" href="company.html">Компания</a></li>
+                            <li class="nav__item"><a class="nav__link" href="blog.html">Блог</a></li>
+                            <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+                        </ul>
+
+                        <div class="header__right mobile-only-right"
+                            style="margin-top: 20px; display: flex; gap: 10px;">
+                            <a href="#" class="header__right_btn light--btn js-open-modal"
+                                style="width: 100%; text-align: center;">Оставить
+                                заявку</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main id="primary" class="site-main">
+
+
+            <!-- popular -->
+            <section class="text_block__v1 section container btm_pad top_124__pad">
+                <h2 class="title">Услуги</h2>
+                <div class="text_block__v1_content flex_column">
+                    <div class="advertising">
+                        <div class="advertising_wrapper advertising_small"></div>
+                        <div class="cheap ad_cheap flex_row">
+                            <p class="micro">Реклама</p>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M7 12.334C9.94527 12.3339 12.3338 9.94626 12.334 7.00098C12.3338 4.05572 9.94527 1.66712 7 1.66699C4.05474 1.66717 1.66717 4.05575 1.66699 7.00098C1.66717 9.94624 4.05474 12.3338 7 12.334ZM7 5.16699C6.72401 5.16682 6.5 4.94303 6.5 4.66699C6.50036 4.39126 6.72423 4.16717 7 4.16699H7.00586C7.28167 4.16712 7.5055 4.39123 7.50586 4.66699C7.50586 4.94305 7.28189 5.16686 7.00586 5.16699H7ZM7 9.83398C6.72401 9.83381 6.5 9.61002 6.5 9.33398V7.00098C6.50018 6.7251 6.72412 6.50115 7 6.50098C7.27592 6.50111 7.49982 6.72507 7.5 7.00098V9.33398C7.5 9.61005 7.27603 9.83385 7 9.83398Z"
+                                    fill="white" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="projects_filter__group flex_column">
+                        <div class="projects_filter__group_top flex_column">
+                            <div class="banner_filter__btm flex_row">
+                                <input type="text" placeholder="Найти..."
+                                    class="filter_input__button buttons_medium button_border">
+                                <a href="" class="button_border projects icon_btn">
+                                    <span class="filter_bage">3</span>
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3 6.88888H12.3333M12.3333 6.88888C12.3333 8.17754 13.378 9.22221 14.6667 9.22221C15.9554 9.22221 17 8.17754 17 6.88888C17 5.60021 15.9554 4.55554 14.6667 4.55554C13.378 4.55554 12.3333 5.60021 12.3333 6.88888ZM7.66667 13.1111H17M7.66667 13.1111C7.66667 14.3998 6.62199 15.4444 5.33333 15.4444C4.04467 15.4444 3 14.3998 3 13.1111C3 11.8224 4.04467 10.7778 5.33333 10.7778C6.62199 10.7778 7.66667 11.8224 7.66667 13.1111Z"
+                                            stroke="#141416" stroke-width="1.4" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="projects_filter flex_row">
+                                <button class="filter_cheap caption_medium flex_row">Фахверк
+                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.08333 0.75L0.75 9.08333M0.75 0.75L9.08333 9.08333" stroke="#141416"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <button class="filter_cheap caption_medium flex_row">С кладовой
+                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.08333 0.75L0.75 9.08333M0.75 0.75L9.08333 9.08333" stroke="#141416"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <button class="button_border caption_medium">Сбросить все</button>
+                            </div>
+                        </div>
+                        <div class="sorting_wrapper flex_row">
+                            <p class="body_medium">324 проекта</p>
+                            <div class="sorting_wrapper" data-sorting>
+                                <button class="sorting flex_row caption_medium" type="button" data-sorting-toggle>
+                                    <span data-sorting-label>По популярности</span>
+                                    <svg class="sorting__arrow" width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.649902 0.649994L5.6499 5.64999L10.6499 0.649994" stroke="#141416"
+                                            stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+
+                                <div class="card_more__modal sorting__modal">
+                                    <div class="card_more__modal_wrapper sorting__list flex_column">
+                                        <button class="more_modal__item sorting__item active flex_row" type="button"
+                                            data-sorting-value="popular">
+                                            <p class="caption">По популярности</p>
+                                            <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <button class="more_modal__item sorting__item flex_row" type="button"
+                                            data-sorting-value="cheap">
+                                            <p class="caption">Сначала дешевле</p>
+                                            <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <button class="more_modal__item sorting__item flex_row" type="button"
+                                            data-sorting-value="expensive">
+                                            <p class="caption">Сначала дороже</p>
+                                            <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text_block__v1_cards flex_column">
+                        <div class="popular_card popular_card__v3 flex_column">
+                            <div class="popular_card__bottom flex_row">
+                                <div class="popular_card__bottom_left">
+                                    <h3>Дизайн интерьера дома</h3>
+                                    <div class="characteristic flex_row">
+                                        <p class="body">от 8 недель</p>·<p class="body">Москва</p>
+                                    </div>
+                                </div>
+                                <svg class="popular_card__more" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <div class="card_more__modal">
+                                    <div class="card_more__modal_wrapper flex_column">
+                                        <a href="services_page.html"><div class="more_modal__item flex_row">
+                                            <p class="caption">О проекте</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div></a>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Сравнить</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M3 3.75H15M3 12.75H6M3 8.25H10.5M10.5 12.75H12.75M12.75 12.75H15M12.75 12.75V15M12.75 12.75V10.5"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Поделиться</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M15.75 9V12.15C15.75 13.4102 15.75 14.0401 15.5048 14.5215C15.2891 14.9449 14.9449 15.2891 14.5215 15.5048C14.0401 15.75 13.4102 15.75 12.15 15.75H5.85C4.58988 15.75 3.95982 15.75 3.47852 15.5048C3.05516 15.2891 2.71095 14.9449 2.49524 14.5215C2.25 14.0401 2.25 13.4102 2.25 12.15V9M6 5.25L9 2.25L12 5.25M9 2.25V11.25"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Избранное</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M8.9949 3.85186C7.49535 2.0988 4.99481 1.62723 3.11602 3.23251C1.23723 4.83779 0.972728 7.52175 2.44815 9.4203C3.67487 10.9988 7.38733 14.3281 8.60408 15.4056C8.7402 15.5262 8.8083 15.5864 8.88765 15.6101C8.95695 15.6308 9.03277 15.6308 9.10207 15.6101C9.18142 15.5864 9.24953 15.5262 9.38565 15.4056C10.6024 14.3281 14.3149 10.9988 15.5416 9.4203C17.017 7.52175 16.7848 4.8209 14.8737 3.23251C12.9626 1.64412 10.4944 2.0988 8.9949 3.85186Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="popular_card__media">
+                                <div class="popular_card__top">
+                                    <div class="popular_card__top_left micro cheap project_cheap">
+                                        <p class="micro_medium">Название</p>
+                                        <span class="divider">|</span>
+                                        <div class="popular_card_rating flex_row gap_4">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.62399 2.09994C6.74477 1.84319 6.80521 1.71482 6.8872 1.6738C6.95854 1.63811 7.04148 1.63811 7.11282 1.6738C7.19486 1.71482 7.25525 1.84319 7.37608 2.09994L8.52239 4.53575C8.55804 4.61155 8.57586 4.64945 8.60192 4.67888C8.62504 4.70493 8.65271 4.72604 8.68343 4.74103C8.71819 4.75797 8.75803 4.76408 8.83776 4.77631L11.4019 5.16942C11.6719 5.21081 11.8069 5.23151 11.8694 5.30068C11.9237 5.36086 11.9493 5.44357 11.9389 5.52575C11.927 5.62022 11.8293 5.72009 11.6338 5.91979L9.7791 7.81458C9.72133 7.87363 9.6924 7.90321 9.67374 7.93835C9.65722 7.96942 9.64663 8.00362 9.64254 8.03897C9.63793 8.07889 9.64475 8.12062 9.65838 8.20404L10.096 10.8804C10.1422 11.1627 10.1652 11.3038 10.1219 11.3876C10.0841 11.4604 10.0171 11.5116 9.93936 11.5267C9.84998 11.544 9.72915 11.4774 9.48748 11.3441L7.19523 10.0796C7.12378 10.0403 7.08808 10.0206 7.05044 10.0128C7.01715 10.006 6.98287 10.006 6.94958 10.0128C6.91194 10.0206 6.87624 10.0403 6.80484 10.0796L4.51255 11.3441C4.27088 11.4774 4.15005 11.544 4.0607 11.5267C3.98296 11.5116 3.91588 11.4604 3.87815 11.3876C3.83478 11.3038 3.85786 11.1627 3.90401 10.8804L4.34164 8.20404C4.35528 8.12062 4.3621 8.07889 4.35748 8.03897C4.3534 8.00362 4.3428 7.96942 4.32629 7.93835C4.30763 7.90321 4.27873 7.87363 4.22091 7.81458L2.36621 5.91979C2.17073 5.72009 2.07299 5.62022 2.0611 5.52575C2.05075 5.44357 2.07631 5.36086 2.13067 5.30068C2.19315 5.23151 2.32815 5.21081 2.59816 5.16942L5.16226 4.77631C5.242 4.76408 5.28187 4.75797 5.3166 4.74103C5.34734 4.72604 5.37501 4.70493 5.3981 4.67888C5.42416 4.64945 5.44199 4.61155 5.47766 4.53575L6.62399 2.09994Z"
+                                                    fill="white" stroke="white" stroke-width="1.3"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <p class="micro_medium">5,0</p>
+                                            <a href="#" class="popular_card_rating__source"><svg width="14" height="14"
+                                                    viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_879_1895)">
+                                                        <path
+                                                            d="M0 7C0 3.1339 3.1332 0 7 0C10.8654 0 14 3.1339 14 7C14 10.8661 10.8654 14 7 14C3.1332 14 0 10.8661 0 7Z"
+                                                            fill="#FC3F1D" />
+                                                        <path
+                                                            d="M7.896 3.9662H7.2492C6.0634 3.9662 5.4397 4.5668 5.4397 5.4523C5.4397 6.4533 5.8709 6.9223 6.7564 7.5236L7.4879 8.0164L5.3858 11.1573H3.815L5.7015 8.3475C4.6165 7.5698 4.0075 6.8145 4.0075 5.537C4.0075 3.9354 5.124 2.842 7.2415 2.842H9.3436V11.1496H7.896V3.9662Z"
+                                                            fill="white" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_879_1895">
+                                                            <rect width="14" height="14" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg></a>
+                                        </div>
+                                    </div>
+                                    <button class="popular_card__like" type="button" aria-label="В избранное">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.89982 14.6651 9.84977 19.1041 11.4721 20.5408C11.6536 20.7016 11.7444 20.7819 11.8502 20.8135C11.9426 20.8411 12.0437 20.8411 12.1361 20.8135C12.2419 20.7819 12.3327 20.7016 12.5142 20.5408C14.1365 19.1041 19.0865 14.6651 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <a href="services_page.html"><img src="./assets/images/services/services_card1.png" alt=""></a>
+                                <div class="popular_card__dots">
+                                    <span class="active"></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+
+                            <h3 class="popular_card__price">от 15 627 250 ₽</h3>
+
+                        </div>
+                        <div class="popular_card popular_card__v3 flex_column">
+                            <div class="popular_card__bottom flex_row">
+                                <div class="popular_card__bottom_left">
+                                    <h3>Ландшафтный дизайн</h3>
+                                    <div class="characteristic flex_row">
+                                        <p class="body">участки от 6 соток</p>·<p class="body">от 4 недель</p>
+                                    </div>
+                                </div>
+                                <svg class="popular_card__more" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <div class="card_more__modal">
+                                    <div class="card_more__modal_wrapper flex_column">
+                                        <a href="services_page.html"><div class="more_modal__item flex_row">
+                                            <p class="caption">О проекте</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div></a>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Сравнить</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M3 3.75H15M3 12.75H6M3 8.25H10.5M10.5 12.75H12.75M12.75 12.75H15M12.75 12.75V15M12.75 12.75V10.5"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Поделиться</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M15.75 9V12.15C15.75 13.4102 15.75 14.0401 15.5048 14.5215C15.2891 14.9449 14.9449 15.2891 14.5215 15.5048C14.0401 15.75 13.4102 15.75 12.15 15.75H5.85C4.58988 15.75 3.95982 15.75 3.47852 15.5048C3.05516 15.2891 2.71095 14.9449 2.49524 14.5215C2.25 14.0401 2.25 13.4102 2.25 12.15V9M6 5.25L9 2.25L12 5.25M9 2.25V11.25"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Избранное</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M8.9949 3.85186C7.49535 2.0988 4.99481 1.62723 3.11602 3.23251C1.23723 4.83779 0.972728 7.52175 2.44815 9.4203C3.67487 10.9988 7.38733 14.3281 8.60408 15.4056C8.7402 15.5262 8.8083 15.5864 8.88765 15.6101C8.95695 15.6308 9.03277 15.6308 9.10207 15.6101C9.18142 15.5864 9.24953 15.5262 9.38565 15.4056C10.6024 14.3281 14.3149 10.9988 15.5416 9.4203C17.017 7.52175 16.7848 4.8209 14.8737 3.23251C12.9626 1.64412 10.4944 2.0988 8.9949 3.85186Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="popular_card__media">
+                                <div class="popular_card__top">
+                                    <div class="popular_card__top_left micro cheap project_cheap">
+                                        <p class="micro_medium">Название</p>
+                                        <span class="divider">|</span>
+                                        <div class="popular_card_rating flex_row gap_4">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.62399 2.09994C6.74477 1.84319 6.80521 1.71482 6.8872 1.6738C6.95854 1.63811 7.04148 1.63811 7.11282 1.6738C7.19486 1.71482 7.25525 1.84319 7.37608 2.09994L8.52239 4.53575C8.55804 4.61155 8.57586 4.64945 8.60192 4.67888C8.62504 4.70493 8.65271 4.72604 8.68343 4.74103C8.71819 4.75797 8.75803 4.76408 8.83776 4.77631L11.4019 5.16942C11.6719 5.21081 11.8069 5.23151 11.8694 5.30068C11.9237 5.36086 11.9493 5.44357 11.9389 5.52575C11.927 5.62022 11.8293 5.72009 11.6338 5.91979L9.7791 7.81458C9.72133 7.87363 9.6924 7.90321 9.67374 7.93835C9.65722 7.96942 9.64663 8.00362 9.64254 8.03897C9.63793 8.07889 9.64475 8.12062 9.65838 8.20404L10.096 10.8804C10.1422 11.1627 10.1652 11.3038 10.1219 11.3876C10.0841 11.4604 10.0171 11.5116 9.93936 11.5267C9.84998 11.544 9.72915 11.4774 9.48748 11.3441L7.19523 10.0796C7.12378 10.0403 7.08808 10.0206 7.05044 10.0128C7.01715 10.006 6.98287 10.006 6.94958 10.0128C6.91194 10.0206 6.87624 10.0403 6.80484 10.0796L4.51255 11.3441C4.27088 11.4774 4.15005 11.544 4.0607 11.5267C3.98296 11.5116 3.91588 11.4604 3.87815 11.3876C3.83478 11.3038 3.85786 11.1627 3.90401 10.8804L4.34164 8.20404C4.35528 8.12062 4.3621 8.07889 4.35748 8.03897C4.3534 8.00362 4.3428 7.96942 4.32629 7.93835C4.30763 7.90321 4.27873 7.87363 4.22091 7.81458L2.36621 5.91979C2.17073 5.72009 2.07299 5.62022 2.0611 5.52575C2.05075 5.44357 2.07631 5.36086 2.13067 5.30068C2.19315 5.23151 2.32815 5.21081 2.59816 5.16942L5.16226 4.77631C5.242 4.76408 5.28187 4.75797 5.3166 4.74103C5.34734 4.72604 5.37501 4.70493 5.3981 4.67888C5.42416 4.64945 5.44199 4.61155 5.47766 4.53575L6.62399 2.09994Z"
+                                                    fill="white" stroke="white" stroke-width="1.3"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <p class="micro_medium">5,0</p>
+                                            <a href="#" class="popular_card_rating__source"><svg width="14" height="14"
+                                                    viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_879_1895)">
+                                                        <path
+                                                            d="M0 7C0 3.1339 3.1332 0 7 0C10.8654 0 14 3.1339 14 7C14 10.8661 10.8654 14 7 14C3.1332 14 0 10.8661 0 7Z"
+                                                            fill="#FC3F1D" />
+                                                        <path
+                                                            d="M7.896 3.9662H7.2492C6.0634 3.9662 5.4397 4.5668 5.4397 5.4523C5.4397 6.4533 5.8709 6.9223 6.7564 7.5236L7.4879 8.0164L5.3858 11.1573H3.815L5.7015 8.3475C4.6165 7.5698 4.0075 6.8145 4.0075 5.537C4.0075 3.9354 5.124 2.842 7.2415 2.842H9.3436V11.1496H7.896V3.9662Z"
+                                                            fill="white" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_879_1895">
+                                                            <rect width="14" height="14" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg></a>
+                                        </div>
+                                    </div>
+                                    <button class="popular_card__like" type="button" aria-label="В избранное">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.89982 14.6651 9.84977 19.1041 11.4721 20.5408C11.6536 20.7016 11.7444 20.7819 11.8502 20.8135C11.9426 20.8411 12.0437 20.8411 12.1361 20.8135C12.2419 20.7819 12.3327 20.7016 12.5142 20.5408C14.1365 19.1041 19.0865 14.6651 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <a href="services_page.html"><img src="./assets/images/services/services_card2.png" alt=""></a>
+                                <div class="popular_card__dots">
+                                    <span class="active"></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+
+                            <h3 class="popular_card__price">от 180 000 ₽</h3>
+
+                        </div>
+                        <div class="popular_card popular_card__v3 flex_column">
+                            <div class="popular_card__bottom flex_row">
+                                <div class="popular_card__bottom_left">
+                                    <h3>Дизайн интерьера дома</h3>
+                                    <div class="characteristic flex_row">
+                                        <p class="body">от 8 недель</p>·<p class="body">Москва и МО</p>
+                                    </div>
+                                </div>
+                                <svg class="popular_card__more" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <div class="card_more__modal">
+                                    <div class="card_more__modal_wrapper flex_column">
+                                        <a href="services_page.html"><div class="more_modal__item flex_row">
+                                            <p class="caption">О проекте</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div></a>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Сравнить</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M3 3.75H15M3 12.75H6M3 8.25H10.5M10.5 12.75H12.75M12.75 12.75H15M12.75 12.75V15M12.75 12.75V10.5"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Поделиться</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M15.75 9V12.15C15.75 13.4102 15.75 14.0401 15.5048 14.5215C15.2891 14.9449 14.9449 15.2891 14.5215 15.5048C14.0401 15.75 13.4102 15.75 12.15 15.75H5.85C4.58988 15.75 3.95982 15.75 3.47852 15.5048C3.05516 15.2891 2.71095 14.9449 2.49524 14.5215C2.25 14.0401 2.25 13.4102 2.25 12.15V9M6 5.25L9 2.25L12 5.25M9 2.25V11.25"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Избранное</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M8.9949 3.85186C7.49535 2.0988 4.99481 1.62723 3.11602 3.23251C1.23723 4.83779 0.972728 7.52175 2.44815 9.4203C3.67487 10.9988 7.38733 14.3281 8.60408 15.4056C8.7402 15.5262 8.8083 15.5864 8.88765 15.6101C8.95695 15.6308 9.03277 15.6308 9.10207 15.6101C9.18142 15.5864 9.24953 15.5262 9.38565 15.4056C10.6024 14.3281 14.3149 10.9988 15.5416 9.4203C17.017 7.52175 16.7848 4.8209 14.8737 3.23251C12.9626 1.64412 10.4944 2.0988 8.9949 3.85186Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="popular_card__media">
+                                <div class="popular_card__top">
+                                    <div class="popular_card__top_left micro cheap project_cheap">
+                                        <p class="micro_medium">Название</p>
+                                        <span class="divider">|</span>
+                                        <div class="popular_card_rating flex_row gap_4">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.62399 2.09994C6.74477 1.84319 6.80521 1.71482 6.8872 1.6738C6.95854 1.63811 7.04148 1.63811 7.11282 1.6738C7.19486 1.71482 7.25525 1.84319 7.37608 2.09994L8.52239 4.53575C8.55804 4.61155 8.57586 4.64945 8.60192 4.67888C8.62504 4.70493 8.65271 4.72604 8.68343 4.74103C8.71819 4.75797 8.75803 4.76408 8.83776 4.77631L11.4019 5.16942C11.6719 5.21081 11.8069 5.23151 11.8694 5.30068C11.9237 5.36086 11.9493 5.44357 11.9389 5.52575C11.927 5.62022 11.8293 5.72009 11.6338 5.91979L9.7791 7.81458C9.72133 7.87363 9.6924 7.90321 9.67374 7.93835C9.65722 7.96942 9.64663 8.00362 9.64254 8.03897C9.63793 8.07889 9.64475 8.12062 9.65838 8.20404L10.096 10.8804C10.1422 11.1627 10.1652 11.3038 10.1219 11.3876C10.0841 11.4604 10.0171 11.5116 9.93936 11.5267C9.84998 11.544 9.72915 11.4774 9.48748 11.3441L7.19523 10.0796C7.12378 10.0403 7.08808 10.0206 7.05044 10.0128C7.01715 10.006 6.98287 10.006 6.94958 10.0128C6.91194 10.0206 6.87624 10.0403 6.80484 10.0796L4.51255 11.3441C4.27088 11.4774 4.15005 11.544 4.0607 11.5267C3.98296 11.5116 3.91588 11.4604 3.87815 11.3876C3.83478 11.3038 3.85786 11.1627 3.90401 10.8804L4.34164 8.20404C4.35528 8.12062 4.3621 8.07889 4.35748 8.03897C4.3534 8.00362 4.3428 7.96942 4.32629 7.93835C4.30763 7.90321 4.27873 7.87363 4.22091 7.81458L2.36621 5.91979C2.17073 5.72009 2.07299 5.62022 2.0611 5.52575C2.05075 5.44357 2.07631 5.36086 2.13067 5.30068C2.19315 5.23151 2.32815 5.21081 2.59816 5.16942L5.16226 4.77631C5.242 4.76408 5.28187 4.75797 5.3166 4.74103C5.34734 4.72604 5.37501 4.70493 5.3981 4.67888C5.42416 4.64945 5.44199 4.61155 5.47766 4.53575L6.62399 2.09994Z"
+                                                    fill="white" stroke="white" stroke-width="1.3"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <p class="micro_medium">5,0</p>
+                                            <a href="#" class="popular_card_rating__source"><svg width="14" height="14"
+                                                    viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_879_1895)">
+                                                        <path
+                                                            d="M0 7C0 3.1339 3.1332 0 7 0C10.8654 0 14 3.1339 14 7C14 10.8661 10.8654 14 7 14C3.1332 14 0 10.8661 0 7Z"
+                                                            fill="#FC3F1D" />
+                                                        <path
+                                                            d="M7.896 3.9662H7.2492C6.0634 3.9662 5.4397 4.5668 5.4397 5.4523C5.4397 6.4533 5.8709 6.9223 6.7564 7.5236L7.4879 8.0164L5.3858 11.1573H3.815L5.7015 8.3475C4.6165 7.5698 4.0075 6.8145 4.0075 5.537C4.0075 3.9354 5.124 2.842 7.2415 2.842H9.3436V11.1496H7.896V3.9662Z"
+                                                            fill="white" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_879_1895">
+                                                            <rect width="14" height="14" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg></a>
+                                        </div>
+                                    </div>
+                                    <button class="popular_card__like" type="button" aria-label="В избранное">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.89982 14.6651 9.84977 19.1041 11.4721 20.5408C11.6536 20.7016 11.7444 20.7819 11.8502 20.8135C11.9426 20.8411 12.0437 20.8411 12.1361 20.8135C12.2419 20.7819 12.3327 20.7016 12.5142 20.5408C14.1365 19.1041 19.0865 14.6651 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <a href="services_page.html"><img src="./assets/images/services/services_card3.png" alt=""></a>
+                                <div class="popular_card__dots">
+                                    <span class="active"></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+
+                            <h3 class="popular_card__price">от 6 000 ₽/м²</h3>
+
+                        </div>
+                        <div class="popular_card popular_card__v3 flex_column">
+                            <div class="popular_card__bottom flex_row">
+                                <div class="popular_card__bottom_left">
+                                    <h3>Дизайн интерьера дома</h3>
+                                    <div class="characteristic flex_row">
+                                        <p class="body">от 8 недель</p>·<p class="body">Москва и МО</p>
+                                    </div>
+                                </div>
+                                <svg class="popular_card__more" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z"
+                                        fill="#141416" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <div class="card_more__modal">
+                                    <div class="card_more__modal_wrapper flex_column">
+                                        <a href="services_page.html"><div class="more_modal__item flex_row">
+                                            <p class="caption">О проекте</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div></a>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Сравнить</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M3 3.75H15M3 12.75H6M3 8.25H10.5M10.5 12.75H12.75M12.75 12.75H15M12.75 12.75V15M12.75 12.75V10.5"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Поделиться</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M15.75 9V12.15C15.75 13.4102 15.75 14.0401 15.5048 14.5215C15.2891 14.9449 14.9449 15.2891 14.5215 15.5048C14.0401 15.75 13.4102 15.75 12.15 15.75H5.85C4.58988 15.75 3.95982 15.75 3.47852 15.5048C3.05516 15.2891 2.71095 14.9449 2.49524 14.5215C2.25 14.0401 2.25 13.4102 2.25 12.15V9M6 5.25L9 2.25L12 5.25M9 2.25V11.25"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="more_modal__item flex_row">
+                                            <p class="caption">Избранное</p>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M8.9949 3.85186C7.49535 2.0988 4.99481 1.62723 3.11602 3.23251C1.23723 4.83779 0.972728 7.52175 2.44815 9.4203C3.67487 10.9988 7.38733 14.3281 8.60408 15.4056C8.7402 15.5262 8.8083 15.5864 8.88765 15.6101C8.95695 15.6308 9.03277 15.6308 9.10207 15.6101C9.18142 15.5864 9.24953 15.5262 9.38565 15.4056C10.6024 14.3281 14.3149 10.9988 15.5416 9.4203C17.017 7.52175 16.7848 4.8209 14.8737 3.23251C12.9626 1.64412 10.4944 2.0988 8.9949 3.85186Z"
+                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="popular_card__media">
+                                <div class="popular_card__top">
+                                    <div class="popular_card__top_left micro cheap project_cheap">
+                                        <p class="micro_medium">Название</p>
+                                        <span class="divider">|</span>
+                                        <div class="popular_card_rating flex_row gap_4">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.62399 2.09994C6.74477 1.84319 6.80521 1.71482 6.8872 1.6738C6.95854 1.63811 7.04148 1.63811 7.11282 1.6738C7.19486 1.71482 7.25525 1.84319 7.37608 2.09994L8.52239 4.53575C8.55804 4.61155 8.57586 4.64945 8.60192 4.67888C8.62504 4.70493 8.65271 4.72604 8.68343 4.74103C8.71819 4.75797 8.75803 4.76408 8.83776 4.77631L11.4019 5.16942C11.6719 5.21081 11.8069 5.23151 11.8694 5.30068C11.9237 5.36086 11.9493 5.44357 11.9389 5.52575C11.927 5.62022 11.8293 5.72009 11.6338 5.91979L9.7791 7.81458C9.72133 7.87363 9.6924 7.90321 9.67374 7.93835C9.65722 7.96942 9.64663 8.00362 9.64254 8.03897C9.63793 8.07889 9.64475 8.12062 9.65838 8.20404L10.096 10.8804C10.1422 11.1627 10.1652 11.3038 10.1219 11.3876C10.0841 11.4604 10.0171 11.5116 9.93936 11.5267C9.84998 11.544 9.72915 11.4774 9.48748 11.3441L7.19523 10.0796C7.12378 10.0403 7.08808 10.0206 7.05044 10.0128C7.01715 10.006 6.98287 10.006 6.94958 10.0128C6.91194 10.0206 6.87624 10.0403 6.80484 10.0796L4.51255 11.3441C4.27088 11.4774 4.15005 11.544 4.0607 11.5267C3.98296 11.5116 3.91588 11.4604 3.87815 11.3876C3.83478 11.3038 3.85786 11.1627 3.90401 10.8804L4.34164 8.20404C4.35528 8.12062 4.3621 8.07889 4.35748 8.03897C4.3534 8.00362 4.3428 7.96942 4.32629 7.93835C4.30763 7.90321 4.27873 7.87363 4.22091 7.81458L2.36621 5.91979C2.17073 5.72009 2.07299 5.62022 2.0611 5.52575C2.05075 5.44357 2.07631 5.36086 2.13067 5.30068C2.19315 5.23151 2.32815 5.21081 2.59816 5.16942L5.16226 4.77631C5.242 4.76408 5.28187 4.75797 5.3166 4.74103C5.34734 4.72604 5.37501 4.70493 5.3981 4.67888C5.42416 4.64945 5.44199 4.61155 5.47766 4.53575L6.62399 2.09994Z"
+                                                    fill="white" stroke="white" stroke-width="1.3"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <p class="micro_medium">5,0</p>
+                                            <a href="#" class="popular_card_rating__source"><svg width="14" height="14"
+                                                    viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_879_1895)">
+                                                        <path
+                                                            d="M0 7C0 3.1339 3.1332 0 7 0C10.8654 0 14 3.1339 14 7C14 10.8661 10.8654 14 7 14C3.1332 14 0 10.8661 0 7Z"
+                                                            fill="#FC3F1D" />
+                                                        <path
+                                                            d="M7.896 3.9662H7.2492C6.0634 3.9662 5.4397 4.5668 5.4397 5.4523C5.4397 6.4533 5.8709 6.9223 6.7564 7.5236L7.4879 8.0164L5.3858 11.1573H3.815L5.7015 8.3475C4.6165 7.5698 4.0075 6.8145 4.0075 5.537C4.0075 3.9354 5.124 2.842 7.2415 2.842H9.3436V11.1496H7.896V3.9662Z"
+                                                            fill="white" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_879_1895">
+                                                            <rect width="14" height="14" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg></a>
+                                        </div>
+                                    </div>
+                                    <button class="popular_card__like" type="button" aria-label="В избранное">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.89982 14.6651 9.84977 19.1041 11.4721 20.5408C11.6536 20.7016 11.7444 20.7819 11.8502 20.8135C11.9426 20.8411 12.0437 20.8411 12.1361 20.8135C12.2419 20.7819 12.3327 20.7016 12.5142 20.5408C14.1365 19.1041 19.0865 14.6651 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <a href="services_page.html"><img src="./assets/images/services/services_card1.png" alt=""></a>
+                                <div class="popular_card__dots">
+                                    <span class="active"></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+
+                            <h3 class="popular_card__price">от 6 000 ₽/м²</h3>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination flex_row">
+                    <div class="pagination_str">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.6665 10H3.33317M8.33317 15L3.33317 10L8.33317 5" stroke="#C4CAD7"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="pagination_numbers flex_row">
+                        <div class="pagination_numbers_item active buttons_medium">1</div>
+                        <div class="pagination_numbers_item buttons_medium">2</div>
+                        <div class="pagination_numbers_item buttons_medium">...</div>
+                        <div class="pagination_numbers_item buttons_medium">54</div>
+                    </div>
+                    <div class="pagination_str">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.3335 10H16.6668M11.6668 15L16.6668 10L11.6668 5" stroke="#141416"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <section class="adv_section section container btm_pad">
+                <div class="advertising">
+                    <div class="advertising_wrapper advertising_big"></div>
+                    <div class="cheap ad_cheap flex_row">
+                        <p class="micro">Реклама</p>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M7 12.334C9.94527 12.3339 12.3338 9.94626 12.334 7.00098C12.3338 4.05572 9.94527 1.66712 7 1.66699C4.05474 1.66717 1.66717 4.05575 1.66699 7.00098C1.66717 9.94624 4.05474 12.3338 7 12.334ZM7 5.16699C6.72401 5.16682 6.5 4.94303 6.5 4.66699C6.50036 4.39126 6.72423 4.16717 7 4.16699H7.00586C7.28167 4.16712 7.5055 4.39123 7.50586 4.66699C7.50586 4.94305 7.28189 5.16686 7.00586 5.16699H7ZM7 9.83398C6.72401 9.83381 6.5 9.61002 6.5 9.33398V7.00098C6.50018 6.7251 6.72412 6.50115 7 6.50098C7.27592 6.50111 7.49982 6.72507 7.5 7.00098V9.33398C7.5 9.61005 7.27603 9.83385 7 9.83398Z"
+                                fill="white" />
+                        </svg>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer container">
+            <div class="footer_wrapper card__v2 flex_column">
+                <div class="footer_logo flex_column">
+                    <h2>ProDom</h2>
+                    <p class="buttons">Проекты домов и&nbsp;компании для&nbsp;загородного строительства</p>
+                </div>
+
+                <div class="footer_block__content flex_column">
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Пользователям</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="" class="body">Проекты домов</a>
+                                <a href="" class="body">Компании и специалисты</a>
+                                <a href="" class="body">Категории услуг</a>
+                                <a href="" class="body">Избранное</a>
+                                <a href="" class="body">Войти в личный кабинет</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Для компаний</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="" class="body">Стать партнером</a>
+                                <a href="" class="body">Войти как партнер</a>
+                                <a href="" class="body">Разместить проекты и услуги</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Контакты</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="tel:+7 (000) 000-00-00" class="body">+7 (000) 000-00-00</a>
+                                <a href="mailto:support@prodom.ru" class="body">support@prodom.ru</a>
+                                <a href="" target="_blank" class="body">Telegram</a>
+                                <a href="" target="_blank" class="body">VK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer_block__v2 flex_column">
+                    <div class="footer_block__v2_top flex_column">
+                        <div class="footer_block__v1_top flex_row">
+                            <p class="caption">Юридическая информация</p>
+                        </div>
+                        <div class="footer_block__v1_content flex_column">
+                            <a href="" class="body">Политика обработки данных</a>
+                            <a href="" class="body">Пользовательское соглашение</a>
+                            <a href="" class="body">Файлы cookie</a>
+                        </div>
+                    </div>
+                    <div class="footer_block__v2_content flex_column">
+                        <h3>ООО «ПроДом»</h3>
+                        <p class="micro">ИНН 7700000000 · ОГРН 0000000000000&nbsp;124482, Москва, Зеленоград,
+                            Савёлкинский
+                            проезд, д. 4</p>
+                    </div>
+                    <p class="micro info">Информация о&nbsp;ценах, характеристиках проектов, товарах и&nbsp;услугах
+                        предоставлена партнерами ПроДома и&nbsp;носит информационный характер. Актуальную стоимость
+                        и&nbsp;условия уточняйте у&nbsp;выбранной компании.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="banner_mobile_nav container">
+        <div class="banner_mobile_nav_wrapper flex_row">
+            <div class="banner_nav__item flex_column">
+                <img src="./assets/images/icon/search.svg" alt="">
+                <p class="micro_medium">Поиск</p>
+            </div>
+            <a href="comparison.html">
+                <div class="banner_nav__item flex_column">
+                    <img src="./assets/images/icon/compare.svg" alt="">
+                    <p class="micro_medium">Сравнение</p>
+                </div>
+            </a>
+            <a href="favorites.html">
+                <div class="banner_nav__item flex_column">
+                    <img src="./assets/images/icon/like.svg" alt="">
+                    <p class="micro_medium">Избранное</p>
+                </div>
+            </a>
+            <div class="banner_nav__item flex_column">
+                <img src="./assets/images/icon/user.svg" alt="">
+                <p class="micro_medium">Профиль</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>

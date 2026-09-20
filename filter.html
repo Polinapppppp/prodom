@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodom</title>
+    <script src="./assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div id="page" class="site">
+        <!-- header -->
+
+        <main id="primary" class="site-main">
+            <div class="filters_panel" id="filtersPanel">
+                <div class="filters_panel__header">
+                    <button type="button" class="filters_panel__icon-btn" data-action="back" aria-label="Назад">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M12.5 15.8333L6.66666 10L12.5 4.16667" stroke="currentColor" stroke-width="1.6"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <h3 class="filters_panel__title">Фильтры</h3>
+                    <button type="button" class="filters_panel__icon-btn" data-action="close" aria-label="Закрыть">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.6"
+                                stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="filters_panel__body">
+                    <div class="filters_panel__applied flex_column" id="filtersApplied" hidden>
+                        <h3 class="filters_panel__section-title">Примененные фильтры</h3>
+                        <div class="filters_applied__list flex_row" id="filtersAppliedList"></div>
+                    </div>
+
+                    <h3 class="filters_panel__section-title">Основные параметры</h3>
+
+                    <div class="filter_field">
+                        <label class="filter_field__label caption_medium">Категория</label>
+                        <div class="chip_group" data-group="category">
+                            <button type="button" class="chip_inactive__v2 caption_medium">Строительство</button>
+                            <button type="button" class="chip_inactive__v2 caption_medium">Архитектура</button>
+                            <button type="button" class="chip_inactive__v2 caption_medium">Интерьер</button>
+                            <button type="button" class="chip_inactive__v2 caption_medium">Ландшафт</button>
+                            <button type="button" class="chip_inactive__v2 caption_medium">Инженерные системы</button>
+                            <button type="button" class="chip_inactive__v2 caption_medium">+ еще</button>
+                        </div>
+                    </div>
+
+                    <div class="filter_field">
+                        <label class="filter_field__label caption_medium" for="fRegion">Регион работы</label>
+                        <div class="filter_select">
+                            <select id="fRegion" class="filter_select__input buttons_medium button_border">
+                                <option>Москва и МО</option>
+                                <option>Санкт-Петербург и ЛО</option>
+                                <option>Краснодарский край</option>
+                            </select>
+                            <svg class="filter_select__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 8L10 13L15 8" stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="filter_field">
+                        <label class="filter_field__label caption_medium">Рейтинг</label>
+                        <div class="circle_group" data-group="rating">
+                            <button type="button" class="chip_inactive__v2 caption_medium">4,0+</button>
+                            <button type="button" class="chip_inactive__v2 caption_medium">4,5+</button>
+                            <button type="button" class="chip_inactive__v2 caption_medium">4,8+</button>
+                        </div>
+                    </div>
+
+
+
+                    <h3 class="filters_panel__section-title">Дополнительные параметры</h3>
+                    <div class="filters_complete_wrapper flex_column">
+
+                        <div class="filters_complete">
+                            <div class="filters_complete__top flex_row">
+                                <h3>Опыт и компания</h3>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 10L12 16L6 10" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="filters_complete__content-wrap">
+                                <div class="filters_complete__content">
+                                    <div class="filter_field">
+                                        <label class="filter_field__label caption_medium">Опыт работы</label>
+                                        <div class="circle_group" data-group="experience">
+                                            <button type="button" class="chip_inactive__v2 caption_medium">от 3
+                                                лет</button>
+                                            <button type="button" class="chip_inactive__v2 caption_medium">от 5
+                                                лет</button>
+                                            <button type="button" class="chip_inactive__v2 caption_medium">от 10
+                                                лет</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="filters_complete">
+                                    <div class="filters_complete__top flex_row">
+                                        <h3>Условия работы</h3>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18 10L12 16L6 10" stroke="#141416" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                    <div class="filters_complete__content-wrap">
+                                        <div class="filters_complete__content">
+                                            <div class="filter_field">
+                                                <label class="filter_field__label caption_medium">Архитектурный
+                                                    стиль</label>
+                                                <div class="chip_group" data-group="style">
+                                                    <button type="button"
+                                                        class="chip_inactive__v2 caption_medium">Современный</button>
+                                                    <button type="button"
+                                                        class="chip_inactive__v2 caption_medium">Барнхаус</button>
+                                                    <button type="button"
+                                                        class="chip_inactive__v2 caption_medium">Скандинавский</button>
+                                                    <button type="button"
+                                                        class="chip_inactive__v2 caption_medium">Минимализм</button>
+                                                    <button type="button"
+                                                        class="chip_inactive__v2 caption_medium">Шале</button>
+                                                    <button type="button"
+                                                        class="chip_inactive__v2 caption_medium">Райт</button>
+                                                    <button type="button"
+                                                        class="chip_inactive__v2 caption_medium">Классический</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="filter_field">
+                                                <label class="filter_field__label caption_medium">Назначение</label>
+                                                <div class="circle_group" data-group="purpose">
+                                                    <button type="button" class="chip_inactive__v2 caption_medium">Для
+                                                        постоянного
+                                                        проживания</button>
+                                                    <button type="button" class="chip_inactive__v2 caption_medium">Для
+                                                        дачи</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="filters_panel__footer flex_row">
+                                <button type="button" class="filters_panel__submit button_v1 buttons_medium"
+                                    id="filtersSubmit">324
+                                    проекта</button>
+                                <button type="button" class="filters_panel__reset button_border buttons_medium"
+                                    data-action="reset">Сбросить</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="swiper_init.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodom</title>
+    <script src="./assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div id="page" class="site">
+        <!-- header -->
+        <header class="header">
+            <div class="container">
+                <div class="header__inner ">
+                    <div class="header__top">
+                        <a class="logo" href="index.html">
+                            ProDom
+                        </a>
+
+                        <nav aria-label="Основная навигация" class="desktop-nav">
+                            <ul class="nav__list">
+                                <li class="nav__item"><a class="nav__link" href="index.html">Главная</a></li>
+                                <li class="nav__item"><a class="nav__link" href="cases.html">Портфолио</a></li>
+                                <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
+                                <li class="nav__item"><a class="nav__link" href="company.html">Компания</a></li>
+                                <li class="nav__item"><a class="nav__link" href="blog.html">Блог</a></li>
+                                <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+                            </ul>
+                        </nav>
+
+                        <div class="header__right">
+
+                            <a href="" class="header__right_btn light--btn js-open-modal">Оставить заявку</a>
+
+                            <button class="burger-btn" id="burgerBtn" type="button">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mobile-menu" id="mobileMenu">
+                        <ul class="nav__list">
+                            <li class="nav__item"><a class="nav__link" href="index.html">Главная</a></li>
+                            <li class="nav__item"><a class="nav__link" href="cases.html">Портфолио</a></li>
+                            <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
+                            <li class="nav__item"><a class="nav__link" href="company.html">Компания</a></li>
+                            <li class="nav__item"><a class="nav__link" href="blog.html">Блог</a></li>
+                            <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+                        </ul>
+
+                        <div class="header__right mobile-only-right"
+                            style="margin-top: 20px; display: flex; gap: 10px;">
+                            <a href="#" class="header__right_btn light--btn js-open-modal"
+                                style="width: 100%; text-align: center;">Оставить
+                                заявку</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main id="primary" class="site-main">
+
+            <section class="section profile_section container top_124__pad btm_pad">
+                <h2 class="title">Профиль</h2>
+                <div class="profile_section__content flex_row card__v2" data-modal-open="personalData" role="button"
+                    tabindex="0">
+                    <div class="text_block__v1_company_card_wrapper flex_row">
+                        <img src="./assets/images/profile/Profile Pic.png" alt="">
+                        <div class="text_block__v1_company_card_right flex_column">
+                            <h3>Иван Иванов</h3>
+                            <p class="caption">example@mail.ru</p>
+                        </div>
+                    </div>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="#6A6C77" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <div class="application flex_column">
+                    <p class="caption_medium">Мои заявки</p>
+                    <div class="application_card card__v2 flex_row">
+                        <div class="application_card__left flex_row">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.3 14.6667L21 17.3333L18.3 20M21 17.3333H15.6M12 15.1111H7.95C6.694 15.1111 6.06598 15.1111 5.55497 15.2642C4.40441 15.6089 3.50404 16.4982 3.15502 17.6346C3 18.1393 3 18.7595 3 20M14.25 8C14.25 10.2091 12.4368 12 10.2 12C7.96325 12 6.15 10.2091 6.15 8C6.15 5.79086 7.96325 4 10.2 4C12.4368 4 14.25 5.79086 14.25 8Z"
+                                    stroke="#141416" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <p class="body_medium">Заявки компаниям</p>
+                        </div>
+
+                        <div class="application_card__right">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 18L15 12L9 6" stroke="#6A6C77" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings flex_column">
+                    <p class="caption_medium">Настройки</p>
+                    <div class="settings_card card__v2 flex_row" data-modal-open="security" role="button" tabindex="0">
+                        <div class="settings_card__left flex_row">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.8456 19.7756C12.0532 19.8931 12.157 19.9518 12.3034 19.9823C12.4171 20.0059 12.5829 20.0059 12.6966 19.9823C12.843 19.9518 12.9468 19.8931 13.1544 19.7756C14.9806 18.7421 20 15.4956 20 11.032V6.68296C20 5.9559 20 5.59237 19.8774 5.27988C19.7691 5.00382 19.5931 4.75751 19.3647 4.56222C19.1061 4.34116 18.7552 4.21351 18.0534 3.95822L13.0267 2.12974C12.8318 2.05885 12.7344 2.0234 12.6341 2.00935C12.5452 1.99688 12.4548 1.99688 12.3659 2.00935C12.2656 2.0234 12.1682 2.05885 11.9733 2.12974L6.94662 3.95822C6.24481 4.21351 5.89391 4.34116 5.63531 4.56222C5.40686 4.75751 5.23088 5.00382 5.12259 5.27988C5 5.59237 5 5.9559 5 6.68296V11.032C5 15.4956 10.0193 18.7421 11.8456 19.7756Z"
+                                    stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M11.8456 19.7756C12.0532 19.8931 12.157 19.9518 12.3034 19.9823C12.4171 20.0059 12.5829 20.0059 12.6966 19.9823C12.843 19.9518 12.9468 19.8931 13.1544 19.7756C14.9806 18.7421 20 15.4956 20 11.032V6.68296C20 5.9559 20 5.59237 19.8774 5.27988C19.7691 5.00382 19.5931 4.75751 19.3647 4.56222C19.1061 4.34116 18.7552 4.21351 18.0534 3.95822L13.0267 2.12974C12.8318 2.05885 12.7344 2.0234 12.6341 2.00935C12.5452 1.99688 12.4548 1.99688 12.3659 2.00935C12.2656 2.0234 12.1682 2.05885 11.9733 2.12974L6.94662 3.95822C6.24481 4.21351 5.89391 4.34116 5.63531 4.56222C5.40686 4.75751 5.23088 5.00382 5.12259 5.27988C5 5.59237 5 5.9559 5 6.68296V11.032C5 15.4956 10.0193 18.7421 11.8456 19.7756Z"
+                                    stroke="#141416" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <p class="body_medium">Безопасность</p>
+                        </div>
+
+                        <div class="settings_card__right">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 18L15 12L9 6" stroke="#6A6C77" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="button_white buttons_medium exit_btn">Выйти</button>
+            </section>
+        </main>
+        <footer class="footer container">
+            <div class="footer_wrapper card__v2 flex_column">
+                <div class="footer_logo flex_column">
+                    <h2>ProDom</h2>
+                    <p class="buttons">Проекты домов и&nbsp;компании для&nbsp;загородного строительства</p>
+                </div>
+
+                <div class="footer_block__content flex_column">
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Пользователям</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="" class="body">Проекты домов</a>
+                                <a href="" class="body">Компании и специалисты</a>
+                                <a href="" class="body">Категории услуг</a>
+                                <a href="" class="body">Избранное</a>
+                                <a href="" class="body">Войти в личный кабинет</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Для компаний</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="" class="body">Стать партнером</a>
+                                <a href="" class="body">Войти как партнер</a>
+                                <a href="" class="body">Разместить проекты и услуги</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer_block__v1 flex_column" data-accordion>
+                        <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                            <h3>Контакты</h3>
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="footer_block__v1_content" data-accordion-content>
+                            <div class="footer_block__v1_content_inner flex_column">
+                                <a href="tel:+7 (000) 000-00-00" class="body">+7 (000) 000-00-00</a>
+                                <a href="mailto:support@prodom.ru" class="body">support@prodom.ru</a>
+                                <a href="" target="_blank" class="body">Telegram</a>
+                                <a href="" target="_blank" class="body">VK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer_block__v2 flex_column">
+                    <div class="footer_block__v2_top flex_column">
+                        <div class="footer_block__v1_top flex_row">
+                            <p class="caption">Юридическая информация</p>
+                        </div>
+                        <div class="footer_block__v1_content flex_column">
+                            <a href="" class="body">Политика обработки данных</a>
+                            <a href="" class="body">Пользовательское соглашение</a>
+                            <a href="" class="body">Файлы cookie</a>
+                        </div>
+                    </div>
+                    <div class="footer_block__v2_content flex_column">
+                        <h3>ООО «ПроДом»</h3>
+                        <p class="micro">ИНН 7700000000 · ОГРН 0000000000000&nbsp;124482, Москва, Зеленоград,
+                            Савёлкинский
+                            проезд, д. 4</p>
+                    </div>
+                    <p class="micro info">Информация о&nbsp;ценах, характеристиках проектов, товарах и&nbsp;услугах
+                        предоставлена партнерами ПроДома и&nbsp;носит информационный характер. Актуальную стоимость
+                        и&nbsp;условия уточняйте у&nbsp;выбранной компании.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="banner_mobile_nav container">
+        <div class="banner_mobile_nav_wrapper flex_row">
+            <div class="banner_nav__item flex_column">
+                <img src="./assets/images/icon/search.svg" alt="">
+                <p class="micro_medium">Поиск</p>
+            </div>
+            <a href="comparison.html">
+                <div class="banner_nav__item flex_column">
+                    <img src="./assets/images/icon/compare.svg" alt="">
+                    <p class="micro_medium">Сравнение</p>
+                </div>
+            </a>
+            <a href="favorites.html">
+                <div class="banner_nav__item flex_column">
+                    <img src="./assets/images/icon/like.svg" alt="">
+                    <p class="micro_medium">Избранное</p>
+                </div>
+            </a>
+            <div class="banner_nav__item flex_column">
+                <img src="./assets/images/icon/user.svg" alt="">
+                <p class="micro_medium">Профиль</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- модалка "Личные данные" - тот же полноэкранный шаблон .filters_panel, что у поиска/фильтров -->
+    <div class="filters_panel flex_column" id="personalDataModal" data-modal="personalData">
+        <div class="filters_panel__header">
+            <div class="filters_panel__header__left flex_row">
+                <button type="button" class="filters_panel__icon-btn" data-modal-close aria-label="Назад">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="#141416" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <p class="filters_panel__title">Личные данные</p>
+            </div>
+            <button type="button" class="filters_panel__icon-btn profile_edit__save" id="personalDataSave" disabled
+                aria-label="Сохранить">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 13L9 17L19 7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+        </div>
+        <div class="filters_panel__body">
+            <div class="profile_avatar flex_column">
+                <div class="profile_avatar__preview">
+                    <img src="./assets/images/profile/Profile Pic.png" alt="" id="personalDataAvatarImg">
+                </div>
+                <label class="profile_avatar__camera" for="personalDataAvatarInput" aria-label="Загрузить фото">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M2.85953 15H15.1405C15.8392 15 16.3654 14.8273 16.7192 14.4819C17.0731 14.1364 17.25 13.6183 17.25 12.9274V5.92725C17.25 5.24083 17.0731 4.7249 16.7192 4.37946C16.3654 4.03403 15.8392 3.86131 15.1405 3.86131H13.219C13.0399 3.86131 12.8966 3.84793 12.7891 3.82119C12.6816 3.79445 12.5864 3.74876 12.5036 3.68413C12.4207 3.6195 12.3278 3.53146 12.2248 3.42003L11.6873 2.8183C11.5216 2.63555 11.3379 2.49515 11.1364 2.39709C10.9349 2.29903 10.6616 2.25 10.3167 2.25H7.63621C7.29133 2.25 7.01923 2.29903 6.81992 2.39709C6.62062 2.49515 6.43586 2.63555 6.26567 2.8183L5.72821 3.42003C5.58041 3.58495 5.4438 3.69973 5.3184 3.76436C5.19299 3.82899 4.99817 3.86131 4.73392 3.86131H2.85953C2.15635 3.86131 1.62897 4.03403 1.27738 4.37946C0.925794 4.7249 0.75 5.24083 0.75 5.92725V12.9274C0.75 13.6183 0.925794 14.1364 1.27738 14.4819C1.62897 14.8273 2.15635 15 2.85953 15ZM9 13.0277C8.48941 13.0277 8.01241 12.9341 7.56901 12.7469C7.1256 12.5597 6.73706 12.2989 6.40339 11.9647C6.06972 11.6303 5.80771 11.2425 5.61736 10.8013C5.42701 10.36 5.33184 9.88307 5.33184 9.3705C5.33184 8.86237 5.42701 8.38767 5.61736 7.94639C5.80771 7.50513 6.06972 7.11734 6.40339 6.78305C6.73706 6.44875 7.1256 6.188 7.56901 6.0008C8.01241 5.81359 8.48941 5.71999 9 5.71999C9.6763 5.71999 10.2921 5.88268 10.8475 6.20806C11.4029 6.53344 11.8441 6.97248 12.171 7.52519C12.498 8.07789 12.6615 8.69299 12.6615 9.3705C12.6615 9.88307 12.5674 10.36 12.3793 10.8013C12.1911 11.2425 11.9291 11.6303 11.5932 11.9647C11.2573 12.2989 10.8677 12.5597 10.4243 12.7469C9.98085 12.9341 9.5061 13.0277 9 13.0277ZM9 12.0114C9.48817 12.0114 9.9327 11.8933 10.3336 11.6571C10.7344 11.4209 11.0535 11.1033 11.2909 10.7043C11.5283 10.3054 11.6469 9.86079 11.6469 9.3705C11.6469 8.88466 11.5283 8.44227 11.2909 8.04334C11.0535 7.64441 10.7344 7.32572 10.3336 7.08726C9.9327 6.84879 9.48817 6.72956 9 6.72956C8.51179 6.72956 8.06726 6.84879 7.66641 7.08726C7.26557 7.32572 6.94533 7.64441 6.70572 8.04334C6.4661 8.44227 6.34629 8.88466 6.34629 9.3705C6.34629 9.86079 6.4661 10.3054 6.70572 10.7043C6.94533 11.1033 7.26557 11.4209 7.66641 11.6571C8.06726 11.8933 8.51179 12.0114 9 12.0114ZM13.1116 6.91008C13.1116 6.68276 13.1978 6.48329 13.3702 6.31169C13.5426 6.14009 13.7475 6.05428 13.9849 6.05428C14.2133 6.05428 14.4138 6.14009 14.5862 6.31169C14.7586 6.48329 14.8449 6.68276 14.8449 6.91008C14.8449 7.15077 14.7586 7.35358 14.5862 7.5185C14.4138 7.68342 14.2133 7.76588 13.9849 7.76588C13.7475 7.77034 13.5426 7.68899 13.3702 7.52184C13.1978 7.35469 13.1116 7.15077 13.1116 6.91008Z"
+                            fill="black" fill-opacity="0.8" />
+                    </svg>
+
+                </label>
+                <input type="file" accept="image/*" id="personalDataAvatarInput" hidden>
+            </div>
+
+            <div class="form_group">
+                <label for="personalDataName" class="form_label caption_medium">Ваше имя</label>
+                <input type="text" class="form_input button_border buttons_medium" id="personalDataName" name="name"
+                    value="Иван Иванов">
+            </div>
+            <div class="form_group">
+                <label for="personalDataPhone" class="form_label caption_medium">Телефон</label>
+                <input type="tel" class="form_input button_border buttons_medium" id="personalDataPhone" name="tel"
+                    value="+7 (000) 000-00-00">
+            </div>
+            <div class="form_group">
+                <label for="personalDataEmail" class="form_label caption_medium">Электронная почта</label>
+                <input type="email" class="form_input button_border buttons_medium" id="personalDataEmail" name="email"
+                    value="example@mail.ru">
+            </div>
+
+            <button type="button" class="button_white buttons_medium delete_account_btn" id="deleteAccountBtn">Удалить
+                аккаунт</button>
+        </div>
+    </div>
+
+    <!-- модалка "Безопасность" - тот же шаблон, внутри два шага: список / смена пароля -->
+    <div class="filters_panel flex_column" id="securityModal" data-modal="security" data-step="list">
+        <div class="filters_panel__header">
+            <div class="filters_panel__header__left flex_row">
+                <button type="button" class="filters_panel__icon-btn" id="securityBackBtn" aria-label="Назад">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="#141416" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <p class="filters_panel__title" id="securityModalTitle">Безопасность</p>
+            </div>
+        </div>
+        <div class="filters_panel__body">
+            <div class="settings flex_column active" data-security-step="list">
+                <label for="personalDataName" class="form_label caption_medium">Пароль</label>
+                <div class="settings_card button_border flex_row" data-security-goto="password" role="button"
+                    tabindex="0">
+                    <p class="body_medium">Изменить пароль</p>
+                    <div class="settings_card__right">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="#6A6C77" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <form class="flex_column" data-security-step="password" id="changePasswordForm" novalidate>
+                <div class="form_group">
+                    <label for="currentPassword" class="form_label caption_medium">Текущий пароль</label>
+                    <input type="password" class="form_input button_border buttons_medium" id="currentPassword"
+                        name="currentPassword" autocomplete="current-password" placeholder="Введите текущий пароль">
+                </div>
+                <div class="form_group">
+                    <label for="newPassword" class="form_label caption_medium">Новый пароль</label>
+                    <input type="password" class="form_input button_border buttons_medium" id="newPassword"
+                        name="newPassword" autocomplete="new-password" placeholder="Введите новый пароль">
+                </div>
+                <div class="form_group">
+                    <label for="newPasswordRepeat" class="form_label caption_medium">Повторите новый пароль</label>
+                    <input type="password" class="form_input button_border buttons_medium" id="newPasswordRepeat"
+                        name="newPasswordRepeat" autocomplete="new-password" placeholder="Повторите новый пароль">
+                </div>
+                <p class="caption change_password_error" id="changePasswordError">Пароли не совпадают</p>
+                <button type="submit" class="button_v1 buttons_medium change_password_submit">Сохранить
+                    пароль</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="swiper_init.js"></script>
+</body>
+
+</html>
