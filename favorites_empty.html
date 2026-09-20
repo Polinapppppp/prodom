@@ -138,7 +138,7 @@
                                 <a href="" class="body">Компании и специалисты</a>
                                 <a href="" class="body">Категории услуг</a>
                                 <a href="" class="body">Избранное</a>
-                                <a href="" class="body">Войти в личный кабинет</a>
+                                <a href="" class="body" data-modal-open="login">Войти в личный кабинет</a>
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                         <div class="footer_block__v1_content" data-accordion-content>
                             <div class="footer_block__v1_content_inner flex_column">
                                 <a href="" class="body">Стать партнером</a>
-                                <a href="" class="body">Войти как партнер</a>
+                                <a href="" class="body" data-modal-open="login">Войти как партнер</a>
                                 <a href="" class="body">Разместить проекты и услуги</a>
                             </div>
                         </div>
@@ -227,6 +227,76 @@
             <div class="banner_nav__item flex_column">
                 <img src="./assets/images/icon/user.svg" alt="">
                 <p class="micro_medium">Профиль</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="registration_modal container" data-modal="favorites-login">
+        <div class="registration_modal_wrapper card flex_column">
+            <button type="button" class="registration_modal__close" data-modal-close aria-label="Закрыть">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="#141416" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <h2 class="registration_modal__title">Войдите, чтобы <br> сохранять избранное</h2>
+            <form action="#" class="text_block__v8--form form_section">
+                <div class="form_section__fields">
+                    <div class="form_group">
+                        <label for="tel" class="form_label caption_medium">Номер телефона</label>
+                        <input type="tel" class="form_input button_border buttons_medium" name="tel"
+                            placeholder="+7 (000) 000-00-00" required>
+                    </div>
+                    <div class="form_group__password flex_column">
+                        <div class="form_group">
+                            <label for="password" class="form_label caption_medium">Пароль</label>
+                            <input type="password" class="form_input button_border buttons_medium" name="password"
+                                placeholder="Введите пароль" required>
+                        </div>
+                        <a href="" class="micro">Забыли пароль?</a>
+                    </div>
+                    <div class="registration_modal__buttons flex_column">
+                        <button class="button_v1 buttons_medium">Оставить заявку</button>
+                        <button class="button_border buttons_medium">Создать аккаунт</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="registration_modal container" data-modal="login">
+        <div class="registration_modal_wrapper card flex_column">
+            <button type="button" class="registration_modal__close" data-modal-close aria-label="Закрыть">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="#141416" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <h2 class="registration_modal__title">Войти в ПроДом</h2>
+            <form action="#" class="text_block__v8--form form_section">
+                <div class="form_section__fields">
+                    <div class="form_group">
+                        <label for="tel" class="form_label caption_medium">Номер телефона</label>
+                        <input type="tel" class="form_input button_border buttons_medium" name="tel"
+                            placeholder="+7 (000) 000-00-00" required>
+                    </div>
+                    <div class="form_group__password flex_column">
+                        <div class="form_group">
+                            <label for="password" class="form_label caption_medium">Пароль</label>
+                            <input type="password" class="form_input button_border buttons_medium" name="password"
+                                placeholder="Введите пароль" required>
+                        </div>
+                        <a href="" class="micro">Забыли пароль?</a>
+                    </div>
+                    <div class="registration_modal__buttons flex_column">
+                        <button class="button_v1 buttons_medium">Оставить заявку</button>
+                        <button class="button_border buttons_medium">Создать аккаунт</button>
+                    </div>
+                </div>
+            </form>
+            <div class="auto_link flex_column">
+                <p class="caption">Представляете компанию?</p>
+                <a href="" class="button_blue_v2 buttons_medium">Создать аккаунт</a>
             </div>
         </div>
     </div>
