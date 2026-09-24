@@ -6,12 +6,142 @@ function getSearchEmptyStateHTML() {
         '<h2 class="title">По вашему запросу ничего не найдено</h2>';
 }
 
+// общий справочник по разделам поиска/фильтров (раньше везде было по два варианта -
+// "companies" или "projects" через тернарник; теперь разделов 4 - projects/services/
+// products/companies, - поэтому id панели фильтров и страница каталога для каждого
+// раздела лежат в одном месте, а не размножены по всем местам, где раньше был тернарник
+window.__filterKeyMeta = {
+    projects: { panelId: 'filtersPanel', page: 'projects.html' },
+    services: { panelId: 'filtersPanelServices', page: 'services.html' },
+    products: { panelId: 'filtersPanelProducts', page: 'products.html' },
+    companies: { panelId: 'filtersPanelCompanies', page: 'companies.html' }
+};
+
+// дропдаун "Проекты/Услуги/Товары" в шапке главной и в модалке поиска - общий механизм:
+// клик по самому текущему значению (data-dropdown-trigger) открывает/закрывает список
+// вариантов, клик по варианту (data-dropdown-option) переносит его подпись и data-tab-key
+// на триггер и "нажимает" сам триггер повторно - это заново прогоняет уже существующие
+// обработчики клика по табам (переключение активного таба, синхронизация и т.д.), которым
+// достаточно посмотреть на актуальный dataset.tabKey триггера в момент клика
+try {
+    (function () {
+        'use strict';
+
+        // видимость самого списка вариантов (открыт/закрыт) держится на .active того же
+        // элемента, что и у остальных всплывающих меню в проекте (.card_more__modal.active -
+        // "..." у карточки, сортировка в поиске) - переиспользуем их же анимацию/тень/радиус,
+        // а не заводим отдельную. .open на обёртке .tabs_dropdown - только для разворота
+        // стрелочки-шеврона у самого переключателя
+        function closeAllDropdowns(except) {
+            document.querySelectorAll('[data-dropdown].open').forEach(function (dd) {
+                if (dd === except) return;
+                dd.classList.remove('open');
+                var menu = dd.querySelector('[data-dropdown-menu]');
+                if (menu) menu.classList.remove('active');
+            });
+        }
+
+        function init(root) {
+            (root || document).querySelectorAll('[data-dropdown]').forEach(function (dd) {
+                if (dd.dataset.dropdownInited) return;
+                dd.dataset.dropdownInited = '1';
+
+                var trigger = dd.querySelector('[data-dropdown-trigger]');
+                var menu = dd.querySelector('[data-dropdown-menu]');
+                if (!trigger || !menu) return;
+                var label = trigger.querySelector('[data-dropdown-label]');
+
+                trigger.addEventListener('click', function (e) {
+                    // именно здесь, а не в общем обработчике клика по табам, решаем -
+                    // открыть/закрыть список вариантов; сам переключатель таба это не трогает
+                    if (e.target.closest('[data-dropdown-option]')) return;
+                    var isOpen = dd.classList.contains('open');
+                    closeAllDropdowns(dd);
+                    dd.classList.toggle('open', !isOpen);
+                    menu.classList.toggle('active', !isOpen);
+                });
+
+                menu.querySelectorAll('[data-dropdown-option]').forEach(function (opt) {
+                    opt.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (label) label.textContent = opt.textContent.trim();
+                        trigger.dataset.tabKey = opt.dataset.tabKey;
+                        menu.querySelectorAll('[data-dropdown-option]').forEach(function (o) {
+                            o.classList.toggle('active', o === opt);
+                        });
+                        // .open намеренно не трогаем здесь - список сейчас открыт, и следующий
+                        // trigger.click() ниже сам его закроет через обработчик триггера (тот
+                        // читает текущее dd.classList.contains('open') и переключает на
+                        // противоположное); если закрыть .open здесь заранее, тот же клик
+                        // увидит список уже закрытым и снова его откроет
+                        // тот же клик, что случился бы по обычному табу - переиспользует уже
+                        // существующие обработчики (переключение active/чипы/live-поиск),
+                        // которые к этому моменту уже видят обновлённый dataset.tabKey
+                        trigger.click();
+                    });
+                });
+            });
+        }
+
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('[data-dropdown]')) return;
+            closeAllDropdowns(null);
+        });
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function () { init(document); });
+        } else {
+            init(document);
+        }
+        window.initTabDropdowns = init;
+
+        // синхронизирует один "таб-переключатель" (шапка главной или модалка поиска - у обеих
+        // одинаковая структура: .tabs_dropdown с триггером+списком вариантов плюс соседняя
+        // ссылка "Компании") с нужным key - переносит подпись/data-tab-key на триггер и
+        // выставляет .active там, где нужно. Используется, когда переключение происходит НЕ
+        // через клик по самому этому переключателю, а приходит "снаружи" (например пользователь
+        // выбрал "Услуги" в модалке поиска - шапку главной синхронизируем тем же key)
+        window.__syncTabGroup = function (scopeEl, key) {
+            if (!scopeEl) return;
+            var dd = scopeEl.querySelector('[data-dropdown]');
+            var trigger = dd ? dd.querySelector('[data-dropdown-trigger]') : null;
+            var companiesLink = scopeEl.querySelector('a[data-tab-key="companies"]');
+            if (!trigger) return;
+
+            if (key === 'companies') {
+                trigger.classList.remove('active');
+                if (companiesLink) companiesLink.classList.add('active');
+                return;
+            }
+
+            if (companiesLink) companiesLink.classList.remove('active');
+            trigger.classList.add('active');
+            trigger.dataset.tabKey = key;
+
+            var label = trigger.querySelector('[data-dropdown-label]');
+            var options = dd.querySelectorAll('[data-dropdown-option]');
+            options.forEach(function (opt) {
+                var matches = opt.dataset.tabKey === key;
+                opt.classList.toggle('active', matches);
+                if (matches && label) label.textContent = opt.textContent.trim();
+            });
+        };
+    })();
+} catch (err) {
+    console.error('tab dropdown init:', err);
+}
+
 try {
     document.addEventListener('click', function (e) {
         const btn = e.target.closest('.popular_card__more');
         const openModal = document.querySelector('.card_more__modal.active');
 
-        if (openModal && openModal !== btn?.nextElementSibling) {
+        // дропдаун "Проекты/Услуги/Товары" переиспользует класс .card_more__modal для стилей,
+        // но своим открытием/закрытием управляет отдельно (см. closeAllDropdowns выше) - этот
+        // обработчик не должен его трогать, иначе тот же клик, что открывает дропдаун, тут же
+        // закрывает его снова, когда всплывает до document
+        if (openModal && openModal !== btn?.nextElementSibling && !openModal.closest('[data-dropdown]')) {
             openModal.classList.remove('active');
         }
         if (btn) {
@@ -53,6 +183,28 @@ try {
     });
 } catch (err) {
     console.error('card more menu handler:', err);
+}
+
+try {
+    // фейды по краям чипов "Характеристики" (Основные/Конструктив/Помещения) - серое
+    // размытие у края показывает, что список можно докрутить; когда докручен до конца -
+    // соответствующий фейд прячется (см. .is-at-end/.is-scrolled в style.css)
+    document.querySelectorAll('.about_card_tabs_wrap').forEach(function (wrap) {
+        var scroller = wrap.querySelector('.about_card_tabs');
+        if (!scroller) return;
+
+        function updateEdgeFade() {
+            var maxScroll = scroller.scrollWidth - scroller.clientWidth;
+            wrap.classList.toggle('is-scrolled', scroller.scrollLeft > 2);
+            wrap.classList.toggle('is-at-end', maxScroll <= 2 || scroller.scrollLeft >= maxScroll - 2);
+        }
+
+        scroller.addEventListener('scroll', updateEdgeFade, { passive: true });
+        window.addEventListener('resize', updateEdgeFade);
+        updateEdgeFade();
+    });
+} catch (err) {
+    console.error('about card tabs edge fade:', err);
 }
 
 try {
@@ -568,7 +720,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.__filterPanels = window.__filterPanels || {};
         // сюда пишется текущий текст поиска по каждому разделу (companies/projects),
         // чтобы панель фильтров и чипы на странице могли показать его как обычный применённый фильтр
-        window.__searchQuery = window.__searchQuery || { companies: '', projects: '' };
+        window.__searchQuery = window.__searchQuery || { companies: '', projects: '', services: '', products: '' };
         // true, когда панель фильтров открыта из модалки поиска (по значку в #searchPanel) -
         // в этом случае "Применить" не должен сразу уводить на страницу каталога: фильтры
         // остаются применёнными прямо в поиске, а переход на каталог происходит только по
@@ -751,6 +903,8 @@ document.addEventListener('DOMContentLoaded', () => {
         function detectPageKey() {
             var path = (window.location.pathname || '').toLowerCase();
             if (path.indexOf('companies') !== -1) return 'companies';
+            if (path.indexOf('services') !== -1) return 'services';
+            if (path.indexOf('products') !== -1) return 'products';
             if (path.indexOf('projects') !== -1) return 'projects';
 
             var section = document.querySelector('.companies, .projects');
@@ -784,6 +938,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         var projectsChips = resolvePageChips('projects', ['projectsFilterList', 'projectsFilterChips']);
         var companiesChips = resolvePageChips('companies', ['companiesFilterList', 'companiesFilterChips']);
+        var servicesChips = resolvePageChips('services', ['servicesFilterList', 'servicesFilterChips']);
+        var productsChips = resolvePageChips('products', ['productsFilterList', 'productsFilterChips']);
 
         var panelConfigs = [
             {
@@ -805,13 +961,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitHref: 'companies.html',
                 pageChipsWrap: companiesChips.wrap,
                 pageChipsReset: companiesChips.reset
+            },
+            {
+                // "Услуги" - своей страницы каталога с реальной сеткой фильтров пока нет
+                // (services.html без .projects_filter__group-фильтров), модалка "Фильтры"
+                // сейчас есть только в шапке главной (filtersPanelServices) - см.
+                // window.__filterKeyMeta и restoreSearchQueryWithoutPanel ниже
+                key: 'services',
+                panel: document.getElementById('filtersPanelServices'),
+                applied: document.getElementById('filtersAppliedServices'),
+                appliedList: document.getElementById('filtersAppliedListServices'),
+                submit: document.getElementById('filtersSubmitServices'),
+                submitHref: 'services.html',
+                pageChipsWrap: servicesChips.wrap,
+                pageChipsReset: servicesChips.reset
+            },
+            {
+                key: 'products',
+                panel: document.getElementById('filtersPanelProducts'),
+                applied: document.getElementById('filtersAppliedProducts'),
+                appliedList: document.getElementById('filtersAppliedListProducts'),
+                submit: document.getElementById('filtersSubmitProducts'),
+                submitHref: 'products.html',
+                pageChipsWrap: productsChips.wrap,
+                pageChipsReset: productsChips.reset
             }
         ];
 
         panelConfigs.forEach(initFiltersPanel);
 
+        // на services.html/products.html модалки "Фильтры" пока нет (см. комментарий у
+        // panelConfigs выше) - initFiltersPanel для них не находит panel и не восстанавливает
+        // сохранённый поисковый запрос из sessionStorage (это делает он сам, внутри своего
+        // savedRaw). Восстанавливаем хотя бы сам текст запроса отдельно - иначе он не
+        // переживёт переход туда с главной. На страницах, где panel реально есть, ничего
+        // не делаем - там об этом уже позаботился initFiltersPanel выше
+        (function restoreSearchQueryWithoutPanel() {
+            var key = window.__pageFilterKey;
+            var hasResolvedPanel = panelConfigs.some(function (c) { return c.key === key && c.panel; });
+            if (hasResolvedPanel) return;
+            try {
+                var raw = sessionStorage.getItem('filterState:' + key);
+                if (!raw) return;
+                sessionStorage.removeItem('filterState:' + key);
+                var saved = JSON.parse(raw);
+                if (saved && saved.searchQuery) {
+                    window.__searchQuery[key] = saved.searchQuery;
+                }
+            } catch (err) {
+                console.error('restore search query (no panel):', err);
+            }
+        })();
+
         var backdrop = document.getElementById('filtersBackdrop');
-        var tabs = document.querySelectorAll('.banner_filter__tabs a');
+        var tabs = document.querySelectorAll('.banner_filter__tabs a[data-tab-key]');
         var openBtns = document.querySelectorAll('.filter__btn');
 
         function closeAllPanels() {
@@ -854,22 +1057,38 @@ document.addEventListener('DOMContentLoaded', () => {
         openBtns.forEach(function (btn) {
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
-                var activeTab = document.querySelector('.banner_filter__tabs a.active');
-                var tabsArr = Array.prototype.slice.call(tabs);
-                var key = (activeTab && tabsArr.indexOf(activeTab) === 1) ? 'companies' : 'projects';
+                var activeTab = document.querySelector('.banner_filter__tabs a[data-tab-key].active');
+                var key = (activeTab && activeTab.dataset.tabKey) || 'projects';
                 // этот значок открывает фильтры в обход поиска - "Применить" здесь должен
-                // вести себя как обычно, сразу переходя на страницу каталога
+                // вести себя как обычно, сразу переходя на страницу каталога, но "Назад"/
+                // "Закрыть"/клик по фону всё равно должны возвращать в модалку поиска (а не
+                // на хиро-экран), чтобы применённые фильтры сразу были видны там - см.
+                // window.__filtersBackToSearch и closeAllPanelsMaybeReturnToSearch
                 window.__filtersOpenedFromSearch = false;
+                window.__filtersBackToSearch = true;
+                // сначала (без анимации показа - открытие/закрытие фильтров всё равно
+                // перекрывает его сверху) подкладываем под фильтры уже готовый экран поиска
+                // с тем же разделом, что выбран в дропдауне - тогда когда фильтры закроются
+                // назад в поиск, под ними уже не хиро-баннер, а сразу нужный экран поиска,
+                // без промежуточного "мигания" главной
+                if (typeof window.__syncTabGroup === 'function') {
+                    window.__syncTabGroup(document.querySelector('.search_panel__tabs'), key);
+                }
+                if (typeof window.__openSearchPanel === 'function') window.__openSearchPanel();
                 openPanelByKey(key);
             });
         });
 
         // если панель фильтров была открыта из поиска - любое её закрытие (сабмит, "Назад",
         // крестик, клик по фону) должно возвращать обратно в модалку поиска, а не просто
-        // захлопывать всё - см. window.__filtersOpenedFromSearch
+        // захлопывать всё - см. window.__filtersOpenedFromSearch. Значок фильтра в баннере на
+        // главной открывает фильтры в обход поиска (см. openBtns выше) - там "Применить"
+        // по-прежнему сразу ведёт на страницу каталога, но "Назад"/"Закрыть"/фон должны вести
+        // в модалку поиска - для этого отдельный флаг window.__filtersBackToSearch
         function closeAllPanelsMaybeReturnToSearch() {
-            var returnToSearch = window.__filtersOpenedFromSearch;
+            var returnToSearch = window.__filtersOpenedFromSearch || window.__filtersBackToSearch;
             window.__filtersOpenedFromSearch = false;
+            window.__filtersBackToSearch = false;
             closeAllPanels();
             if (returnToSearch && typeof window.__openSearchPanel === 'function') {
                 window.__openSearchPanel();
@@ -1252,8 +1471,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function currentSearchTab() {
-            var activeTab = searchPanel.querySelector('.search_panel__tabs a.active');
-            if (activeTab) return activeTab.dataset.searchTab;
+            var activeTab = searchPanel.querySelector('.search_panel__tabs a[data-tab-key].active');
+            if (activeTab) return activeTab.dataset.tabKey;
             // если таб внутри поиска почему-то не выставлен - определяем раздел по самой странице
             // (по URL/классу секции - см. window.__pageFilterKey), а не молча уходим в 'projects'
             return window.__pageFilterKey || 'projects';
@@ -1279,14 +1498,17 @@ document.addEventListener('DOMContentLoaded', () => {
             addToHistory(term);
             var tab = currentSearchTab();
 
-            window.__searchQuery = window.__searchQuery || { companies: '', projects: '' };
+            window.__searchQuery = window.__searchQuery || { companies: '', projects: '', services: '', products: '' };
             window.__searchQuery[tab] = term;
 
             // сохраняем настоящее состояние фильтров той панели (не просто подписи) плюс сам запрос -
             // тогда на странице результатов и фильтры, и запрос по-настоящему восстановятся,
-            // а не просто нарисуются "мёртвыми" подписями
+            // а не просто нарисуются "мёртвыми" подписями. У Услуг/Товаров панели фильтров
+            // может не быть вообще (см. window.__filterKeyMeta) - тогда сохраняем хотя бы сам
+            // запрос без состояния полей
+            var meta = (window.__filterKeyMeta && window.__filterKeyMeta[tab]) || { panelId: 'filtersPanel', page: 'projects.html' };
             try {
-                var srcPanel = document.getElementById(tab === 'companies' ? 'filtersPanelCompanies' : 'filtersPanel');
+                var srcPanel = document.getElementById(meta.panelId);
                 var state = (srcPanel && typeof window.__serializePanelState === 'function')
                     ? window.__serializePanelState(srcPanel)
                     : { category: null, chips: [], selects: {}, ranges: [], checkboxes: [] };
@@ -1296,8 +1518,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('save filter state (search):', err);
             }
 
-            window.location.href = (tab === 'companies' ? 'companies.html' : 'projects.html') +
-                '?q=' + encodeURIComponent(term);
+            window.location.href = meta.page + '?q=' + encodeURIComponent(term);
         }
 
         if (submitBtn) {
@@ -1315,21 +1536,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        var searchTabs = searchPanel.querySelectorAll('.search_panel__tabs a[data-search-tab]');
+        // подписи "Подборки ..." над подборками в поиске - по одной на каждый из 4 разделов
+        var COLLECTIONS_TITLE_BY_KEY = {
+            projects: 'Подборки проектов',
+            services: 'Подборки услуг',
+            products: 'Подборки товаров',
+            companies: 'Подборки компаний'
+        };
+
+        var searchTabsWrap = searchPanel.querySelector('.search_panel__tabs');
+        var searchTabs = searchPanel.querySelectorAll('.search_panel__tabs a[data-tab-key]');
         var collectionsTitle = document.getElementById('searchPanelCollectionsTitle');
         searchTabs.forEach(function (tab) {
             tab.addEventListener('click', function (e) {
                 e.preventDefault();
+                var key = tab.dataset.tabKey;
                 searchTabs.forEach(function (t) { t.classList.remove('active'); });
                 tab.classList.add('active');
                 if (collectionsTitle) {
-                    collectionsTitle.textContent = tab.dataset.searchTab === 'companies'
-                        ? 'Подборки компаний'
-                        : 'Подборки проектов';
+                    collectionsTitle.textContent = COLLECTIONS_TITLE_BY_KEY[key] || COLLECTIONS_TITLE_BY_KEY.projects;
                 }
-                var bannerTabs = document.querySelectorAll('.banner_filter__tabs a');
-                var bannerActiveIndex = tab.dataset.searchTab === 'companies' ? 1 : 0;
-                bannerTabs.forEach(function (t, i) { t.classList.toggle('active', i === bannerActiveIndex); });
+                // тот же раздел выставляем и в шапке главной - чтобы значок фильтра там (в
+                // обход поиска) открывал панель того же раздела, что выбран в самом поиске
+                if (typeof window.__syncTabGroup === 'function') {
+                    window.__syncTabGroup(document.querySelector('.banner_filter__tabs'), key);
+                }
 
                 renderLiveResults();
             });
@@ -1341,9 +1572,11 @@ document.addEventListener('DOMContentLoaded', () => {
         (function syncSearchTabToPage() {
             var key = window.__pageFilterKey;
             if (!key) return;
-            searchTabs.forEach(function (t) { t.classList.toggle('active', t.dataset.searchTab === key); });
+            if (typeof window.__syncTabGroup === 'function') {
+                window.__syncTabGroup(searchTabsWrap, key);
+            }
             if (collectionsTitle) {
-                collectionsTitle.textContent = key === 'companies' ? 'Подборки компаний' : 'Подборки проектов';
+                collectionsTitle.textContent = COLLECTIONS_TITLE_BY_KEY[key] || COLLECTIONS_TITLE_BY_KEY.projects;
             }
         })();
 
@@ -1569,9 +1802,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function updateSortCount(tab, count) {
             if (!sortCountEl) return;
-            var word = tab === 'companies'
-                ? pluralRu(count, 'компания', 'компании', 'компаний')
-                : pluralRu(count, 'проект', 'проекта', 'проектов');
+            var word;
+            if (tab === 'companies') word = pluralRu(count, 'компания', 'компании', 'компаний');
+            else if (tab === 'services') word = pluralRu(count, 'услуга', 'услуги', 'услуг');
+            else if (tab === 'products') word = pluralRu(count, 'товар', 'товара', 'товаров');
+            else word = pluralRu(count, 'проект', 'проекта', 'проектов');
             sortCountEl.textContent = count + ' ' + word;
         }
 
@@ -1755,8 +1990,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // настоящей карточки нужного варианта - только упрощённые витринные карточки,
             // поэтому поверх найденного в DOM всегда добавляем эталонную карточку
             // (см. PROJECT_CARD_TEMPLATE_HTML / COMPANY_CARD_TEMPLATE_HTML выше) - иначе
-            // поиск на таких страницах всегда был бы пустым
-            candidates.push(buildCardFromTemplate(tab === 'companies' ? COMPANY_CARD_TEMPLATE_HTML : PROJECT_CARD_TEMPLATE_HTML));
+            // поиск на таких страницах всегда был бы пустым. Для Услуг/Товаров такого эталона
+            // нет (в статичной вёрстке нет ни одной карточки услуги/товара вообще) - для них
+            // живой поиск честно показывает "ничего не найдено", а не карточку проекта
+            if (tab === 'companies' || tab === 'projects') {
+                candidates.push(buildCardFromTemplate(tab === 'companies' ? COMPANY_CARD_TEMPLATE_HTML : PROJECT_CARD_TEMPLATE_HTML));
+            }
 
             candidates.forEach(function (card) {
                 var data = cardSearchData(card);
@@ -1829,6 +2068,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // сами - они навешаны через делегирование на document, а не на конкретный элемент
             if (typeof window.initFavoritesToast === 'function') window.initFavoritesToast(resultsList);
             if (typeof window.__syncFavoriteLikeButtons === 'function') window.__syncFavoriteLikeButtons(resultsList);
+            if (typeof window.initCardLinks === 'function') window.initCardLinks(resultsList);
         }
 
         renderHistory();
@@ -1847,14 +2087,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     searchInput.value = bannerInput.value;
                     searchInput.dispatchEvent(new Event('input'));
                 }
-                var bannerActiveTab = document.querySelector('.banner_filter__tabs a.active');
-                var bannerTabsArr = Array.prototype.slice.call(document.querySelectorAll('.banner_filter__tabs a'));
-                var isCompanies = bannerActiveTab && bannerTabsArr.indexOf(bannerActiveTab) === 1;
-                searchTabs.forEach(function (t) {
-                    t.classList.toggle('active', (t.dataset.searchTab === 'companies') === !!isCompanies);
-                });
+                var bannerActiveTab = document.querySelector('.banner_filter__tabs a[data-tab-key].active');
+                var key = (bannerActiveTab && bannerActiveTab.dataset.tabKey) || 'projects';
+                if (typeof window.__syncTabGroup === 'function') {
+                    window.__syncTabGroup(searchTabsWrap, key);
+                }
                 if (collectionsTitle) {
-                    collectionsTitle.textContent = isCompanies ? 'Подборки компаний' : 'Подборки проектов';
+                    collectionsTitle.textContent = COLLECTIONS_TITLE_BY_KEY[key] || COLLECTIONS_TITLE_BY_KEY.projects;
                 }
                 openSearchPanel();
                 if (searchInput) searchInput.focus();
@@ -1870,14 +2109,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     searchInput.value = bannerInput.value;
                     searchInput.dispatchEvent(new Event('input'));
                 }
-                var activeTab = document.querySelector('.banner_filter__tabs a.active');
-                var tabsArr = Array.prototype.slice.call(document.querySelectorAll('.banner_filter__tabs a'));
-                var isCompanies = activeTab && tabsArr.indexOf(activeTab) === 1;
-                searchTabs.forEach(function (t) {
-                    t.classList.toggle('active', (t.dataset.searchTab === 'companies') === !!isCompanies);
-                });
+                var activeTab = document.querySelector('.banner_filter__tabs a[data-tab-key].active');
+                var key = (activeTab && activeTab.dataset.tabKey) || 'projects';
+                if (typeof window.__syncTabGroup === 'function') {
+                    window.__syncTabGroup(searchTabsWrap, key);
+                }
                 if (collectionsTitle) {
-                    collectionsTitle.textContent = isCompanies ? 'Подборки компаний' : 'Подборки проектов';
+                    collectionsTitle.textContent = COLLECTIONS_TITLE_BY_KEY[key] || COLLECTIONS_TITLE_BY_KEY.projects;
                 }
                 openSearchPanel();
                 bannerInput.blur();
@@ -1896,14 +2134,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 var key = currentSearchTab();
 
-                window.__searchQuery = window.__searchQuery || { companies: '', projects: '' };
+                window.__searchQuery = window.__searchQuery || { companies: '', projects: '', services: '', products: '' };
                 window.__searchQuery[key] = searchInput ? searchInput.value.trim() : '';
 
                 // помечаем, что фильтры открыты из поиска - "Применить" не должен сразу
                 // уводить на страницу каталога, см. window.__filtersOpenedFromSearch
                 window.__filtersOpenedFromSearch = true;
 
-                closeSearchPanel();
+                // поиск НЕ закрываем - оставляем его активным прямо под фильтрами (у поиска
+                // ниже z-index, см. .filters_panel.search_panel в style.css), тогда когда
+                // фильтры позже закроются назад в поиск, под ними уже готовый, отрисованный
+                // экран поиска - без промежуточного кадра с хиро-баннером и без повторной
+                // анимации открытия поиска (см. closeAllPanelsMaybeReturnToSearch)
                 if (typeof window.openPanelByKey === 'function') window.openPanelByKey(key);
 
                 if (window.__filterPanels && window.__filterPanels[key]) {
@@ -2017,9 +2259,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 var term = listInput.value.trim();
                 if (!term) return;
                 var key = window.__pageFilterKey || 'projects';
+                var meta = (window.__filterKeyMeta && window.__filterKeyMeta[key]) || { panelId: 'filtersPanel', page: 'projects.html' };
 
                 try {
-                    var srcPanel = document.getElementById(key === 'companies' ? 'filtersPanelCompanies' : 'filtersPanel');
+                    var srcPanel = document.getElementById(meta.panelId);
                     var state = (srcPanel && typeof window.__serializePanelState === 'function')
                         ? window.__serializePanelState(srcPanel)
                         : { category: null, chips: [], selects: {}, ranges: [], checkboxes: [] };
@@ -2029,8 +2272,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error('save filter state (inline search):', err);
                 }
 
-                window.location.href = (key === 'companies' ? 'companies.html' : 'projects.html') +
-                    '?q=' + encodeURIComponent(term);
+                window.location.href = meta.page + '?q=' + encodeURIComponent(term);
             }
 
             if (listSearchBtn) {
@@ -2894,6 +3136,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// --- клик по карточке (.popular_card) ведёт на страницу проекта/товара/компании ---
+// ссылку не разбрасываем по разметке заново на каждой странице - берём её из того, что в
+// карточке уже есть (картинка почти везде и так обёрнута в <a href="...">, иначе - первая
+// ссылка в меню "..." типа "О компании"/"О проекте"), и переиспользуем в двух местах:
+// невидимой оверлей-ссылке под текстом карточки и в тап-навигации по самому фото ниже
+function getCardHref(card) {
+    var media = card.querySelector('.popular_card__media');
+    if (media) {
+        var mediaLink = media.querySelector('a[href]');
+        if (mediaLink) {
+            var href = (mediaLink.getAttribute('href') || '').trim();
+            if (href && href !== '#') return href;
+        }
+    }
+    var moreLink = card.querySelector('.card_more__modal a[href]');
+    if (moreLink) {
+        var href2 = (moreLink.getAttribute('href') || '').trim();
+        if (href2 && href2 !== '#') return href2;
+    }
+    return null;
+}
+window.__getCardHref = getCardHref;
+
+// оверлей-ссылка занимает всю .popular_card__bottom_wrapper (от заголовка до цены), поэтому
+// сама карточка визуально не меняется - html/css самой карточки не трогаем, просто кладём
+// поверх текста прозрачную <a> (см. .popular_card__link/.popular_card__more в style.css,
+// у кнопки "..." z-index выше, чтобы своё меню она продолжала открывать как раньше)
+function initCardLinks(root) {
+    (root || document).querySelectorAll('.popular_card').forEach(function (card) {
+        if (card.dataset.cardLinked) return;
+        var href = getCardHref(card);
+        if (!href) return;
+        card.dataset.cardLinked = '1';
+
+        var wrap = card.querySelector('.popular_card__bottom_wrapper');
+        if (wrap && !wrap.querySelector('.popular_card__link')) {
+            var link = document.createElement('a');
+            link.href = href;
+            link.className = 'popular_card__link';
+            link.setAttribute('aria-label', 'Открыть карточку');
+            wrap.insertBefore(link, wrap.firstChild);
+        }
+    });
+}
+window.initCardLinks = initCardLinks;
+
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        initCardLinks(document);
+    } catch (err) {
+        console.error('card links init:', err);
+    }
+});
+
 // --- реальный свайпер фото внутри карточек (.popular_card__media) вместо статичных точек ---
 // дублируем единственное имеющееся фото под количество точек в разметке (обычно 4) и
 // навешиваем Swiper: свайп/точки листают слайды, активная точка синхронизируется со слайдом.
@@ -2938,6 +3234,11 @@ function initCardMediaSwipers(root) {
 
         mainImg.replaceWith(swiperEl);
 
+        // тап по фото (не свайп) должен вести на страницу карточки, как и клик по тексту
+        // ниже - swiper различает их сам и отдаёт 'tap' только для настоящего тапа без сдвига
+        var cardForTap = media.closest('.popular_card');
+        var tapHref = cardForTap ? getCardHref(cardForTap) : null;
+
         var swiper = new Swiper(swiperEl, {
             loop: true,
             speed: 350,
@@ -2946,6 +3247,9 @@ function initCardMediaSwipers(root) {
                     dots.forEach(function (d, i) {
                         d.classList.toggle('active', i === sw.realIndex);
                     });
+                },
+                tap: function () {
+                    if (tapHref) window.location.href = tapHref;
                 }
             }
         });

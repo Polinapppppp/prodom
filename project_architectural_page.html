@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
-<body>
+<body class="is-loading">
     <div id="page" class="site">
         <!-- header -->
         <header class="header">
@@ -43,28 +43,169 @@
                             </button>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="mobile-menu" id="mobileMenu">
-                        <ul class="nav__list">
-                            <li class="nav__item"><a class="nav__link" href="index.html">Главная</a></li>
-                            <li class="nav__item"><a class="nav__link" href="cases.html">Портфолио</a></li>
-                            <li class="nav__item"><a class="nav__link" href="services.html">Услуги</a></li>
-                            <li class="nav__item"><a class="nav__link" href="company.html">Компания</a></li>
-                            <li class="nav__item"><a class="nav__link" href="blog.html">Блог</a></li>
-                            <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
-                        </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-menu__top flex_row">
+                    <a class="logo" href="index.html">
+                        ProDom
+                    </a>
+                    <button type="button" class="mobile-menu__close" data-mobile-menu-close aria-label="Закрыть">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="#141416" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
 
-                        <div class="header__right mobile-only-right"
-                            style="margin-top: 20px; display: flex; gap: 10px;">
-                            <a href="#" class="header__right_btn light--btn js-open-modal"
-                                style="width: 100%; text-align: center;">Оставить
-                                заявку</a>
+                <div class="mobile-menu__icons flex_row">
+                    <a href="profile.html" class="mobile-menu__icon-item flex_column">
+                        <div class="mobile-menu__icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21M16.5 7.5C16.5 9.98528 14.4853 12 12 12C9.51472 12 7.5 9.98528 7.5 7.5C7.5 5.01472 9.51472 3 12 3C14.4853 3 16.5 5.01472 16.5 7.5Z"
+                                    stroke="#141416" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
                         </div>
+                        <p class="micro_medium">Профиль</p>
+                    </a>
+                    <a href="favorites.html" class="mobile-menu__icon-item flex_column">
+                        <div class="mobile-menu__icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.89982 14.6651 9.84977 19.1041 11.4721 20.5408C11.6536 20.7016 11.7444 20.7819 11.8502 20.8135C11.9426 20.8411 12.0437 20.8411 12.1361 20.8135C12.2419 20.7819 12.3327 20.7016 12.5142 20.5408C14.1365 19.1041 19.0865 14.6651 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z"
+                                    stroke="#141416" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                            <span class="mobile-menu__icon-badge" data-favorites-count hidden>0</span>
+                        </div>
+                        <p class="micro_medium">Избранное</p>
+                    </a>
+                    <a href="comparison.html" class="mobile-menu__icon-item flex_column">
+                        <div class="mobile-menu__icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 5L20 5M4 17H8M4 11L14 11M14 17H17M17 17H20M17 17V20M17 17V14"
+                                    stroke="#141416" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span class="mobile-menu__icon-badge" data-compare-count hidden>0</span>
+                        </div>
+                        <p class="micro_medium">Сравнение</p>
+                    </a>
+                    <button type="button" class="mobile-menu__icon-item flex_column" data-mobile-menu-search>
+                        <div class="mobile-menu__icon-circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M21 21L15.0001 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                                    stroke="#141416" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+
+                        </div>
+                        <p class="micro_medium">Поиск</p>
+                    </button>
+                </div>
+
+                <div class="mobile-menu__divider"></div>
+
+                <div class="mobile-menu__group flex_column">
+                    <p class="caption mobile-menu__group-title">Каталог</p>
+                    <div class="mobile-menu__list flex_column">
+                        <a href="projects.html" class="footer_block__v1_top flex_row mobile-menu__nav-link">
+                            <p class="body_medium">Проекты</p>
+                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+
+                        <a href="services.html" class="footer_block__v1_top flex_row mobile-menu__nav-link">
+                            <p class="body_medium">Услуги</p>
+                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+
+                        <a href="products.html" class="footer_block__v1_top flex_row mobile-menu__nav-link">
+                            <p class="body_medium">Товары</p>
+                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+
+                        <a href="companies.html" class="footer_block__v1_top flex_row mobile-menu__nav-link">
+                            <p class="body_medium">Компании</p>
+                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mobile-menu__divider"></div>
+
+                <div class="mobile-menu__group flex_column">
+                    <p class="caption mobile-menu__group-title">Для компаний</p>
+                    <div class="mobile-menu__list flex_column">
+                        <div class="header_block__v1 flex_column" data-accordion>
+                            <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                                <p class="body_medium">Стать партнером</p>
+                                <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+
+                            </div>
+                            <div class="footer_block__v1_content" data-accordion-content>
+                                <div class="footer_block__v1_content_inner flex_column">
+                                    <a href="projects.html" class="body">Все проекты домов</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="header_block__v1 flex_column" data-accordion>
+                            <div class="footer_block__v1_top flex_row" data-accordion-trigger>
+                                <p class="body_medium">Войти как партнер</p> <svg width="7" height="12"
+                                    viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+
+                            </div>
+                            <div class="footer_block__v1_content" data-accordion-content>
+                                <div class="footer_block__v1_content_inner flex_column">
+                                    <a href="services.html" class="body">Все услуги</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mobile-menu__divider"></div>
+
+                <div class="mobile-menu__group flex_column">
+                    <p class="caption mobile-menu__group-title">Связаться с нами</p>
+                    <div class="mobile-menu__contacts flex_column">
+                        <a href="tel:+7 (000) 000-00-00" class="body_medium">+7 (000) 000-00-00</a>
+                        <a href="mailto:support@prodom.ru" class="body_medium">support@prodom.ru</a>
+                        <a href="" target="_blank" class="body_medium">Telegram</a>
                     </div>
                 </div>
             </div>
         </header>
-        <main id="primary" class="site-main">
+        <main id="primary" class="site-main" data-skeleton>
 
 
             <!-- popular -->
@@ -505,7 +646,7 @@
                         <p class="body_medium">Стоимость комплектации</p>
                         <h2 class="h1">от 450 000 ₽</h2>
                     </div>
-                    <a href="" class="button_v1 buttons_medium">Получить расчет</a>
+                    <a href="" class="button_v1 buttons_medium">Обсудить проект</a>
                 </div>
             </section>
 
@@ -691,8 +832,9 @@
                                         </svg>
                                     </button>
                                 </div>
-                                <a href="company_page.html"><img src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png" alt=""
-                                    class="popular_card__v2"></a>
+                                <a href="company_page.html"><img
+                                        src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png"
+                                        alt="" class="popular_card__v2"></a>
                                 <img src="./assets/images/company/Logo-ИХ.svg" class="popular_card__logo" alt="">
                                 <div class="popular_card__dots">
                                     <span class="active"></span><span></span><span></span><span></span>
@@ -757,20 +899,22 @@
                                 </svg>
                                 <div class="card_more__modal">
                                     <div class="card_more__modal_wrapper flex_column">
-                                        <a href="company_page.html"><div class="more_modal__item flex_row">
-                                            <p class="caption">О компании</p>
-                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
-                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path
-                                                    d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
-                                                    stroke="#141416" stroke-width="1.3" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                        </div></a>
+                                        <a href="company_page.html">
+                                            <div class="more_modal__item flex_row">
+                                                <p class="caption">О компании</p>
+                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
+                                                        stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
+                                                        stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                        </a>
                                         <div class="more_modal__item flex_row">
                                             <p class="caption">Поделиться</p>
                                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -796,8 +940,8 @@
                             </div>
                         </div>
                     </div>
-                    <a href="company_page.html" class="button_border buttons_medium flex_row">Смотреть профиль <svg width="15"
-                            height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <a href="company_page.html" class="button_border buttons_medium flex_row">Смотреть профиль <svg
+                            width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.75 5.75H14.0833M9.08333 10.75L14.0833 5.75L9.08333 0.75" stroke="#141416"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
@@ -856,8 +1000,9 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <a href="project_page.html"><img src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png"
-                                        alt=""></a>
+                                    <a href="project_page.html"><img
+                                            src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png"
+                                            alt=""></a>
                                     <div class="popular_card__dots">
                                         <span class="active"></span><span></span><span></span><span></span>
                                     </div>
@@ -890,20 +1035,22 @@
                                     </svg>
                                     <div class="card_more__modal card_more__modal--up">
                                         <div class="card_more__modal_wrapper flex_column">
-                                            <a href="project_page.html"><div class="more_modal__item flex_row">
-                                                <p class="caption">О проекте</p>
-                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
-                                                        stroke="#141416" stroke-width="1.3" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
-                                                        stroke="#141416" stroke-width="1.3" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </div></a>
+                                            <a href="project_page.html">
+                                                <div class="more_modal__item flex_row">
+                                                    <p class="caption">О проекте</p>
+                                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
+                                                            stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
+                                                            stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </a>
                                             <div class="more_modal__item flex_row">
                                                 <p class="caption">Сравнить</p>
                                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -984,8 +1131,9 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <a href="project_page.html"><img src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png"
-                                        alt=""></a>
+                                    <a href="project_page.html"><img
+                                            src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png"
+                                            alt=""></a>
                                     <div class="popular_card__dots">
                                         <span class="active"></span><span></span><span></span><span></span>
                                     </div>
@@ -1018,20 +1166,22 @@
                                     </svg>
                                     <div class="card_more__modal card_more__modal--up">
                                         <div class="card_more__modal_wrapper flex_column">
-                                            <a href="project_page.html"><div class="more_modal__item flex_row">
-                                                <p class="caption">О проекте</p>
-                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
-                                                        stroke="#141416" stroke-width="1.3" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
-                                                        stroke="#141416" stroke-width="1.3" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </div></a>
+                                            <a href="project_page.html">
+                                                <div class="more_modal__item flex_row">
+                                                    <p class="caption">О проекте</p>
+                                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
+                                                            stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
+                                                            stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </a>
                                             <div class="more_modal__item flex_row">
                                                 <p class="caption">Сравнить</p>
                                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -1112,8 +1262,9 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <a href="project_page.html"><img src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png"
-                                        alt=""></a>
+                                    <a href="project_page.html"><img
+                                            src="./assets/images/popular/0e9794b2ecd906a8d48ad92bab5131e5ab45fca8.png"
+                                            alt=""></a>
                                     <div class="popular_card__dots">
                                         <span class="active"></span><span></span><span></span><span></span>
                                     </div>
@@ -1146,20 +1297,22 @@
                                     </svg>
                                     <div class="card_more__modal card_more__modal--up">
                                         <div class="card_more__modal_wrapper flex_column">
-                                            <a href="project_page.html"><div class="more_modal__item flex_row">
-                                                <p class="caption">О проекте</p>
-                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
-                                                        stroke="#141416" stroke-width="1.3" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
-                                                        stroke="#141416" stroke-width="1.3" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </div></a>
+                                            <a href="project_page.html">
+                                                <div class="more_modal__item flex_row">
+                                                    <p class="caption">О проекте</p>
+                                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M1.81509 9.5349C1.71296 9.37313 1.66188 9.29228 1.63329 9.16755C1.61182 9.07388 1.61182 8.92613 1.63329 8.83245C1.66188 8.70773 1.71296 8.62688 1.81509 8.4651C2.65915 7.12863 5.17155 3.75 9.0003 3.75C12.8291 3.75 15.3415 7.12863 16.1855 8.4651C16.2877 8.62688 16.3388 8.70773 16.3673 8.83245C16.3888 8.92613 16.3888 9.07388 16.3673 9.16755C16.3388 9.29228 16.2877 9.37313 16.1855 9.5349C15.3415 10.8714 12.8291 14.25 9.0003 14.25C5.17155 14.25 2.65915 10.8714 1.81509 9.5349Z"
+                                                            stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path
+                                                            d="M9.00049 11.25C10.2432 11.25 11.2505 10.2427 11.2505 9C11.2505 7.75732 10.2432 6.75 9.00049 6.75C7.75781 6.75 6.75049 7.75732 6.75049 9C6.75049 10.2427 7.75781 11.25 9.00049 11.25Z"
+                                                            stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </a>
                                             <div class="more_modal__item flex_row">
                                                 <p class="caption">Сравнить</p>
                                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -1196,8 +1349,8 @@
                             </div>
                         </div>
                     </div>
-                    <a href="projects.html" class="button_border buttons_medium flex_row">Все проекты <svg width="15" height="12"
-                            viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <a href="projects.html" class="button_border buttons_medium flex_row">Все проекты <svg width="15"
+                            height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.75 5.75H14.0833M9.08333 10.75L14.0833 5.75L9.08333 0.75" stroke="#141416"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
@@ -1265,17 +1418,17 @@
                             <h3>Пользователям</h3>
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                <path d="M13 1L7 7L1 1" stroke="#141416" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
                         </div>
                         <div class="footer_block__v1_content" data-accordion-content>
                             <div class="footer_block__v1_content_inner flex_column">
-                                <a href="" class="body">Проекты домов</a>
-                                <a href="" class="body">Компании и специалисты</a>
-                                <a href="" class="body">Категории услуг</a>
-                                <a href="" class="body">Избранное</a>
-                                <a href="" class="body" data-modal-open="login">Войти в личный кабинет</a>
+                                <a href="projects.html" class="body">Проекты домов</a>
+                                <a href="companies.html" class="body">Компании и специалисты</a>
+                                <a href="services.html" class="body">Категории услуг</a>
+                                <a href="favorites.html" class="body">Избранное</a>
+                                <a href="profile.html" class="body" data-modal-open="login">Войти в личный кабинет</a>
                             </div>
                         </div>
                     </div>
@@ -1285,14 +1438,14 @@
                             <h3>Для компаний</h3>
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                <path d="M13 1L7 7L1 1" stroke="#141416" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
                         </div>
                         <div class="footer_block__v1_content" data-accordion-content>
                             <div class="footer_block__v1_content_inner flex_column">
                                 <a href="" class="body">Стать партнером</a>
-                                <a href="" class="body" data-modal-open="login">Войти как партнер</a>
+                                <a href="profile" class="body" data-modal-open="login">Войти как партнер</a>
                                 <a href="" class="body">Разместить проекты и услуги</a>
                             </div>
                         </div>
@@ -1303,7 +1456,7 @@
                             <h3>Контакты</h3>
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                <path d="M13 1L7 7L1 1" stroke="#141416" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
                         </div>
@@ -1367,7 +1520,7 @@
             </div>
         </div>
     </div>
-<div class="registration_modal container" data-modal="favorites-login">
+    <div class="registration_modal container" data-modal="favorites-login">
         <div class="registration_modal_wrapper card flex_column">
             <button type="button" class="registration_modal__close" data-modal-close aria-label="Закрыть">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

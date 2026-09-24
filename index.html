@@ -13,7 +13,7 @@
 <body class="is-loading">
     <div id="page" class="site">
         <!-- header -->
-        <header class="header" data-skeleton>
+        <header class="header">
             <div class="container">
                 <div class="header__inner ">
                     <div class="header__top">
@@ -47,8 +47,10 @@
             </div>
 
             <div class="mobile-menu" id="mobileMenu">
-                <div class="mobile-menu__top flex_row card__v2">
-                    <p class="mobile-menu__logo">ProDom</p>
+                <div class="mobile-menu__top flex_row">
+                    <a class="logo" href="index.html">
+                        ProDom
+                    </a>
                     <button type="button" class="mobile-menu__close" data-mobile-menu-close aria-label="Закрыть">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18 6L6 18M6 6L18 18" stroke="#141416" stroke-width="1.5" stroke-linecap="round"
@@ -113,68 +115,41 @@
                 <div class="mobile-menu__group flex_column">
                     <p class="caption mobile-menu__group-title">Каталог</p>
                     <div class="mobile-menu__list flex_column">
-                        <div class="header_block__v1 flex_column" data-accordion>
-                            <div class="footer_block__v1_top flex_row" data-accordion-trigger>
-                                <p class="body_medium">Проекты</p>
-                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div class="footer_block__v1_content" data-accordion-content>
-                                <div class="footer_block__v1_content_inner flex_column">
-                                    <a href="projects.html" class="body">Все проекты домов</a>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="projects.html" class="footer_block__v1_top flex_row mobile-menu__nav-link">
+                            <p class="body_medium">Проекты</p>
+                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
 
-                        <div class="header_block__v1 flex_column" data-accordion>
-                            <div class="footer_block__v1_top flex_row" data-accordion-trigger>
-                                <p class="body_medium">Услуги</p> <svg width="14" height="8" viewBox="0 0 14 8"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div class="footer_block__v1_content" data-accordion-content>
-                                <div class="footer_block__v1_content_inner flex_column">
-                                    <a href="services.html" class="body">Все услуги</a>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="services.html" class="footer_block__v1_top flex_row mobile-menu__nav-link">
+                            <p class="body_medium">Услуги</p>
+                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
 
-                        <div class="header_block__v1 flex_column" data-accordion>
-                            <div class="footer_block__v1_top flex_row" data-accordion-trigger>
-                                <p class="body_medium">Товары</p>
-                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div class="footer_block__v1_content" data-accordion-content>
-                                <div class="footer_block__v1_content_inner flex_column">
-                                    <a href="products.html" class="body">Все товары</a>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="products.html" class="footer_block__v1_top flex_row mobile-menu__nav-link">
+                            <p class="body_medium">Товары</p>
+                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
 
-                        <div class="header_block__v1 flex_column" data-accordion>
-                            <div class="footer_block__v1_top flex_row" data-accordion-trigger>
-                                <p class="body_medium">Компании</p>
-                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div class="footer_block__v1_content" data-accordion-content>
-                                <div class="footer_block__v1_content_inner flex_column">
-                                    <a href="companies.html" class="body">Все компании</a>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="companies.html" class="footer_block__v1_top flex_row mobile-menu__nav-link">
+                            <p class="body_medium">Компании</p>
+                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
 
@@ -186,11 +161,12 @@
                         <div class="header_block__v1 flex_column" data-accordion>
                             <div class="footer_block__v1_top flex_row" data-accordion-trigger>
                                 <p class="body_medium">Стать партнером</p>
-                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
+                                    <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
+
                             </div>
                             <div class="footer_block__v1_content" data-accordion-content>
                                 <div class="footer_block__v1_content_inner flex_column">
@@ -201,11 +177,12 @@
 
                         <div class="header_block__v1 flex_column" data-accordion>
                             <div class="footer_block__v1_top flex_row" data-accordion-trigger>
-                                <p class="body_medium">Войти как партнер</p> <svg width="14" height="8"
-                                    viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
+                                <p class="body_medium">Войти как партнер</p> <svg width="7" height="12"
+                                    viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.75 0.75L5.75 5.75L0.75 10.75" stroke="#6A6C77" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
+
                             </div>
                             <div class="footer_block__v1_content" data-accordion-content>
                                 <div class="footer_block__v1_content_inner flex_column">
@@ -237,8 +214,51 @@
                     </div>
                     <div class="banner_filter flex_column">
                         <div class="banner_filter__tabs buttons_medium flex_row">
-                            <a href="" class="active">Проекты домов</a>
-                            <a href="">Компании</a>
+                            <div class="tabs_dropdown" data-dropdown>
+                                <a href="" class="active" data-tab-key="projects" data-dropdown-trigger>
+                                    <span data-dropdown-label>Проекты</span>
+                                    <svg class="tabs_dropdown__chevron" width="10" height="6" viewBox="0 0 10 6"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.4"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </a>
+                                <div class="card_more__modal tabs_dropdown__modal" data-dropdown-menu>
+                                    <div class="card_more__modal_wrapper tabs_dropdown__list flex_column">
+                                        <button type="button" class="more_modal__item sorting__item active flex_row"
+                                            data-dropdown-option data-tab-key="projects">
+                                            <p class="caption">Проекты</p>
+                                            <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416"
+                                                    stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <button type="button" class="more_modal__item sorting__item flex_row"
+                                            data-dropdown-option data-tab-key="services">
+                                            <p class="caption">Услуги</p>
+                                            <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416"
+                                                    stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <button type="button" class="more_modal__item sorting__item flex_row"
+                                            data-dropdown-option data-tab-key="products">
+                                            <p class="caption">Товары</p>
+                                            <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416"
+                                                    stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="" data-tab-key="companies">Компании</a>
                         </div>
                         <div class="banner_filter__btm flex_row">
                             <input type="text" placeholder="Найти..."
@@ -765,9 +785,7 @@
                                             alt="" class="popular_card__v2">
                                     </a>
                                     <img src="./assets/images/company/Logo-ИХ.svg" class="popular_card__logo" alt="">
-                                    <div class="popular_card__dots">
-                                        <span class="active"></span><span></span><span></span><span></span>
-                                    </div>
+
                                 </div>
 
                                 <div class="popular_card__bottom flex_row">
@@ -905,9 +923,7 @@
                                             alt="" class="popular_card__v2">
                                     </a>
                                     <img src="./assets/images/company/Logo-ИХ.svg" class="popular_card__logo" alt="">
-                                    <div class="popular_card__dots">
-                                        <span class="active"></span><span></span><span></span><span></span>
-                                    </div>
+
                                 </div>
 
                                 <div class="popular_card__bottom flex_row">
@@ -1045,9 +1061,7 @@
                                             alt="" class="popular_card__v2">
                                     </a>
                                     <img src="./assets/images/company/Logo-ИХ.svg" class="popular_card__logo" alt="">
-                                    <div class="popular_card__dots">
-                                        <span class="active"></span><span></span><span></span><span></span>
-                                    </div>
+
                                 </div>
 
                                 <div class="popular_card__bottom flex_row">
@@ -1190,22 +1204,22 @@
                             </div>
                             <div class="swiper-slide price_card card flex_column">
                                 <div class="price_card__top flex_row">
-                                    <p class="body_medium">Газобетон</p>
-                                    <a href="" class="button_blue micro_medium">24 предложения</a>
+                                    <p class="body_medium">Каркас</p>
+                                    <a href="" class="button_blue micro_medium">18 предложений</a>
                                 </div>
                                 <div class="price_card__bottom flex_column">
-                                    <h3 class="num">115 000 ₽<span class="body">/м²</span></h3>
-                                    <p class="caption_medium">Диапазон: 95–135 тыс. ₽</p>
+                                    <h3 class="num">89 000 ₽<span class="body">/м²</span></h3>
+                                    <p class="caption_medium">Диапазон: 75–110 тыс. ₽</p>
                                 </div>
                             </div>
                             <div class="swiper-slide price_card card flex_column">
                                 <div class="price_card__top flex_row">
-                                    <p class="body_medium">Газобетон</p>
-                                    <a href="" class="button_blue micro_medium">24 предложения</a>
+                                    <p class="body_medium">Кирпич</p>
+                                    <a href="" class="button_blue micro_medium">12 предложений</a>
                                 </div>
                                 <div class="price_card__bottom flex_column">
-                                    <h3 class="num">115 000 ₽<span class="body">/м²</span></h3>
-                                    <p class="caption_medium">Диапазон: 95–135 тыс. ₽</p>
+                                    <h3 class="num">145 000 ₽<span class="body">/м²</span></h3>
+                                    <p class="caption_medium">Диапазон: 120–170 тыс. ₽</p>
                                 </div>
                             </div>
                         </div>
@@ -1266,7 +1280,7 @@
                             <h3>Пользователям</h3>
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                <path d="M13 1L7 7L1 1" stroke="#141416" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
                         </div>
@@ -1286,7 +1300,7 @@
                             <h3>Для компаний</h3>
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                <path d="M13 1L7 7L1 1" stroke="#141416" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
                         </div>
@@ -1304,7 +1318,7 @@
                             <h3>Контакты</h3>
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 7L7 1L1 7" stroke="#141416" stroke-width="2" stroke-linecap="round"
+                                <path d="M13 1L7 7L1 1" stroke="#141416" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
                         </div>
@@ -2110,6 +2124,240 @@
 
     </div>
 
+    <div class="filters_panel" id="filtersPanelServices">
+        <div class="filters_panel__header">
+            <div class="filters_panel__header__left flex_row">
+                <button type="button" class="filters_panel__icon-btn" data-action="back" aria-label="Назад">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M12.5 15.8333L6.66666 10L12.5 4.16667" stroke="currentColor" stroke-width="1.6"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <h3 class="filters_panel__title">Фильтры</h3>
+            </div>
+            <button type="button" class="filters_panel__icon-btn" data-action="close" aria-label="Закрыть">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="filters_panel__body">
+            <div class="filters_panel__applied flex_column" id="filtersAppliedServices" hidden>
+                <h3 class="filters_panel__section-title">Примененные фильтры</h3>
+                <div class="filters_applied__list flex_row" id="filtersAppliedListServices"></div>
+            </div>
+
+            <h3 class="filters_panel__section-title">Основные параметры</h3>
+
+            <div class="filter_field">
+                <label class="filter_field__label caption_medium">Категория услуги</label>
+                <div class="chip_group chip_group--scroll" data-group="category">
+                    <button type="button" class="chip_active active caption_medium"
+                        data-category="design">Проектирование</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium"
+                        data-category="construction">Строительство</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium"
+                        data-category="renovation">Ремонт и отделка</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium"
+                        data-category="engineering">Инженерные системы</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium"
+                        data-category="landscape">Ландшафт</button>
+                </div>
+            </div>
+
+            <div class="filter_field">
+                <label class="filter_field__label caption_medium" for="fRegionService">Регион работы</label>
+                <div class="filter_select">
+                    <select id="fRegionService" class="filter_select__input buttons_medium button_border">
+                        <option>Москва и МО</option>
+                        <option>Санкт-Петербург и ЛО</option>
+                        <option>Краснодарский край</option>
+                    </select>
+                    <svg class="filter_select__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 8L10 13L15 8" stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="filter_field">
+                <label class="filter_field__label caption_medium">Стоимость услуги</label>
+
+                <div class="range_card button_border">
+                    <div class="range_card__values">
+                        <div class="range_card__value">
+                            <span class="range_card__prefix caption">от</span>
+                            <input type="text" class="range_card__input buttons_medium" data-role="min-display"
+                                inputmode="numeric" value="50 000 ₽">
+                        </div>
+                        <span class="range_card__divider"></span>
+                        <div class="range_card__value">
+                            <span class="range_card__prefix caption">до</span>
+                            <input type="text" class="range_card__input buttons_medium" data-role="max-display"
+                                inputmode="numeric" value="5 000 000 ₽">
+                        </div>
+                    </div>
+
+                    <div class="range_slider" data-min="50000" data-max="5000000" data-step="10000"
+                        data-start-min="50000" data-start-max="5000000" data-unit="₽">
+                        <div class="range_slider__track"></div>
+                        <div class="range_slider__fill"></div>
+                        <input type="range" class="range_slider__input range_slider__input--min" min="50000"
+                            max="5000000" step="10000" value="50000" aria-label="Минимальная стоимость">
+                        <input type="range" class="range_slider__input range_slider__input--max" min="50000"
+                            max="5000000" step="10000" value="5000000" aria-label="Максимальная стоимость">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter_field">
+                <label class="filter_field__label caption_medium">Рейтинг</label>
+                <div class="circle_group" data-group="rating">
+                    <button type="button" class="chip_inactive__v2 caption_medium">4,0+</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium">4,5+</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium">4,8+</button>
+                </div>
+            </div>
+
+            <div class="filter_field">
+                <label class="filter_field__label caption_medium">Срок выполнения</label>
+                <div class="chip_group" data-group="service-term">
+                    <button type="button" class="chip_inactive__v2 caption_medium">До недели</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium">До месяца</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium">До 3 месяцев</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium">Более 3 месяцев</button>
+                </div>
+            </div>
+
+            <div class="filters_panel__footer flex_row">
+                <button type="button" class="filters_panel__submit button_v1 buttons_medium"
+                    id="filtersSubmitServices">156
+                    услуг</button>
+                <button type="button" class="filters_panel__reset button_border buttons_medium"
+                    data-action="reset">Сбросить</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="filters_panel" id="filtersPanelProducts">
+        <div class="filters_panel__header">
+            <div class="filters_panel__header__left flex_row">
+                <button type="button" class="filters_panel__icon-btn" data-action="back" aria-label="Назад">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M12.5 15.8333L6.66666 10L12.5 4.16667" stroke="currentColor" stroke-width="1.6"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <h3 class="filters_panel__title">Фильтры</h3>
+            </div>
+            <button type="button" class="filters_panel__icon-btn" data-action="close" aria-label="Закрыть">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="filters_panel__body">
+            <div class="filters_panel__applied flex_column" id="filtersAppliedProducts" hidden>
+                <h3 class="filters_panel__section-title">Примененные фильтры</h3>
+                <div class="filters_applied__list flex_row" id="filtersAppliedListProducts"></div>
+            </div>
+
+            <h3 class="filters_panel__section-title">Основные параметры</h3>
+
+            <div class="filter_field">
+                <label class="filter_field__label caption_medium">Категория товара</label>
+                <div class="chip_group chip_group--scroll" data-group="category">
+                    <button type="button" class="chip_active active caption_medium"
+                        data-category="materials">Стройматериалы</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium"
+                        data-category="tools">Инструменты</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium"
+                        data-category="finishing">Отделочные материалы</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium"
+                        data-category="engineering">Инженерное оборудование</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium"
+                        data-category="furniture">Мебель и декор</button>
+                </div>
+            </div>
+
+            <div class="filter_field">
+                <label class="filter_field__label caption_medium" for="fRegionProduct">Регион продавца</label>
+                <div class="filter_select">
+                    <select id="fRegionProduct" class="filter_select__input buttons_medium button_border">
+                        <option>Москва и МО</option>
+                        <option>Санкт-Петербург и ЛО</option>
+                        <option>Краснодарский край</option>
+                    </select>
+                    <svg class="filter_select__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 8L10 13L15 8" stroke="#141416" stroke-width="1.3" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="filter_field">
+                <label class="filter_field__label caption_medium">Цена</label>
+
+                <div class="range_card button_border">
+                    <div class="range_card__values">
+                        <div class="range_card__value">
+                            <span class="range_card__prefix caption">от</span>
+                            <input type="text" class="range_card__input buttons_medium" data-role="min-display"
+                                inputmode="numeric" value="500 ₽">
+                        </div>
+                        <span class="range_card__divider"></span>
+                        <div class="range_card__value">
+                            <span class="range_card__prefix caption">до</span>
+                            <input type="text" class="range_card__input buttons_medium" data-role="max-display"
+                                inputmode="numeric" value="500 000 ₽">
+                        </div>
+                    </div>
+
+                    <div class="range_slider" data-min="500" data-max="500000" data-step="500"
+                        data-start-min="500" data-start-max="500000" data-unit="₽">
+                        <div class="range_slider__track"></div>
+                        <div class="range_slider__fill"></div>
+                        <input type="range" class="range_slider__input range_slider__input--min" min="500"
+                            max="500000" step="500" value="500" aria-label="Минимальная цена">
+                        <input type="range" class="range_slider__input range_slider__input--max" min="500"
+                            max="500000" step="500" value="500000" aria-label="Максимальная цена">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter_field">
+                <label class="filter_field__label caption_medium">Наличие</label>
+                <div class="chip_group" data-group="availability">
+                    <button type="button" class="chip_inactive__v2 caption_medium">В наличии</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium">На заказ</button>
+                </div>
+            </div>
+
+            <div class="filter_field">
+                <label class="filter_field__label caption_medium">Рейтинг</label>
+                <div class="circle_group" data-group="rating">
+                    <button type="button" class="chip_inactive__v2 caption_medium">4,0+</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium">4,5+</button>
+                    <button type="button" class="chip_inactive__v2 caption_medium">4,8+</button>
+                </div>
+            </div>
+
+            <div class="filters_panel__footer flex_row">
+                <button type="button" class="filters_panel__submit button_v1 buttons_medium"
+                    id="filtersSubmitProducts">482
+                    товара</button>
+                <button type="button" class="filters_panel__reset button_border buttons_medium"
+                    data-action="reset">Сбросить</button>
+            </div>
+        </div>
+
+    </div>
+
     <div class="filters_panel search_panel" id="searchPanel">
         <div class="filters_panel__header__search flex_row">
             <button type="button" class="filters_panel__icon-btn" data-action="back" aria-label="Назад">
@@ -2124,14 +2372,47 @@
 
         <div class="filters_panel__body">
             <div class="search_panel__tabs buttons_medium flex_row">
-                <a href="" class="active" data-search-tab="projects">
-                    Проекты
-                    <svg class="search_panel__tab-chevron" width="12" height="8" viewBox="0 0 12 8" fill="none">
-                        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-                <a href="" data-search-tab="companies">Компании</a>
+                <div class="tabs_dropdown" data-dropdown>
+                    <a href="" class="active" data-tab-key="projects" data-dropdown-trigger>
+                        <span data-dropdown-label>Проекты</span>
+                        <svg class="search_panel__tab-chevron" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <div class="card_more__modal tabs_dropdown__modal" data-dropdown-menu>
+                        <div class="card_more__modal_wrapper tabs_dropdown__list flex_column">
+                            <button type="button" class="more_modal__item sorting__item active flex_row"
+                                data-dropdown-option data-tab-key="projects">
+                                <p class="caption">Проекты</p>
+                                <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <button type="button" class="more_modal__item sorting__item flex_row"
+                                data-dropdown-option data-tab-key="services">
+                                <p class="caption">Услуги</p>
+                                <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <button type="button" class="more_modal__item sorting__item flex_row"
+                                data-dropdown-option data-tab-key="products">
+                                <p class="caption">Товары</p>
+                                <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <a href="" data-tab-key="companies">Компании</a>
             </div>
 
             <div class="search_panel__input-row flex_row">
@@ -2182,7 +2463,7 @@
         </div>
     </div>
 
-    <div class="banner_mobile_nav container" data-skeleton>
+    <div class="banner_mobile_nav container">
         <div class="banner_mobile_nav_wrapper flex_row">
             <div class="banner_nav__item flex_column">
                 <img src="./assets/images/icon/search.svg" alt="">

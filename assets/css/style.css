@@ -58,6 +58,7 @@
     --border: #C4CAD7;
     --border_blue: #1253ED;
     --glass-dark-grey-glass: #00000199;
+    --glass-grey-glass: #3D3D4499;
     --glass-light-blue-glass: #DFEAFF99;
     --glass-light-grey-glass: #DCE0E999;
     --glass-300: #777A8D99;
@@ -353,7 +354,7 @@ button {
     }
 
     .cheap {
-        background: var(--glass-dark-grey-glass, #3D3D4499);
+        background: var(--glass-grey-glass);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
     }
@@ -391,6 +392,7 @@ button {
         border-radius: var(--space-999);
         padding: 9.5px 16px;
         border: 1px solid transparent;
+        color: var(--text);
     }
 
     .chip_inactive {
@@ -606,14 +608,15 @@ button {
     flex-direction: column;
     gap: var(--space-24);
     background: var(--background);
-    padding: 24px var(--space-16) var(--space-24);
+    padding: 16px var(--space-16) var(--space-24);
     overflow-y: auto;
 }
 
 .mobile-menu__top {
-    align-items: center;
+    padding: 14px 24px;
+            background: #DFEAFF99;
     justify-content: space-between;
-    padding: 16px 20px;
+    border-radius: var(--space-999);
 }
 
 .mobile-menu__logo {
@@ -627,8 +630,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+  
     cursor: pointer;
     flex: none;
 }
@@ -646,6 +648,13 @@ button {
 
 .mobile-menu__icon-item p {
     color: var(--text);
+}
+
+/* строки каталога в мобильном меню - теперь просто ссылки на страницы (не аккордеон),
+   стрелочка вправо декоративная - см. новую разметку в <header> вместо data-accordion */
+.mobile-menu__nav-link {
+    color: var(--text);
+    cursor: pointer;
 }
 
 .mobile-menu__icon-circle {
@@ -699,6 +708,7 @@ button {
 .mobile-menu__list {
     gap: var(--space-8);
     padding-left: 8px;
+    padding-right: 14px;
 }
 
 .mobile-menu__contacts {
@@ -724,7 +734,7 @@ button {
     }
 
     .header {
-        padding-top: 56px;
+        padding-top: 16px;
     }
 
     .header__inner {
@@ -818,11 +828,32 @@ button {
         color: rgba(255, 255, 255, 0.50);
         padding-bottom: var(--space-8);
         border-bottom: 1.5px solid transparent;
+        display: flex;
+        align-items: center;
+        gap: 4px;
     }
 
     .banner_filter__tabs a.active {
         color: var(--white);
         border-color: var(--white);
+    }
+
+    /* дропдаун "Проекты/Услуги/Товары" - и в шапке главной (внутри тёмного banner_main,
+       чуть темнее текст самой ссылки), и в модалке поиска (внутри светлой search_panel__tabs,
+       см. её собственные цвета ниже) - структура и поведение одинаковые, различаются только
+       унаследованные цвета текста ссылки/чипов */
+    .tabs_dropdown {
+        position: relative;
+    }
+
+    .tabs_dropdown__chevron {
+        flex: none;
+        transition: transform .15s ease;
+    }
+
+    .tabs_dropdown.open .tabs_dropdown__chevron,
+    .tabs_dropdown.open .search_panel__tab-chevron {
+        transform: rotate(180deg);
     }
 
     .banner_filter__tabs.favorites a {
@@ -849,6 +880,12 @@ button {
         padding: var(--space-16);
         color: var(--white);
         font-family: 'Onest';
+        /* без явного сброса нативного вида инпута браузер (особенно на macOS) может
+           подрисовывать свою рамку/тень снизу - особенно заметно в скелетоне загрузки,
+           когда у самого .button_border убран border (см. body.is-loading input) */
+        -webkit-appearance: none;
+        appearance: none;
+        box-shadow: none;
     }
 
     .filter_input__button::placeholder {
@@ -1030,8 +1067,24 @@ button {
     }
 
 
+    /* оверлей-ссылка на всю .popular_card__bottom_wrapper (см. initCardLinks в script.js) -
+       кнопка "..." должна оставаться кликабельной НАД ней, а не проваливаться под оверлей */
     .popular_card__more {
+        position: relative;
+        z-index: 2;
         cursor: pointer;
+    }
+
+    /* невидимая ссылка на всю нижнюю часть карточки - от заголовка до цены, без изменения
+       вёрстки/стилей самой карточки (см. initCardLinks/getCardHref в script.js) */
+    .popular_card__bottom_wrapper {
+        position: relative;
+    }
+
+    .popular_card__link {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
     }
 
     .card_more__modal {
@@ -1079,6 +1132,21 @@ button {
 
     .card_more__modal--below.active {
         transform: translateY(0);
+    }
+
+    /* дропдаун "Проекты/Услуги/Товары" (шапка главной + модалка поиска) - список вариантов
+       переиспользует .card_more__modal/.card_more__modal_wrapper (тень/радиус/фон/анимация
+       появления те же, что у "..." карточки и у сортировки в поиске), только своя позиция -
+       слева от переключателя, а не справа/снизу от кнопки - и своя ширина */
+    .tabs_dropdown__modal {
+        top: calc(100% + var(--space-12));
+        left: 0;
+        right: auto;
+    }
+
+    .tabs_dropdown__list {
+        width: max-content;
+        min-width: 168px;
     }
 
     .more_modal__item {
@@ -1138,6 +1206,7 @@ button {
         gap: var(--space-4);
         padding-bottom: var(--space-4) !important;
     }
+
 
     .products .popular_card__bottom_wrapper .popular_card__top_left {
         color: var(--text);
@@ -1541,7 +1610,8 @@ button {
     }
 
     .text_block__v4_cards {
-        width: 100%;
+        width: calc(100% + var(--space-16));
+        margin-right: calc(-1 * var(--space-16));
     }
 
     .text_block__v4_content {
@@ -1655,18 +1725,43 @@ button {
         scrollbar-width: none;
     }
 
+    .about_card_tabs_wrap::before,
     .about_card_tabs_wrap::after {
         content: '';
         position: absolute;
         top: 0;
-        right: -14px;
         width: 40px;
         height: 44px;
         pointer-events: none;
         backdrop-filter: blur(27px);
         background: var(--bg-surface, #E7EAF0);
+        opacity: 1;
+        transition: opacity .2s ease;
+    }
+
+    /* правый фейд - виден, пока справа есть чипы, до которых можно доскроллить;
+       исчезает, когда список докручен до конца (класс ставится в script.js) */
+    .about_card_tabs_wrap::after {
+        right: -14px;
         -webkit-mask-image: linear-gradient(to right, transparent, #000 60%);
         mask-image: linear-gradient(to right, transparent, #000 60%);
+    }
+
+    .about_card_tabs_wrap.is-at-end::after {
+        opacity: 0;
+    }
+
+    /* левый фейд - по умолчанию скрыт (в начале списка слева ничего не спрятано),
+       появляется, когда первый чип уходит за левый край (класс ставится в script.js) */
+    .about_card_tabs_wrap::before {
+        left: -14px;
+        opacity: 0;
+        -webkit-mask-image: linear-gradient(to left, transparent, #000 60%);
+        mask-image: linear-gradient(to left, transparent, #000 60%);
+    }
+
+    .about_card_tabs_wrap.is-scrolled::before {
+        opacity: 1;
     }
 
     .text_block__v5_spec h3 {
@@ -1751,6 +1846,7 @@ button {
     .footer_wrapper {
         padding: var(--space-24);
         gap: var(--space-24);
+        border-radius: 24px 24px 0 0;
     }
 
     .footer_logo {
@@ -1826,6 +1922,13 @@ button {
     }
 
     /* projects */
+    /* .flex_row задаёт display:flex тем же по весу classовым селектором, что и [hidden] -
+       поэтому без явного переопределения строка с чипами и кнопкой "Сбросить все" не
+       скрывалась бы, даже когда JS выставляет hidden (см. renderApplied() в script.js) */
+    .projects_filter[hidden] {
+        display: none;
+    }
+
     .projects_filter {
         gap: var(--space-8);
         overflow-x: auto;
@@ -1884,6 +1987,11 @@ button {
     .text_block__v1_cards {
         gap: var(--space-48);
         width: 100%;
+    }
+
+    .swiper.text_block__v1_cards {
+        width: calc(100% + var(--space-16));
+        margin-right: calc(-1 * var(--space-16));
     }
 
     .more_modal__item {
@@ -2516,6 +2624,17 @@ button {
         overflow: hidden;
     }
 
+    /* поиск теперь может оставаться активным ПОД фильтрами (см. openBtns/searchPanelFilterBtn
+       в script.js - это убирает "мигание" хиро-баннера при возврате из фильтров назад в поиск).
+       .search_panel в разметке идёт после остальных .filters_panel, поэтому при одинаковом
+       z-index он оказался бы визуально сверху - поднимаем модалки фильтров выше него, а не
+       опускаем сам поиск: у .header тоже z-index:1000, и если опустить .search_panel ниже
+       1000, шапка сайта (лого + гамбургер) окажется НАД поиском и перекроет его собственный
+       заголовок ("Поиск" + стрелка назад) - тогда поиск было не закрыть */
+    .filters_panel:not(.search_panel) {
+        z-index: 1001;
+    }
+
     .filters_panel.active {
         opacity: 1;
         visibility: visible;
@@ -2650,6 +2769,13 @@ button {
     .range_card {
         position: relative;
         padding: var(--space-16);
+    }
+
+    .range_card.button_border:hover,
+    .range_card.button_border:active {
+        color: var(--text);
+        background-color: transparent;
+        border-color: var(--border);
     }
 
     .range_card__values {
@@ -3143,7 +3269,7 @@ button {
     }
 
     [data-accordion].active [data-accordion-trigger] svg {
-        transform: rotate(180deg);
+        transform: rotate(-180deg);
     }
 
     [data-accordion-content] {
@@ -3230,6 +3356,13 @@ button {
 
     .search_panel__collections {
         gap: var(--space-24);
+    }
+
+    /* тот же класс .flex_column задаёт display:flex тем же по весу селектором, что и
+       [hidden] - без явного переопределения "Вы искали"/"Очистить" не скрывались бы,
+       даже когда истории поиска ещё нет (см. renderHistory() в script.js) */
+    .search_panel__history[hidden] {
+        display: none;
     }
 
     .search_panel__history {
@@ -3388,6 +3521,7 @@ button {
     body.is-loading [data-skeleton] [data-skeleton-block] {
         position: relative;
         overflow: hidden;
+        border-radius: var(--space-16);
         background-color: var(--whitegray) !important;
         background-image: none !important;
     }
@@ -3426,6 +3560,7 @@ button {
 
     body.is-loading [data-skeleton] input {
         color: transparent;
+        border: none !important;
         border-radius: var(--space-16);
         background: linear-gradient(90deg, var(--whitegray) 0%, var(--light) 50%, var(--whitegray) 100%) !important;
         background-size: 800px 100% !important;
@@ -3442,6 +3577,7 @@ button {
     body.is-loading [data-skeleton] :where(a, button).button_v1,
     body.is-loading [data-skeleton] :where(a, button).header__right_btn {
         color: transparent !important;
+        border: none !important;
         border-radius: var(--space-16);
         background: linear-gradient(90deg, var(--whitegray) 0%, var(--light) 50%, var(--whitegray) 100%) !important;
         background-size: 800px 100% !important;
