@@ -787,7 +787,14 @@ button {
         position: relative;
         display: flex;
         flex-direction: column;
+        /* 100vh в мобильных браузерах считается по "полной" высоте экрана, без адресной
+           строки и таб-бара снизу - когда они видны (как у гугловского таб-бара на скрине),
+           реальная видимая область меньше, и хиро визуально "проваливается" под них.
+           100dvh - это динамическая высота, которая реально учитывает показанные/скрытые
+           панели браузера и подстраивается под них; vh оставляем как запасной вариант для
+           браузеров, которые dvh не понимают - тогда вторая строка просто игнорируется */
         min-height: 100vh;
+        min-height: 100dvh;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: var(--bg-pos-x) var(--bg-pos-y);
@@ -2673,6 +2680,7 @@ button {
         z-index: 1000;
         box-shadow: 0 4px 32px rgba(20, 20, 22, 0.08);
         max-height: 100vh;
+        max-height: 100dvh;
         max-width: 100%;
         opacity: 0;
         visibility: hidden;
