@@ -564,9 +564,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
             panel.querySelectorAll('.chip_group button.chip_active, .circle_group button.chip_active').forEach(function (btn) {
                 // "Категория" в фильтрах компаний работает как таб (всегда что-то выбрано,
-                // переключает набор доп.полей) - это не отдельный применённый фильтр, который можно снять
+                // переключает набор доп.полей) - это не отдельный применённый фильтр, который можно
+                // снять, ЕСЛИ она стоит по умолчанию. Но если сюда пришли по карточке категории
+                // с главной ("Строительство"/"Архитектура" и т.п. в блоке "Категории услуг и
+                // компаний" - см. [data-goto-category] в script.js), категория была выбрана явно
+                // пользователем, и её показываем как обычный применяемый/снимаемый фильтр -
+                // отсюда panel.dataset.categoryExplicit (проставляется при restore ниже)
                 var group = btn.closest('[data-group]');
-                if (group && group.dataset.group === 'category') return;
+                if (group && group.dataset.group === 'category') {
+                    if (panel.dataset.categoryExplicit !== '1') return;
+                    items.push({
+                        label: chipLabel(btn),
+                        reset: function () {
+                            panel.dataset.categoryExplicit = '';
+                            // настоящий клик по первому табу категории - его подхватят и общий
+                            // переключатель .chip_group (активный/неактивный класс), и обработчик
+                            // самих компаний (applyCompaniesCategory), как при обычном клике руками
+                            var first = group.querySelector('button[data-category]');
+                            if (first) first.click();
+                        }
+                    });
+                    return;
+                }
 
                 items.push({
                     label: chipLabel(btn),
@@ -885,6 +904,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     sessionStorage.removeItem('filterState:' + config.key);
                     var savedState = JSON.parse(savedRaw);
                     applyPanelState(panel, savedState);
+                    // категория пришла явным выбором (карточка на главной, [data-goto-category]),
+                    // а не осталась дефолтным табом - показываем её как обычный применённый фильтр
+                    if (savedState.categoryExplicit) panel.dataset.categoryExplicit = '1';
                     if (savedState.searchQuery) {
                         window.__searchQuery[config.key] = savedState.searchQuery;
                     }
@@ -1223,67 +1245,97 @@ try {
             'compare-removed': { left: LEFT_COMPARE_REMOVED, right: RIGHT_COMPARE_REMOVED }
         };
 
-        function initCard(card) {
-            var likeBtn = card.querySelector('.popular_card__like');
-            var media = card.querySelector('.popular_card__media');
-            if (!likeBtn || !media) return;
+        // единый тост на весь экран (а не по одному внутри каждой карточки) - висит над
+        // таб-баром снизу, независимо от того, у какой карточки нажали "сердце"/"сравнить"
+        var hideTimer = null;
+        var currentKind = null;
+        var currentCard = null;
+        var toastEl = null;
+        var leftEl = null;
+        var rightEl = null;
 
-            var hideTimer = null;
-            var currentKind = null;
+        function positionToast() {
+            if (!toastEl) return;
+            var navBar = document.querySelector('.banner_mobile_nav');
+            var bottomOffset = 24;
+            if (navBar) {
+                var navBottomVar = parseFloat(getComputedStyle(navBar).bottom);
+                if (isNaN(navBottomVar)) navBottomVar = 16;
+                bottomOffset = navBottomVar + navBar.offsetHeight + 12;
+            }
+            toastEl.style.bottom = bottomOffset + 'px';
+        }
 
-            var modal = document.createElement('div');
-            modal.className = 'favorites_modal';
-            modal.innerHTML =
+        function ensureToast() {
+            if (toastEl) return toastEl;
+
+            toastEl = document.createElement('div');
+            toastEl.className = 'favorites_toast container';
+            toastEl.innerHTML =
                 '<div class="favorites_modal_wrapper flex_row">' +
                 '<div class="favorites_modal__left flex_row"></div>' +
                 '<div class="favorites_modal__right flex_row"></div>' +
                 '</div>';
-            media.appendChild(modal);
+            document.body.appendChild(toastEl);
 
-            var leftEl = modal.querySelector('.favorites_modal__left');
-            var rightEl = modal.querySelector('.favorites_modal__right');
+            leftEl = toastEl.querySelector('.favorites_modal__left');
+            rightEl = toastEl.querySelector('.favorites_modal__right');
 
             rightEl.addEventListener('click', function (e) {
                 var link = e.target.closest('a');
-                if (!link) return;
+                if (!link || !currentCard) return;
                 if (currentKind === 'removed') {
                     e.preventDefault();
-                    likeBtn.classList.add('active');
-                    show('added');
-                    if (typeof window.__toggleFavoriteItem === 'function') window.__toggleFavoriteItem(card, true);
+                    var likeBtn = currentCard.querySelector('.popular_card__like');
+                    if (likeBtn) likeBtn.classList.add('active');
+                    showToast('added', currentCard);
+                    if (typeof window.__toggleFavoriteItem === 'function') window.__toggleFavoriteItem(currentCard, true);
                 } else if (currentKind === 'compare-removed') {
                     // "Отменить" для сравнения - снова добавляем через тот же переключатель,
                     // что и сам пункт "Сравнить" в меню карточки
                     e.preventDefault();
-                    if (typeof window.__toggleCompareItem === 'function') window.__toggleCompareItem(card);
+                    if (typeof window.__toggleCompareItem === 'function') window.__toggleCompareItem(currentCard);
                 } else {
                     clearTimeout(hideTimer);
-                    modal.classList.remove('active');
+                    toastEl.classList.remove('active');
                 }
             });
 
-            function show(kind) {
-                currentKind = kind;
-                var content = TOAST_CONTENT[kind] || TOAST_CONTENT.added;
-                modal.className = 'favorites_modal favorites_modal--' + kind + ' container active';
-                leftEl.innerHTML = content.left;
-                rightEl.innerHTML = content.right;
+            positionToast();
+            window.addEventListener('resize', positionToast);
 
-                clearTimeout(hideTimer);
-                hideTimer = setTimeout(function () {
-                    modal.classList.remove('active');
-                }, HIDE_DELAY);
-            }
+            return toastEl;
+        }
+
+        function showToast(kind, card) {
+            ensureToast();
+            currentKind = kind;
+            currentCard = card;
+            var content = TOAST_CONTENT[kind] || TOAST_CONTENT.added;
+            toastEl.className = 'favorites_toast favorites_modal--' + kind + ' container active';
+            leftEl.innerHTML = content.left;
+            rightEl.innerHTML = content.right;
+            positionToast();
+
+            clearTimeout(hideTimer);
+            hideTimer = setTimeout(function () {
+                toastEl.classList.remove('active');
+            }, HIDE_DELAY);
+        }
+        // тот же единый тост показывается и для пункта "Сравнить" в card_more__modal (см.
+        // window.__toggleCompareItem) - раньше у каждой карточки был свой собственный
+        // модальный блок (card._toastApi), теперь один общий тост на всё приложение
+        window.__showFavoritesToast = showToast;
+
+        function initCard(card) {
+            var likeBtn = card.querySelector('.popular_card__like');
+            if (!likeBtn) return;
 
             likeBtn.addEventListener('click', function () {
                 var isLiked = likeBtn.classList.toggle('active');
-                show(isLiked ? 'added' : 'removed');
+                showToast(isLiked ? 'added' : 'removed', card);
                 if (typeof window.__toggleFavoriteItem === 'function') window.__toggleFavoriteItem(card, isLiked);
             });
-
-            // даёт другим обработчикам (пункт "Сравнить" в card_more__modal) показать
-            // тот же тост с другим текстом, не создавая ещё один такой же модальный блок
-            card._toastApi = { show: show };
         }
 
         function init(root) {
@@ -1301,6 +1353,40 @@ try {
 } catch (err) {
     console.error('favorites toast init:', err);
 }
+
+// карточки категорий на главной ("Строительство"/"Архитектура" и т.д. в блоке "Категории
+// услуг и компаний") ведут в каталог компаний с уже выбранным фильтром по категории -
+// переиспользуем тот же механизм, которым companies.html восстанавливает фильтры после
+// сабмита самой панели (см. sessionStorage 'filterState:companies' + applyPanelState выше)
+document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-goto-category]');
+    if (!el) return;
+    try {
+        sessionStorage.setItem('filterState:companies', JSON.stringify({
+            category: el.dataset.gotoCategory,
+            categoryExplicit: true,
+            chips: [],
+            selects: {},
+            ranges: [],
+            checkboxes: []
+        }));
+    } catch (err) {
+        console.error('goto category filter:', err);
+    }
+});
+
+// кнопки "Оставить заявку" в хедере и CTA-кнопки на странице ("Получить расчет",
+// "Уточнить стоимость", "Обсудить проект/задачу" и т.п.) раньше были пустыми ссылками
+// (href="") и просто перезагружали страницу - вместо этого скроллим к форме заявки
+// внизу страницы (.form_section), плавно
+document.addEventListener('click', function (e) {
+    var el = e.target.closest('.js-open-modal, [data-scroll-to-form]');
+    if (!el) return;
+    var form = document.querySelector('.form_section');
+    if (!form) return;
+    e.preventDefault();
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     function initReadMore(cardSelector, textSelector, btnSelector) {
@@ -1547,15 +1633,28 @@ document.addEventListener('DOMContentLoaded', () => {
         var searchTabsWrap = searchPanel.querySelector('.search_panel__tabs');
         var searchTabs = searchPanel.querySelectorAll('.search_panel__tabs a[data-tab-key]');
         var collectionsTitle = document.getElementById('searchPanelCollectionsTitle');
+        var collectionsListProjects = document.getElementById('searchPanelCollectionsListProjects');
+        var collectionsListCompanies = document.getElementById('searchPanelCollectionsListCompanies');
+
+        // подборки в поиске - карточки как на главной: для "Компании" показываем карточки
+        // компаний, для остальных разделов (Проекты/Услуги/Товары) пока показываем ту же
+        // заглушку - карточки-дубликаты, которые позже заменят на настоящие карточки проектов
+        function updateSearchCollections(key) {
+            if (collectionsTitle) {
+                collectionsTitle.textContent = COLLECTIONS_TITLE_BY_KEY[key] || COLLECTIONS_TITLE_BY_KEY.projects;
+            }
+            var showCompanies = key === 'companies';
+            if (collectionsListCompanies) collectionsListCompanies.hidden = !showCompanies;
+            if (collectionsListProjects) collectionsListProjects.hidden = showCompanies;
+        }
+
         searchTabs.forEach(function (tab) {
             tab.addEventListener('click', function (e) {
                 e.preventDefault();
                 var key = tab.dataset.tabKey;
                 searchTabs.forEach(function (t) { t.classList.remove('active'); });
                 tab.classList.add('active');
-                if (collectionsTitle) {
-                    collectionsTitle.textContent = COLLECTIONS_TITLE_BY_KEY[key] || COLLECTIONS_TITLE_BY_KEY.projects;
-                }
+                updateSearchCollections(key);
                 // тот же раздел выставляем и в шапке главной - чтобы значок фильтра там (в
                 // обход поиска) открывал панель того же раздела, что выбран в самом поиске
                 if (typeof window.__syncTabGroup === 'function') {
@@ -1575,9 +1674,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (typeof window.__syncTabGroup === 'function') {
                 window.__syncTabGroup(searchTabsWrap, key);
             }
-            if (collectionsTitle) {
-                collectionsTitle.textContent = COLLECTIONS_TITLE_BY_KEY[key] || COLLECTIONS_TITLE_BY_KEY.projects;
-            }
+            updateSearchCollections(key);
         })();
 
         // ---- применённые фильтры прямо в модалке поиска ----
@@ -2069,6 +2166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (typeof window.initFavoritesToast === 'function') window.initFavoritesToast(resultsList);
             if (typeof window.__syncFavoriteLikeButtons === 'function') window.__syncFavoriteLikeButtons(resultsList);
             if (typeof window.initCardLinks === 'function') window.initCardLinks(resultsList);
+            if (typeof window.initCardMediaLinks === 'function') window.initCardMediaLinks(resultsList);
         }
 
         renderHistory();
@@ -2092,19 +2190,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (typeof window.__syncTabGroup === 'function') {
                     window.__syncTabGroup(searchTabsWrap, key);
                 }
-                if (collectionsTitle) {
-                    collectionsTitle.textContent = COLLECTIONS_TITLE_BY_KEY[key] || COLLECTIONS_TITLE_BY_KEY.projects;
-                }
+                updateSearchCollections(key);
                 openSearchPanel();
                 if (searchInput) searchInput.focus();
             });
         }
 
-        // поиск в баннере на главной должен открываться прямо по клику/фокусу на сам инпут
-        // "Найти", без отдельной кнопки-иконки - переиспользуем ту же логику синхронизации
-        // таба/значения, что и в bannerSearchBtn выше
+        // поиск в баннере на главной должен открываться прямо по тапу на сам инпут "Найти",
+        // без отдельной кнопки-иконки, сразу с открытой клавиатурой - как в Google (тап по
+        // строке поиска сразу даёт возможность печатать, а не открывает пустую модалку, в
+        // которой ещё раз нужно попасть пальцем в инпут). Сам баннерный инпут - readonly
+        // (см. index.html), поэтому он никогда не получает свой собственный фокус/клавиатуру -
+        // тап по нему сразу и без всякого мигания переводит фокус на настоящий инпут внутри
+        // модалки поиска, в рамках того же самого пользовательского жеста
         if (bannerInput && searchPanel) {
-            var openSearchFromBannerInput = function () {
+            bannerInput.addEventListener('click', function () {
                 if (bannerInput && searchInput) {
                     searchInput.value = bannerInput.value;
                     searchInput.dispatchEvent(new Event('input'));
@@ -2114,15 +2214,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (typeof window.__syncTabGroup === 'function') {
                     window.__syncTabGroup(searchTabsWrap, key);
                 }
-                if (collectionsTitle) {
-                    collectionsTitle.textContent = COLLECTIONS_TITLE_BY_KEY[key] || COLLECTIONS_TITLE_BY_KEY.projects;
-                }
+                updateSearchCollections(key);
                 openSearchPanel();
-                bannerInput.blur();
-                if (searchInput) searchInput.focus();
-            };
-            bannerInput.addEventListener('focus', openSearchFromBannerInput);
-            bannerInput.addEventListener('click', openSearchFromBannerInput);
+                // .filters_panel.active меняет visibility с переходом (transition), поэтому сразу
+                // в этом же тике браузер ещё считает панель невидимой и не даёт фокус её инпуту -
+                // ждём один кадр, чтобы стиль реально применился, и только потом фокусируемся
+                if (searchInput) {
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            searchInput.focus();
+                        });
+                    });
+                }
+            });
+        }
+
+        // пункт "Поиск" в таб-баре внизу (на всех страницах) должен открывать ту же модалку
+        // поиска сразу с фокусом в инпуте - как баннерный инпут на главной, тем же приёмом
+        var navSearchBtn = document.getElementById('navSearchBtn');
+        if (navSearchBtn && searchPanel) {
+            navSearchBtn.addEventListener('click', function () {
+                var key = window.__pageFilterKey || 'projects';
+                if (typeof window.__syncTabGroup === 'function') {
+                    window.__syncTabGroup(searchTabsWrap, key);
+                }
+                updateSearchCollections(key);
+                openSearchPanel();
+                if (searchInput) {
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            searchInput.focus();
+                        });
+                    });
+                }
+            });
+            navSearchBtn.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navSearchBtn.click();
+                }
+            });
         }
 
         if (searchPanelFilterBtn) {
@@ -2186,6 +2317,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // значок поиска в шапке каталога не должен выглядеть отключённым по умолчанию
             if (listSearchBtn) listSearchBtn.classList.remove('search_btn_disabled');
 
+            // сама кнопка поиска показывается только когда в поле реально что-то введено -
+            // до этого там просто пустая строка + значок фильтра, без лишней синей кнопки
+            if (listSearchBtn && listInput) {
+                listSearchBtn.hidden = listInput.value.trim().length === 0;
+                listInput.addEventListener('input', function () {
+                    listSearchBtn.hidden = listInput.value.trim().length === 0;
+                });
+            }
+
             if (listFilterBtn) {
                 listFilterBtn.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -2226,15 +2366,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// --- та же строка поиска/фильтра в шапке списка, но для страниц БЕЗ модалки #searchPanel ---
-// (например companies.html в текущей верстке) - блок выше в этом случае обрывается на самом
-// первом "if (!searchPanel) return", поэтому иконка фильтра там вообще не открывалась
+// --- та же строка поиска/фильтра в шапке списка каталога (companies.html/products.html/
+// projects.html/services.html) - это отдельная строка от инпута ВНУТРИ модалки #searchPanel,
+// поэтому раньше вся эта инициализация просто пропускалась целиком, если модалка есть хоть
+// где-то на странице; теперь модалка есть на каждой странице, так что пропускаем по каждой
+// строке отдельно - только ту, что внутри самой модалки (.search_panel), она уже
+// инициализируется своим кодом выше
 document.addEventListener('DOMContentLoaded', () => {
     try {
-        if (document.getElementById('searchPanel')) return; // обработано блоком выше
-
         document.querySelectorAll('.banner_filter__btm').forEach(function (row) {
             if (row.closest('.banner_main')) return;
+            if (row.closest('.search_panel')) return; // строка внутри модалки - обработана блоком выше
 
             var listInput = row.querySelector('input.filter_input__button');
             var listFilterBtn = row.querySelector('a.icon_btn');
@@ -2242,6 +2384,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // значок поиска в шапке каталога не должен выглядеть отключённым по умолчанию
             if (listSearchBtn) listSearchBtn.classList.remove('search_btn_disabled');
+
+            // сама кнопка поиска показывается только когда в поле реально что-то введено -
+            // до этого там просто пустая строка + значок фильтра, без лишней синей кнопки
+            if (listSearchBtn && listInput) {
+                listSearchBtn.hidden = listInput.value.trim().length === 0;
+                listInput.addEventListener('input', function () {
+                    listSearchBtn.hidden = listInput.value.trim().length === 0;
+                });
+            }
 
             if (listFilterBtn) {
                 listFilterBtn.addEventListener('click', function (e) {
@@ -2819,14 +2970,14 @@ try {
                 items.splice(idx, 1);
                 saveCompareItems(items);
                 delete card.dataset.compareTempId;
-                if (card._toastApi) card._toastApi.show('compare-removed');
+                if (typeof window.__showFavoritesToast === 'function') window.__showFavoritesToast('compare-removed', card);
             } else {
                 var data = extractCardData(card);
                 data.id = 'c' + Date.now() + Math.floor(Math.random() * 1000);
                 items.push(data);
                 saveCompareItems(items);
                 card.dataset.compareTempId = data.id;
-                if (card._toastApi) card._toastApi.show('compare-added');
+                if (typeof window.__showFavoritesToast === 'function') window.__showFavoritesToast('compare-added', card);
             }
             updateCompareBadges();
         };
@@ -3144,9 +3295,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function getCardHref(card) {
     var media = card.querySelector('.popular_card__media');
     if (media) {
-        var mediaLink = media.querySelector('a[href]');
-        if (mediaLink) {
-            var href = (mediaLink.getAttribute('href') || '').trim();
+        // внутри .popular_card__media первой в разметке часто идёт декоративная ссылка
+        // на источник рейтинга (<a href="#" class="popular_card_rating__source">), а не
+        // сама карточка-фото - поэтому проверяем ВСЕ ссылки внутри media, а не только первую
+        var mediaLinks = media.querySelectorAll('a[href]');
+        for (var i = 0; i < mediaLinks.length; i++) {
+            var href = (mediaLinks[i].getAttribute('href') || '').trim();
             if (href && href !== '#') return href;
         }
     }
@@ -3170,7 +3324,12 @@ function initCardLinks(root) {
         if (!href) return;
         card.dataset.cardLinked = '1';
 
-        var wrap = card.querySelector('.popular_card__bottom_wrapper');
+        // не везде в разметке есть .popular_card__bottom_wrapper (старые карточки
+        // 'Похожие товары/проекты', карточка компании на странице товара и т.п. верстают
+        // низ просто как .popular_card__bottom > .popular_card__bottom_left) - оверлей в
+        // этом случае кладём на .popular_card__bottom целиком, кнопка "..." (popular_card__more)
+        // всё равно остаётся кликабельной сверху за счёт своего z-index
+        var wrap = card.querySelector('.popular_card__bottom_wrapper') || card.querySelector('.popular_card__bottom');
         if (wrap && !wrap.querySelector('.popular_card__link')) {
             var link = document.createElement('a');
             link.href = href;
@@ -3270,5 +3429,40 @@ document.addEventListener('DOMContentLoaded', () => {
         initCardMediaSwipers(document);
     } catch (err) {
         console.error('card media swiper init:', err);
+    }
+});
+
+// на карточках с одним фото/лого (компании, товары) фото лежит в <a href="..."> прямо в
+// разметке, но сама картинка position:absolute внутри .popular_card__media - у которой
+// СВОЁ position:relative, а не у <a> - поэтому картинка геометрически "убегает" из-под
+// ссылки, и та превращается в пустышку нулевого размера: клик по фото никуда не ведёт.
+// initCardMediaSwipers выше для таких карточек НЕ создаёт свайпер (там же не за что тапать -
+// у настоящего свайпера уже есть свой обработчик tap) - на них кладём тот же невидимый
+// оверлей, что и на .popular_card__bottom_wrapper (см. initCardLinks), но НЕ на карточки
+// с реальным свайпером (media.dataset.gallerySwiper === '1') - там оверлей перекрыл бы
+// touch-жесты самого свайпера
+function initCardMediaLinks(root) {
+    (root || document).querySelectorAll('.popular_card').forEach(function (card) {
+        var media = card.querySelector('.popular_card__media');
+        if (!media || media.dataset.gallerySwiper === '1') return;
+        if (media.querySelector('.popular_card__link')) return;
+
+        var href = getCardHref(card);
+        if (!href) return;
+
+        var link = document.createElement('a');
+        link.href = href;
+        link.className = 'popular_card__link';
+        link.setAttribute('aria-label', 'Открыть карточку');
+        media.appendChild(link);
+    });
+}
+window.initCardMediaLinks = initCardMediaLinks;
+
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        initCardMediaLinks(document);
+    } catch (err) {
+        console.error('card media links init:', err);
     }
 });

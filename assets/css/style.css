@@ -232,6 +232,13 @@ button {
     font-family: 'Onest';
     border: none;
     background: none;
+    /* без сброса нативного appearance некоторые браузеры (особенно Safari на macOS) всё
+       равно подрисовывают системную тень/рамку кнопки поверх background:none - это и
+       давало "тень снизу" у скелетон-заглушек (.sorting и т.п.), где фон/бордер сняты, но
+       нативный вид кнопки остаётся */
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: none;
 }
 
 @media (max-width:768px) {
@@ -965,6 +972,14 @@ button {
         background-position: center;
     }
 
+    /* .search_btn в шапке каталога скрыт, пока пользователь ничего не ввёл в поиск
+       (появляется/прячется через atrribute hidden - см. script.js) - без этого переопределения
+       [hidden] проигрывает более специфичному .banner_filter__btm .search_btn{display:flex}
+       выше, та же история, что и с .projects_filter[hidden]/.search_panel__history[hidden] */
+    .banner_filter__btm .search_btn[hidden] {
+        display: none;
+    }
+
     .banner_mobile_nav {
         position: fixed;
         left: 0;
@@ -991,7 +1006,6 @@ button {
         background: var(--glass-light-blue-glass);
         backdrop-filter: blur(12.12px);
         -webkit-backdrop-filter: blur(12.12px);
-
     }
 
     .banner_nav__item {
@@ -1416,6 +1430,54 @@ button {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
+    }
+
+    /* display:grid у класса перебивает дефолтный display:none браузера у [hidden] -
+       атрибутный селектор [hidden] той же специфичности, но из UA-стиля, который всегда
+       ниже по приоритету, чем авторский - тот же баг, что раньше был у .search_btn[hidden].
+       нужно для переключения "Подборки проектов"/"Подборки компаний" в поиске (там же
+       .hidden ставится через JS) */
+    .text_block__v2_cards[hidden] {
+        display: none;
+    }
+
+    /* подборки в поиске - те же карточки категорий, что в "Категории услуг и компаний" на
+       главной, но одной горизонтально скроллящейся строкой, а не сеткой в 2 колонки - скролл
+       остаётся рабочим (можно проскроллить пальцем/колесом), просто без видимого ползунка */
+    .text_block__v2_cards--scroll {
+        display: flex;
+        grid-template-columns: none;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        /* та же техника, что у .text_block__v1_cards/.text_block__v4_cards - без неё
+           карточки справа обрезаются паддингом родителя (.filters_panel__body), не
+           доскроллить до края */
+        width: calc(100% + var(--space-16));
+        margin-right: calc(-1 * var(--space-16));
+        /* скрываем сам ползунок скролла, скролл при этом продолжает работать */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .text_block__v2_cards--scroll::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    .text_block__v2_cards--scroll .text_block__v2_card,
+    .text_block__v2_cards--scroll .text_block__v2_card_v2 {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+    }
+
+    /* .text_block__v2_card_v2 ("Еще +9 категорий") в сетке на главной просто занимает
+       высоту своей строки грида - в горизонтальном скролле такой строки нет, поэтому
+       задаём те же размеры, что у соседних карточек, чтобы она не сжималась по контенту */
+    .text_block__v2_cards--scroll .text_block__v2_card_v2 {
+        min-width: 165px;
+        height: 165px;
     }
 
     .text_block__v2_card {
@@ -3143,6 +3205,28 @@ button {
         pointer-events: auto;
     }
 
+    /* единый тост "избранное"/"сравнение" на весь экран - висит над таб-баром, а не внутри
+       каждой карточки (позиция .bottom считается в JS от реальной высоты .banner_mobile_nav,
+       см. positionToast() в script.js) */
+    .favorites_toast {
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 950;
+        max-width: none;
+        margin: 0;
+        pointer-events: none;
+    }
+
+    .favorites_toast.active .favorites_modal_wrapper {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        transition: opacity .35s cubic-bezier(0.4, 0, 0.2, 1),
+            transform .35s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: auto;
+    }
+
     .favorites_modal__right {
         gap: var(--space-4);
     }
@@ -3553,6 +3637,7 @@ button {
     body.is-loading [data-skeleton] .price_card,
     body.is-loading [data-skeleton] .document_card_img {
         border-radius: var(--space-16);
+        overflow: hidden;
         background: linear-gradient(90deg, var(--whitegray) 0%, var(--light) 50%, var(--whitegray) 100%) !important;
         background-size: 800px 100% !important;
         animation: pagePreloaderShimmer 1.6s ease-in-out infinite;
@@ -3561,7 +3646,15 @@ button {
     body.is-loading [data-skeleton] input {
         color: transparent;
         border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+        -webkit-appearance: none;
+        appearance: none;
         border-radius: var(--space-16);
+        /* Safari на iOS иногда не обрезает анимированный background у нативного input
+           по border-radius без явного overflow:hidden - снизу проступает тонкая тёмная
+           полоска на стыке скругления и бегущего градиента */
+        overflow: hidden;
         background: linear-gradient(90deg, var(--whitegray) 0%, var(--light) 50%, var(--whitegray) 100%) !important;
         background-size: 800px 100% !important;
         animation: pagePreloaderShimmer 1.6s ease-in-out infinite;
@@ -3578,7 +3671,10 @@ button {
     body.is-loading [data-skeleton] :where(a, button).header__right_btn {
         color: transparent !important;
         border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
         border-radius: var(--space-16);
+        overflow: hidden;
         background: linear-gradient(90deg, var(--whitegray) 0%, var(--light) 50%, var(--whitegray) 100%) !important;
         background-size: 800px 100% !important;
         animation: pagePreloaderShimmer 1.6s ease-in-out infinite;

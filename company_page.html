@@ -329,7 +329,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="" class="buttons_medium button_v1 company_page__btn">Получить консультацию</a>
+                    <a href="" class="buttons_medium button_v1 company_page__btn" data-scroll-to-form>Получить консультацию</a>
                 </div>
             </section>
 
@@ -710,9 +710,178 @@
         </footer>
     </div>
 
+    <div class="filters_panel search_panel" id="searchPanel">
+        <div class="filters_panel__header__search flex_row">
+            <button type="button" class="filters_panel__icon-btn" data-action="back" aria-label="Назад">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M12.5 15.8333L6.66666 10L12.5 4.16667" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <h3 class="filters_panel__title">Поиск</h3>
+
+        </div>
+
+        <div class="filters_panel__body">
+            <div class="search_panel__tabs buttons_medium flex_row">
+                <div class="tabs_dropdown" data-dropdown>
+                    <a href="" class="active" data-tab-key="projects" data-dropdown-trigger>
+                        <span data-dropdown-label>Проекты</span>
+                        <svg class="search_panel__tab-chevron" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <div class="card_more__modal tabs_dropdown__modal" data-dropdown-menu>
+                        <div class="card_more__modal_wrapper tabs_dropdown__list flex_column">
+                            <button type="button" class="more_modal__item sorting__item active flex_row"
+                                data-dropdown-option data-tab-key="projects">
+                                <p class="caption">Проекты</p>
+                                <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <button type="button" class="more_modal__item sorting__item flex_row" data-dropdown-option
+                                data-tab-key="services">
+                                <p class="caption">Услуги</p>
+                                <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <button type="button" class="more_modal__item sorting__item flex_row" data-dropdown-option
+                                data-tab-key="products">
+                                <p class="caption">Товары</p>
+                                <svg class="sorting__check" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.3334 4L6.00008 11.3333L2.66675 8" stroke="#141416" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <a href="" data-tab-key="companies">Компании</a>
+            </div>
+
+            <div class="search_panel__input-row flex_row">
+                <div class="banner_filter__btm flex_row">
+                    <input type="text" placeholder="Найти проект..."
+                        class="filter_input__button buttons_medium button_border">
+                    <a href="" class="button_border projects icon_btn">
+                        <span class="filter_bage" hidden>0</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3 6.88888H12.3333M12.3333 6.88888C12.3333 8.17754 13.378 9.22221 14.6667 9.22221C15.9554 9.22221 17 8.17754 17 6.88888C17 5.60021 15.9554 4.55554 14.6667 4.55554C13.378 4.55554 12.3333 5.60021 12.3333 6.88888ZM7.66667 13.1111H17M7.66667 13.1111C7.66667 14.3998 6.62199 15.4444 5.33333 15.4444C4.04467 15.4444 3 14.3998 3 13.1111C3 11.8224 4.04467 10.7778 5.33333 10.7778C6.62199 10.7778 7.66667 11.8224 7.66667 13.1111Z"
+                                stroke="#141416" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a href="" class="search_btn"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M17.5 17.5L12.5001 12.5M14.1667 8.33333C14.1667 11.555 11.555 14.1667 8.33333 14.1667C5.11168 14.1667 2.5 11.555 2.5 8.33333C2.5 5.11168 5.11168 2.5 8.33333 2.5C11.555 2.5 14.1667 5.11168 14.1667 8.33333Z"
+                                stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="search_panel__history flex_column buttons_medium" id="searchPanelHistory" hidden>
+                <h3 class="filters_panel__section-subtitle buttons_medium">Вы искали</h3>
+                <div class="search_panel__history-list flex_row" id="searchPanelHistoryList">
+                    <button type="button" class="chip_query--clear button_border caption_medium"
+                        data-action="clear-history">Очистить</button>
+                </div>
+            </div>
+
+            <div class="search_panel__collections flex_column">
+                <h2 class="filters_panel__section-title_search" id="searchPanelCollectionsTitle">Подборки проектов</h2>
+                <div class="text_block__v2_cards text_block__v2_cards--scroll" id="searchPanelCollectionsListProjects"
+                    data-skeleton-block>
+                    <a href="projects.html" data-goto-category="Строительство">
+                        <div class="text_block__v2_card flex_column">
+                            <img src="./assets/images/services/services6.png" alt="">
+                            <div class="cheap ad_cheap micro_medium">324 проекта</div>
+                            <p class="body_medium">Для загородной жизни</p>
+                        </div>
+                    </a>
+                    <a href="projects.html" data-goto-category="Архитектура">
+                        <div class="text_block__v2_card flex_column">
+                            <img src="./assets/images/services/services7.png" alt="">
+                            <div class="cheap ad_cheap micro_medium">120 проектов</div>
+                            <p class="body_medium">Для семьи с&nbsp;детьми</p>
+                        </div>
+                    </a>
+                    <a href="projects.html" data-goto-category="Ландшафт">
+                        <div class="text_block__v2_card flex_column">
+                            <img src="./assets/images/services/services8.png" alt="">
+                            <div class="cheap ad_cheap micro_medium">80 проектов</div>
+                            <p class="body_medium">Для дачи</p>
+                        </div>
+                    </a>
+
+                </div>
+                <div class="text_block__v2_cards text_block__v2_cards--scroll" id="searchPanelCollectionsListCompanies"
+                    data-skeleton-block hidden>
+                    <a href="companies.html" data-goto-category="Строительство">
+                        <div class="text_block__v2_card flex_column">
+                            <img src="./assets/images/services/services1.png" alt="">
+                            <div class="cheap ad_cheap micro_medium">21 компания</div>
+                            <p class="body_medium">Строительство</p>
+                        </div>
+                    </a>
+                    <a href="companies.html" data-goto-category="Архитектура">
+                        <div class="text_block__v2_card flex_column">
+                            <img src="./assets/images/services/services2.png" alt="">
+                            <div class="cheap ad_cheap micro_medium">12 компаний</div>
+                            <p class="body_medium">Архитектура</p>
+                        </div>
+                    </a>
+                    <a href="companies.html" data-goto-category="Ландшафт">
+                        <div class="text_block__v2_card flex_column">
+                            <img src="./assets/images/services/services3.png" alt="">
+                            <div class="cheap ad_cheap micro_medium">13 компаний</div>
+                            <p class="body_medium">Ландшафт</p>
+                        </div>
+                    </a>
+                    <a href="companies.html" data-goto-category="Инженерные системы">
+                        <div class="text_block__v2_card flex_column">
+                            <img src="./assets/images/services/services4.jpg" alt="">
+                            <div class="cheap ad_cheap micro_medium">8 компаний</div>
+                            <p class="body_medium">Инженерные системы</p>
+                        </div>
+                    </a>
+                    <a href="companies.html" data-goto-category="Интерьер">
+                        <div class="text_block__v2_card flex_column">
+                            <img src="./assets/images/services/services5.jpg" alt="">
+                            <div class="cheap ad_cheap micro_medium">18 компаний</div>
+                            <p class="body_medium">Интерьер</p>
+                        </div>
+                    </a>
+                    <a href="companies.html">
+                        <div class="text_block__v2_card_v2 card flex_column">
+                            <h3>Еще +9 категорий</h3>
+                            <span class="button_tertiary_blue buttons_medium">Смотреть <svg width="15" height="12"
+                                    viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.75 5.75H14.0833M9.08333 10.75L14.0833 5.75L9.08333 0.75"
+                                        stroke="#1253ED" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
    <div class="banner_mobile_nav container">
         <div class="banner_mobile_nav_wrapper flex_row">
-            <div class="banner_nav__item flex_column">
+            <div class="banner_nav__item flex_column" id="navSearchBtn" role="button" tabindex="0">
                 <img src="./assets/images/icon/search.svg" alt="">
                 <p class="micro_medium">Поиск</p>
             </div>
